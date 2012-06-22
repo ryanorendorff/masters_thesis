@@ -1,0 +1,88 @@
+\chapter{CEAS Error Derivation}
+
+    For a random variable $X$, the standard error is defined by the square root of the second moment (also known as the standard deviation) divided by the number of elements taken of $X$, represented by $x$.
+
+    \begin{align*}
+      \Delta_x = \frac{\sigma_x}{\sqrt{n}}
+    \end{align*}
+
+    We estimate the standard error in a function $f$ of $X$ by taking the partial differential of function with respect to $X$. This is known as the \emph{delta method}.
+
+    \begin{align*}
+      \Delta_f^2 =  \left( \frac{\partial f(x)}{\partial x} \Delta_x\right)^2
+    \end{align*}
+
+    This is a measure of the standard error of the mean value, which is calculated by plugging the mean value $\overline{x}$ into $f$.
+
+    For a function $g$ of multiple independent variables $X_1,X_2,...,X_n$ we can estimate the standard error $\Delta_g$ in the following way.
+    \marginpar{\\\bigskip if the variables are not independent we should add a covariance term.}
+
+    \begin{align*}
+      \Delta_g^2 = \sum_i^n\left(\frac{\partial f}{\partial x_i}\Delta x_i\right)^2
+    \end{align*}
+
+    In calculating the absorption in a CEAS experiment it is common to use the function
+
+    \begin{align}
+      \alpha(\lambda) = \left(\frac{I_0(\lambda)}{I(\lambda)}-1\right)\left(\frac{1-R(\lambda)}{d}\right)\label{eq:ceas}
+    \end{align}
+
+    where $I$ and $I_0$ represent the intensity of the light through the cavity with and without the absorber present, respectively.
+
+    To calculate the squared error $\Delta_\alpha^2$, we shall use the delta method as defined above.
+    \marginpar{$\lambda$ is omitted in the CEAS equation from now on for convenience}
+
+    \begin{align*}
+      \Delta_\alpha^2 &= \left(\frac{\partial \alpha}{\partial I_0}\Delta_{I_0}\right)^2  + \left(\frac{\partial \alpha}{\partial I}\Delta_I\right)^2  \\\\
+                      &= \left[\frac{\Delta_{I_0}}{I}\left(\frac{1-R}{d}\right)\right]^2 + \left[\frac{I_0 \Delta_I }{I^2}\left(\frac{1-R}{d}\right)\right]^2 \\\\
+                      &= \left(\frac{\Delta_{I_0}}{I} + \frac{I_0\Delta_I}{I^2}\right)^2 \left(\frac{1-R}{d}\right)^2 \\\\
+               &= \left[\left(\frac{\Delta_{I_0}}{I} + \frac{I_0\Delta_I}{I^2}\right) \left(\frac{1-R}{d}\right)\right]^2
+    \end{align*}
+
+    This can be simplified to get the standard error.
+    \begin{align}
+      \Delta_\alpha = \left(\frac{\Delta_{I_0}}{I} + \frac{I_0\Delta_I}{I^2}\right) \left(\frac{1-R}{d}\right)\label{eq:err}
+    \end{align}
+
+    This CEAS equation assumes that the reflectivity is close to 1 and that $\alpha$ is nearly zero (only weak, low concentration absorbers). A version of this equation that does not make this assumption is shown below.
+
+    \begin{align}
+      \alpha = \frac{1}{d}\left|\ln\left(\frac{1}{2R^2}\left(\sqrt{4R^2+\left(\frac{I_0}{I}(R^2-1)\right)^2} + \frac{I_0}{I}(R^2-1)\right)\right)\right| \label{eq:ceas_full}
+    \end{align}
+
+    Here we will introduce, for convenience, two simplifications
+    \begin{align*}
+      \zeta &= \ln\left(\frac{1}{2R^2}\left(\sqrt{4R^2+\left(\frac{I_0}{I}(R^2-1)\right)^2} + \frac{I_0}{I}(R^2-1)\right)\right)\\\\
+      \beta &= \sqrt{4R^2+\left(\frac{I_0}{I}(R^2-1)\right)^2}
+    \end{align*}
+
+    Hence
+    \begin{align*}
+      \alpha = \frac{1}{d}\left|\ln\left(\frac{1}{2R^2}\left(\beta+\frac{I_0}{I}(R^2-1)\right)\right)\right| = \frac{\left|\zeta\right|}{d}
+    \end{align*}
+
+    Now, we can easily find the partials
+    \begin{align*}
+      \frac{\partial \alpha}{\partial I_0} &= \text{sgn}(\zeta)\left(\dfrac{1}{I}\right)\left(\dfrac{R^2-1}{d\beta}\right)\\\\
+        \frac{\partial \alpha}{\partial I} &= -\text{sgn}(\zeta)\left(\dfrac{I_0}{I^2}\right)\left(\dfrac{R^2-1}{d\beta}\right)
+    \end{align*}
+
+    After which we can easily estimate the standard error in $\alpha$.
+
+    \begin{align*}
+      \Delta_\alpha^2 &= \left(\frac{\partial \alpha}{\partial I_0} \Delta_{I_0}\right)^2  + \left(\frac{\partial \alpha}{\partial I} \Delta_{I}\right)^2 \\\\
+                      &= \left(\frac{\Delta_{I_0}}{I} + \frac{I_0\Delta_{I}}{I^2}\right)^2 \left(\dfrac{R^2-1}{d\beta}\right)^2 \\\\
+                      &= \left[\left(\frac{\Delta_{I_0}}{I} + \frac{I_0\Delta_{I}}{I^2}\right)\left(\dfrac{R^2-1}{d\beta}\right)\right]^2 \text{ given $\alpha \neq 0$}
+    \end{align*}
+
+    The sign function has been removed because it was squared, which results in a multiplication by one unless $\alpha$ is zero, at which point the error is also zero.\marginpar{\\\vspace{-3em}However, be careful when $I$ is zero!}
+
+    Finally, this can be simplified to the standard error
+    \marginpar{\\\bigskip One can use the standard deviation instead of standard error without loss of generality.}
+
+    \begin{align}
+      \Delta_\alpha &= \left(\frac{\Delta_{I_0}}{I} + \frac{I_0\Delta_{I}}{I^2}\right) \left(\dfrac{R^2-1}{d\beta}\right) \notag\\\notag\\
+                    &= \left(\frac{\Delta_{I_0}}{I} + \frac{I_0\Delta_{I}}{I^2}\right) \left(\dfrac{R^2-1}{d}\right)\left(4R^2+\left(\frac{I_0}{I}(R^2-1)\right)^2\right)^{-1/2} \label{eq:err_full}
+    \end{align}
+    {\color{Maroon}{Equations \eqref{eq:ceas_full} and \eqref{eq:err_full} are preferred to \eqref{eq:ceas} and \eqref{eq:err} because neither \eqref{eq:ceas_full} nor \eqref{eq:err_full} make assumptions on the limits of $R$ or $\alpha$, whereas \eqref{eq:ceas} and \eqref{eq:err} do make the assumptions $R \to 1$ and $\alpha \to 0$.}}
+

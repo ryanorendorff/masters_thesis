@@ -1,0 +1,454 @@
+\chapter{Broadband Cavity Enhanced Absorption Spectroscopy}
+
+
+\ac{BBCEAS} is a recently devised experimental technique that uses the
+cavity enhancement factors of \ac{CRDS} without requiring fast and sensitive
+detectors to determine the ringdown time. In this chapter we will discuss
+how \ac{BBCEAS} works, its advantages and limitations, and the design of the
+algorithms and optical system used in this report.
+
+
+\section{How Broadband Cavity Enhanced Absorption Works}
+
+\acl{BBCEAS} setups very similar to their \ac{CRDS} brethren. In both
+cases, light that enters the cavity passes through the sample a certain number
+of times (defined according to the reflectivity of the mirrors and the
+absorption of the sample) before exiting, to be detected. One
+paper\marginpar{Engeln et al. Review Scientific Instruments 1998} proved that,
+for a continuous wave input, the intensity of the light transmitted through
+the cavity is directly proportional to the ring down time inside the cavity.
+As such, one can derive the following function for the absorption coefficient
+from the ring down equation.
+
+  \begin{align}
+    \alpha(\lambda) =
+    \left(\frac{I_0(\lambda)}{I(\lambda)}-1\right)\left(\frac{1-R(\lambda)}{d}\right)
+  \end{align}
+
+To take full advantage of this system, \ac{BBCEAS} uses a broadband light
+source to acquire information about the absorption of a solution at many
+wavelengths simultaneously. This can be done through an incoherent source
+-- called \ac{IBBCEAS} -- or with a coherent supercontinuum laser
+source -- called \ac{SC-CEAS}.
+
+\subsection{Advantages}
+
+\acl{BBCEAS} has several advantages over its sibling techniques. Regular
+\ac{CRDS} or \ac{BBCRDS} require expensive light and detector sources to
+accurately acquire ring down signals. This cost and complexity does not
+exist in \ac{BBCEAS}, as modest spectrometers and light sources can be used.
+Additionally, this technique can be used to acquire high bandwidth spectrum,
+limited only by the mirror dielectric coatings.
+
+\ac{BBCEAS} shares some of these advantages against other experimental
+techniques as well. Multipass absorption cells are difficult to set up due to
+alignment errors, and \ac{PAS} is difficult to use due to the use of a lock-in
+amplifier.
+
+Other broadband techniques exist that provide a higher spectral
+resolution, but require a laser source such as a \acl{TDL}. These require
+special driver circuitry and cannot capture the entire bandwidth in one shot.
+
+\subsection{Limitations}
+
+While there are many benefits to \ac{BBCEAS} for acquiring absorption spectrum
+of a solution, the technique trades simplicity and broadband acquisitions for
+higher error, lower limit of detection and potentially low spectral
+resolution.
+
+The absorptivity resolution of the technique (described in section
+\ref{sec:ceas_error}) is limited by the noise of the detector. Most
+\ac{BBCEAS} setups use a \ac{CCD} camera to detect the intensity of light that
+has passed through a diffraction grating. \acp{CCD} do not have the ability to
+detect some of the small differences in light intensity due to the inherent
+noise of the detector, unless a cooled \ac{CCD} is used.
+
+Additionally \acp{CCD} are not as sensitive as the photodiodes or \acp{PMT}
+used in \ac{CRDS}, which limits the ability to detect minute changes in
+concentration. This detection sensitivity can be offset by the use of an
+\ac{EMCCD}, but these detectors are expensive at the present time, which
+defeats part of the original advantages of \ac{BBEAS}. Even if one was to use
+an \ac{EMCCD}, the sensitivity of the setup is unlikely to be that accurate
+due to fluctuating light sources and, in some published papers, unknown
+reflectivity curves.
+
+While \ac{TDL} based broadband techniques have longer acquisition
+times, they easily outperform most \ac{BBCEAS} techniques in terms of spectral
+resolution. This is because the narrow linewidths of a \ac{TDL} can be
+accurately known and imaged onto a photodiode, whereas the spectrometer in a
+\ac{BBCEAS} is limited in resolution by the grating and, more importantly, the
+focusing optics and irises used in the spectrometer. It is not uncommon to see
+a high resolution spectrum taken with a \ac{TDL} having a spectral resolution
+lower than 0.1nm, whereas a grating spectrometer has a spectral resolution on
+the order of nanometers.
+
+Another point of contention is the fact that this requires a calibration,
+leading to higher error rates.\marginpar{Flesh out calibration idea.}
+
+Finally, without the use of a device such as a \ac{CCD} streak camera, the
+temporal resolution is limited by the exposure time of the \ac{CCD}. It would
+be terribly difficult to measure the change in a chemical reaction that
+occurred on the order of milliseconds using a \ac{CCD}, whereas this type of
+measurement would be trivial to watch with the nanosecond temporal resolution
+of the \acp{PMT} used in \ac{CRDS}.
+
+\subsection{Considerations for BBCEAS in Liquid Medium}
+
+The advantages and limitations of a technique must be put into context
+to determine its value for a particular experimental setup. In
+chapter~\ref{chap:calibration} and \ref{chap:europium} the \ac{BBCEAS}
+setup laid out in this chapter is used to detect the absorbers in liquid
+solutions. As such, the low spectral resolution obtained with a modest grating
+spectrometer is good enough for the wide features present in liquid solutions
+(with rare exceptions, noted in section~\ref{sec:expect_theory_results}).
+Additionally, the samples measured in this report do not vary over time, and
+hence the low temporal resolution is unimportant.
+
+\section{Algorithms for BBCEAS}
+
+The basic procedure for a CEAS experiment is to do the following.
+
+\begin{enumerate}
+  \item Setup the instrument and perform all of the alignment with a blank
+        inside the sample cuvette.
+  \item Perform a measurement of the intensity per wavelength leaving the
+        cavity with the blank inside the cuvette. This can be done a number of
+        times $n$ to acquire a mean intensity $I_0$ and its standard deviation
+        $\sigma_{I_0}$
+  \item Perform the same measurement with the absorber inside the cuvette,
+        acquiring the mean intensity $I$ and its standard deviation
+        $\sigma_{I}$.
+\end{enumerate}
+
+Once this information has been gathered, one uses the \ac{BBCEAS} equation to
+calculate the absorption coefficient $\alpha(\lambda)$, usually in cm$^{-1}$.
+However, there are several ways of performing this calculation, as described
+below. \marginpar{Give a more detailed output in the appendix, including a
+source code listing}
+
+%% Include in appendix
+%\subsection{Calculation of Intensity}
+
+%In a \ac{CCD} based grating spectrometer, the light falling on the \ac{CCD}
+%will not be on a single row of pixels, but rather create a rectangle where the
+%intensity signal becomes fainter the farther one measures from the rectangle's
+%long center line.
+
+\subsection{BBCEAS Equation}
+
+While all \ac{BBCEAS} setups perform experiments in the same manner, where an
+intensity spectrum of a blank and with the solute are taken, there are four
+different equations in use in the literature to calculate absorption
+coefficient values. The most common one is below, derived from
+O'Keefe.\marginpar{For all equations in this section, be careful of when $I =
+0$.}
+
+  \begin{align}
+    \alpha(\lambda) = \left(\frac{I_0(\lambda)}{I(\lambda)}-1\right)\left(\frac{1-R(\lambda)}{d}\right)\label{eq:ceas_std}
+  \end{align}
+
+\marginpar{$\lambda$ dependence is implied for $\alpha$, $R$, $I_0$, and $I$ in the following derivations}
+This equation is a result of the cavity ring down equation at steady state,
+under the assumptions that the mirror reflectivity $R$ tends to 1 and that the
+absorption coefficient tends to nearly zero. Due to these assumptions, this
+technique is best served for the analysis of gas phase solutions, although it
+has been shown to be applicable over almost all experimental conditions that
+one would want to run.\marginpar{At least all experimental conditions in the
+literature}
+
+A second equation in use in the literature does not make the assumptions
+that $R \to 1$ and $\alpha \to 0$ due to the fact that it is derived from a
+geometric sum instead of an indefinite integral. The equation is slightly more
+complicated.
+
+  \begin{align}
+    \alpha = \frac{1}{d}\left|\ln\left(\frac{1}{2R^2}\left(\sqrt{4R^2+\left(\frac{I_0}{I}(R^2-1)\right)^2} + \frac{I_0}{I}(R^2-1)\right)\right)\right| \label{eq:ceas_geo}
+  \end{align}
+
+While this equation appears to be unwieldy, it is not more computationally
+complex than the standard equation. Because the difference in using the
+equations is only the time it takes to write into a programming language,
+one can choose to use either equation. However, the lack of assumptions for
+the geometrically derived \ac{BBCEAS} equation makes it a better candidate
+for analysis since one does not have to worry about the cases where the
+mirror reflectivity is low (such as those that would be used in a low cost
+instrument) or for high absorption coefficients.
+
+\subsection{Error calculation}\label{sec:ceas_error}
+
+\marginpar{See appendix for full error calculation derivation.}
+
+The standard way to calculate the minimum level of detection (as well as the
+error) in a \ac{BBCEAS} is to use the following equation, which applies for
+calculating the error from equation \eqref{eq:ceas_std}.
+
+\begin{align}
+  \alpha_{\text{min}} = \left(\frac{\Delta
+  I}{I_0}\right)\left(\frac{1-R}{d}\right)\label{eq:ceas_min}
+\end{align}
+
+In this equation, $\Delta I$ is the minimum detectable change in $I$.
+Similarly, the limit of detection (LOD) is normally defined as three times the
+standard deviation in $\alpha$.
+\begin{align}
+  \text{LOD}_{\alpha} = 3\sigma_{\alpha}\label{eq:lod}
+\end{align}
+
+These equations present two different problems.
+
+One is the way in which the minimum detectable change is defined. If the
+minimum detectable change is defined as how confidently one can assume a new
+intensity value is unique to an absorber, one would likely use something
+similar to the limit of detection. Alternatively, one could define the minimum
+detectable change in intensity as a function of the noise in the detector
+only, instead of through the entire experiment (as one assumes all other
+sources to be constant).
+
+While the photodetector is often the main source of noise, this kind of
+analysis excludes the intensity fluctuations in the light source in
+calculating $\alpha$. As such, this error is too generous to the actual
+achievable sources of error in a \ac{BBCEAS} experiment.
+
+The second problem with the error calculations is that the error in the blank
+measurement is not taken into account. Equation \eqref{eq:ceas_min} assumes
+that one has a constant for the intensity of the blank $I_0$. However, we know
+that this blank has its own distribution of points. As such, the error
+equation in the literature is generous in the minimum detectable absorption
+changes.
+
+In an actual experiment, it may be hard to control the intensity distributions
+to be stable over time. As such, one cannot make assumptions about the width
+of the intensity distribution measurements accurately.
+
+To alleviate the problems of the error associated with the intensity of the
+source and that of the initial blank intensity measurement, one may consider a
+more accurate method of attempting to calculate the absorption coefficient
+many times. However, this can be immensely time consuming to acquire a
+statistically accurate dataset for many concentrations, and requires many
+flushes of the liquid inside the cuvette (increasing the sample volume
+costs).
+
+\ac{BBCEAS} experiments can calculate a more accurate error by altering the
+method of spectrum collection. When an experimenter collects data on the
+intensity distribution of the blank and solution samples, they often take many
+snapshots of this information and then average that data. However, if one
+calculates the standard deviation of the intensity signals, then it is
+possible to \emph{approximate} the standard deviation in $\alpha$ using the
+delta method. This leads to the following equations of error for equation
+\eqref{eq:ceas_std} and \eqref{eq:ceas_geo}, respectively.
+
+    \begin{align}
+      \sigma_\alpha = \left(\frac{\sigma_{I_0}}{I} +
+      \frac{I_0\sigma_I}{I^2}\right)
+      \left(\frac{1-R}{d}\right)\label{eq:ceas_err_std}
+    \end{align}
+
+
+    \begin{align}
+      \sigma_\alpha = \left(\frac{\sigma_{I_0}}{I} +
+      \frac{I_0\sigma_I}{I^2}\right)
+      \left(\dfrac{R^2-1}{d}\right)\left(4R^2+\left(\frac{I_0}{I}(R^2-1)\right)^2\right)^{-1/2}\label{eq:ceas_err_geo}\\\text{
+      given $\alpha \neq 0$}\notag
+    \end{align}
+
+It is possible to calculate the standard deviation in $\alpha$ exactly, as a
+measure of sanity, by comparing each of the intensity spectrum of the
+blank against each of the intensity spectrum of the sample. However, this
+quickly becomes computationally demanding. If one was to take 50
+intensity spectrum of the blank and the sample, over 1024 pixel bins inside a
+CCD camera, then one would calculate $\alpha$ more than 2.5 million times,
+which would take a while even on computers from 2012.
+
+\subsection{Notes on calculations}
+
+While the equations for \ac{BBCEAS} and the standard deviation of the signals
+is relatively straight forward, there are bounds on the calculation of
+$\alpha$ that are implied.
+
+The reader will probably notice that equation \eqref{eq:ceas_err_geo} comes
+with the tag that $\alpha \neq 0$. In the derivation, this is because when
+$\alpha = 0$, the error $\sigma_{\alpha}$ is also zero due to attempting to
+perform the derivative of an absolute value. However, even without this
+limitation, an experimenter should ignore $\alpha = 0$, as this indicates
+that the intensity measurements were indiinguishable. At such a value, a more
+meaningful result would be to state that the absorption is insignificant with
+reference to the LOD$_{\alpha}$.
+
+Another problem is when the measured intensity $I$ is zero. In all of the
+equations stated thus far result in a division by zero when the intensity
+value is zero. The optimistic reader may state that this would never be
+the case, as there will always be background counts on the detector due to
+\ac{CCD} noise. However $I$ can be zero if one subtracts the background
+\ac{CCD} noise from the acquired images. This subtraction is required for an
+accurate measurement of $\alpha$.
+
+This phenomenon will occur at high absorptivity values, and due to the nature
+of pressure and collision broadening means that there is a high probability
+that several points in a row in the intensity spectrum will be zero or nearly
+zero. The resulting $\alpha$ spectrum would have a peak where the top was cut
+off. While this scenario is not ideal, there is a way acquire an approximate
+value for the $\alpha$ values that have been cut.
+
+The line shapes of an electronic transition (assuming that there are no other
+significant absorptions near a certain transition), after the convolution of
+collision broadening, pressure broadening, and the broadening associated with
+the spectrometer, take on a voigt profile. Since these broadening effects
+impact all transitions equally, we can use another peak within the absorption
+spectrum to calculate the parameters for this profile. It is then trivial to
+scale the voigt profile to the peak that has been cut off at the top and
+arrive at an approximate value of $\alpha$. The only potential problem with
+this method is that all of the existing methods shown for calculating the
+error in the absorption coefficient are inapplicable.
+
+\subsection{Computation}
+
+\marginpar{The complete algorithm can be found in the appendix. However, a
+brief version can be found below.}
+
+With the \ac{BBCEAS} and error equations on hand, the complete computation of
+$\alpha$ can now be performed. It is summarised as follows, assuming that 50
+acquisitions of $I$ and $I_0$ were taken, along with 50 images of just the
+background \ac{CCD} noise.
+
+\begin{enumerate}
+  \item Average the \ac{CCD} noise images together to acquire one image $z$
+        of the noise on the \ac{CCD}.
+  \item For the first image in $I_0$, use a blob detection algorithm to find
+        a bounding box $b$ for the signal on the \ac{CCD}.
+  \item For each image in $I_0$,
+    \begin{enumerate}
+      \item Subtract the background noise $z$ from the image.
+      \item Average the columns of the pixels in $b$ that correspond to each
+        wavelength to create an intensity spectrum $I_{0_{i}}$
+    \end{enumerate}
+  \item With a set of intensity spectra $I_{0_i}$, calculate the mean value
+        $I_0$ and the standard deviation $\sigma_{I_0}$.
+  \item Perform steps 3-4 for the set of images corresponding to $I$.
+  \item Calculate $\alpha$ using equation \eqref{eq:ceas_geo} and
+    $\sigma_\alpha$ using equation \eqref{eq:ceas_err_geo}.
+\end{enumerate}
+
+There are two points to note over how most \ac{BBCEAS} calculations are done.
+The first is that the acquisition of several intensity spectra is required to
+calculate the final error in $\alpha$.
+
+The second interesting addition is the use of the blob detection algorithm.
+This modification over a simple cropping of the image allows multiple
+detectors (or for a detector to be modified) while still using the same
+algorithm to analyse the results. Additionally the blob detection
+automatically removes sections of low light intensity from the images, which
+are areas that are prone to divide by zero errors and high standard deviations
+in $\alpha$.
+
+
+\section{Optical Layout and Design}
+
+The optical layout for the system used in this report is nearly identical to
+all \ac{BBCEAS} layouts. The light source is a Fianium \textsc{sc-450} supercontinuum
+pulsed laser source (with a high enough repetition rate that it is treated
+like a continuous wave laser source in our equations). After the source, the
+cavity uses cavity mirrors of reflectivity $R=0.99$. Finally, light exiting
+the cavity is coupled into a multimode fibre and imaged using a custom
+built grating spectrometer (discussed below).\marginpar{Include image of
+optical setup}
+\marginpar{Should I include the mirror reflectivity curve as an image?}
+
+\subsection{Spectrometer}
+\marginpar{Should I put this in an appendix?}
+
+The spectrometer used is a simple transmission grating spectrometer
+with a fibre input and a standard \ac{CCD} from a digital
+consumer camera.\marginpar{include spectrometer diagram}
+
+
+\section{Potential Enhancements}
+
+While this setup works well, there are certain aspects of the instrument that
+can be made to make either a gain in sensitivity and/or in cost over the
+current implementation.
+
+\subsection{LED source}
+
+The supercontinuum light source is excellent for its low divergence and high
+power properties over the visible range. However, such light sources are far
+from cheap, and supercontinuum sources often have high fluctuations in
+intensity over time that can be difficult to correct for without a reference
+signal.
+
+\acp{LED} offer an enticing visible light source alternative to supercontinuum
+sources on the basis of their exceptionally low cost and stable output
+intensity stability.
+
+The current costs of high power \ac{LED} devices are on the order of only
+a few pounds, and can be easily wired in series with a resistor in order
+to provide stable light output. There is a potential complication in the
+power supplies for high powered \acp{LED} because of power draws of over 10
+watts (usually requiring over 10 volts and 1 ampere to create a stable power
+source). However, one can use a boost-buck style DC to DC power converter to
+create highly stable current inputs into the \ac{LED} to aid in stabilising
+the intensity output. Additionally a thermistor can be added to the \ac{LED}
+to create a closed loop system, where the feedback from the thermistor assists
+in stabilising the light source over time.
+
+Once a stable output intensity is reached, the light from an \ac{LED} can be
+fibre coupled into a multimode fibre. The light coming out of the fibre can
+then be collimated to create a low divergence beam to be put into the cavity.
+Other groups have shown that fibre-coupled \ac{LED} light sources can be used
+for \ac{BBCEAS} experiments, and that the setup for an \ac{LED} source is
+relatively trivial. It would seem the stability can be improved in comparison
+to published research by using a closed feedback loop for the \ac{LED}.
+
+An additional benefit of an \ac{LED} based light source is that the intensity
+could be easily modulated by an external signal quickly. This could be used to
+create lock-in type detection schemes, or to initiate a photochemical reaction
+and watch the result through absorption spectroscopy.\marginpar{Clearly other
+possibilities exist to use a modulated input signal as well}
+
+\subsection{Non-fibre Spectrometer}
+
+Coupling light into a multimode fibre can provide a convenient way to reroute
+light to certain optical setups. The problem with coupling light into a fibre,
+even a multimode fibre with a large diameter core, is that the loss of light
+at the interface of the fibre is relatively high. Practically, lasers are
+unaffected by this procedure in \ac{BBCEAS} measurements as it is often
+possible to reach higher output power levels to offset the coupling losses.
+There are even cases where one can saturate the absorber in a \ac{BBCEAS}
+measurement if the light intensity is too high.
+
+Incoherent light sources such as \acp{LED}, on the other hand, suffer from
+problems of having wide, slightly divergent beam profiles, which practically
+means that these sources have limits on their intensity that cannot offset the
+fibre losses. On top of this limit, losses for the incoherent source are
+higher than the laser due to the larger spot sizes and diffuse nature of the
+light when coupling into a fibre.
+
+The current optical setup is convenient because different detectors can be
+easily swapped to provide more accurate or faster acquisitions. But tests with
+collimated \ac{LED} light sources has required integration
+times on the order of ten seconds, hampering the effective use of \ac{LED}
+sources.
+
+If the light coming out of the cavity is instead directed onto a transmission
+grating, the losses due to the coupling would be removed, and much more light
+would hit the detector. The loss of convenience would be greatly offset by the
+ability acquire data at a faster rate and lower noise than in the case of the
+fibre coupled spectrometer.
+
+\subsection{Webcam}
+
+While the current system uses a \ac{CCD} that costs much less than the
+detectors in other \ac{CEAS} and \ac{CRDS} systems, the Starlight is still on
+the order of a thousand pounds to buy. To further reduce the costs of the
+system, the detector can be replaced with a \ac{CCD} from a web camera, which
+costs tens of pounds.
+
+Replacing the \ac{CCD} with a web camera would bring the total costs, if one
+uses low reflectivity dielectric mirrors, to potentially less than a hundred
+points. The \ac{CCD} in a web camera is also incredibly tiny, and would allow
+the entire \ac{BBCEAS} setup to be easily miniaturised into a handheld device
+using an \ac{LED} light source.\marginpar{Why would we use a webcam instead of
+a line detector for a handheld device? We are not using the 2D aspect of the
+pixels....}
+
+\section{Summary}
+Review Chapter Here.

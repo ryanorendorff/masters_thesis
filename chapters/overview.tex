@@ -1,0 +1,145 @@
+\chapter{Overview of Spectroscopy}\label{ch:introduction}
+
+Spectroscopy is a field in science that uses our understanding of the way
+that matter interacts with energy, including the emission and absorption
+of energy from matter. The fact that matter absorbs, emits, refracts, and
+deflects energy allows us to probe a substance with minimal interference,
+while still allowing a great variety of information to be derived, such as
+the chirality of a molecule, the energy levels of an atom's
+electronic structure, and the concentration of various chemicals in any type of solution.
+
+
+
+In this chapter we will discuss a variety of absorption spectroscopy
+techniques, including single pass absorption spectroscopy, broadband
+absorption spectroscopy, multipass \ac{TDL} white cell setups, \ac{PAS},
+and \ac{CEAS}. These can be grouped approximately into basic
+absorption, broadband absorption and multipass absorption techniques, the last
+two of which can be combined to make ultra sensitive spectroscopy techniques.
+
+
+\section{Theory behind Absorption Spectroscopy}\label{sec:theory}
+
+Absorption spectroscopy is founded on a simple principle: if matter absorbs
+light, then we can detect this energy transfer via the law of the conservation
+of energy. One of the simplest ways to measure this absorption event is to
+count the number of photons that went into a piece of matter and how many
+came out. In this way we can determine how much energy was \emph{absorbed}
+by the matter. This absorption is correlated to the concentration of the
+absorbing material, and is unique to the material and the material's state.
+
+In this report we will be primary interested in determining concentration
+of absorbers in a substance, and the electronic energy structure of the
+absorbers.
+
+\subsection{Beer-Lambert Law}\label{subsec:beer}
+
+Mathematically, the problem of determining the concentration of an absorber
+based on the light lost in a material is relatively simple. By measuring the
+amount of light of a particular wavelength $\lambda$ entering a material, with
+intensity $I$, and the amount of light exiting $I_0$, we can easily relate
+the intensities to each other to determine how much light was lost due to
+absorption.
+
+For most physical cases, absorption follows a logarithmic dependence
+with the concentration of the absorber. Therefore, using the simple
+equation\marginpar{$A =$  absorption (percent), \\$I_0 = $
+intensity before the cavity ($\text{W}/\text{m}^2$),\\$I =$
+intensity after the cavity ($\text{W}/\text{m}^2$).}
+
+\begin{align*}
+  A(\lambda)=-\log\left(\frac{I}{I_0}\right)_\lambda
+\end{align*}
+
+This can then be related to the absorption of a particular chemical substance
+by using some properties of that substance and the distance the light
+travelled through the substance.\marginpar{$\epsilon = $ molar
+absorptivity (M$^{-1}$cm$^{-1}$),\\ $\alpha =$ absorption coefficient
+(cm$^{-1}$), $c = $ concentration of the absorber (M),\\$l =$ path
+length (cm).}
+
+\begin{align}
+  A(\lambda) = \epsilon(\lambda) c l = \alpha(\lambda) l = -\log\left(\frac{I}{I_0}\right)_\lambda
+\end{align}
+
+This is known as Beer Lambert's Law, which relates the loss of light in a
+material to the concentration of absorbers inside that material.  This law is
+stated in a variety of different ways, including using the natural logarithm
+instead of a base ten logarithm. \marginpar{Index of refraction $\mathscr{N} =
+n + i\kappa$}Critically, the introduced variable $\alpha$ is defined physically
+as a function of the imaginary portion of the complex index of refraction.
+
+Beer-Lambert's Law can also be defined for multiple absorbers by simply adding the absorption coefficients of all of the absorbers together.
+\begin{align*}
+  A(\lambda) = l\sum\alpha(\lambda)_i
+\end{align*}
+
+While Beer-Lambert's Law is convenient, it is frustratingly bound by a number of factors.
+\begin{itemize}
+  \item Little tolerance to other light losing effects such as scattering.
+  \item Optical saturation limits.
+  \item For most desirable analyses, a homogeneous mixture of the absorbers.
+  \item Collimated light sources to allow the path length to be constant.
+\end{itemize}
+
+Even with these limitations, the technique of measuring intensity loss to
+determine absorber concentration is used in many analytical devices. One of the
+most familiar is a pulse oximeter, which measures blood oxygenation levels
+using two laser diodes placed on the index finger of a patient, with
+photodiodes on the other side of the finger to measure the intensity
+loss.\marginpar{Pulse oximeters can be used together with other technologies to
+acquire physiological parameters across the entire body: see the Esoma
+project. \url{http://www.rdodesigns.com}}
+
+\subsection{Electronic Transitions}
+Knowing how to measure concentration using absorption measurements is useful,
+but with monochromatic light it is one of the few parameters that can be
+measured about an absorber. However, if we can derive a method to collect
+information about the absorption of many different wavelengths we can start to
+derive information about the energy states of the electrons inside the absorber.\marginpar{In this section we will be talking about atoms but the concepts apply to molecules as well}
+
+%% OMG THIS PARAGRAPH SUCKS
+An introductory level quantum chemistry course introduces the concept that
+electrons in an atom, when bound to a set of nuclei, are forced into set
+quantum states, each of which has a certain energy level\marginpar{some quantum
+  states are degenerate, so each quantum state does not necessarily have a
+unique energy}. An atom is usually found in its unexcited, stable state known
+as the ground state. In this state, the atom has the potential to jump to a
+higher energy (and usually less stable) configuration when external energy is
+applied to the atom.  This input energy can come in the form of electromagnetic
+radiation. This radiation must have the same energy as one of the quantum state
+transitions of the atom for the radiation to be absorbed. During the absorption
+process, the electron that absorbed the energy enters an excited state. \marginpar{There are a few other nonlinear absorption/emission processes that can happen as well.} This electron then eventually releases the energy it absorbed by either emitting a photon or by thermally releasing energy in the form of a collision.
+
+In the process of absorbing a photon to reach an excited state, the atom has revealed bits of information about itself. Since the energy transitions are quantised, we can theoretically guess where absorption in the electromagnetic spectrum should occur. \marginpar{Hartree-Fock approximations and Density Functional Theory (DFT)} In fact, quantum chemistry is a field dedicated to determining the quantum states of molecular systems over time, using approximations to the Schr\"odinger equations.
+
+\subsection{Complications of Absorption in Liquid Solutions}
+
+What do you mean we can have Doppler and Lorenzian shifts? Life is such pain.
+
+\section{Broadband Absorption Spectroscopy}
+I have a open mind.
+
+\subsection{Tunable Diode Lasers}
+NCAR FTW!
+
+\subsection{Supercontinuum Lasers}
+They hurt your eyes!
+
+\subsection{LEDs}
+They are very poorly collimated and diffuse!
+
+\section{Multipass Techniques}
+I like to visit the same place multiple times.
+
+\subsection{White and Herriot Cells}
+Sometimes when I pass by I do different things.
+
+\subsection{Cavities}
+Sometimes I just want to do the same thing over and over.
+
+\section{Ring down}
+What's that sonny?
+
+\section{Summary}
+Review chapter here.

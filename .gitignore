@@ -1,0 +1,12 @@
+*.aux
+*.lof
+*.log
+*.lol
+*.lot
+*.out
+*.pdf
+*.toc
+short.tex
+tests.tex
+tmp_error.txt
+.DS_Store
