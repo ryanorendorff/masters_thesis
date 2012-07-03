@@ -1,4 +1,239 @@
 \chapter{Europium}\label{chap:europium}
-\section{Theoretical Results}\label{sec:theorty_eu}
-\section{Previous Experimental results}\label{sec:previous_eu_results}
-\section{Measurements using BBCEAS}\label{sec:europium_measurements}
+
+\marginpar{Add section about europium complexes?}
+
+Europium is a peculiar metal. As a lanthanide metal, it has a complex
+electronic structure consisting of an incomplete \textsl{4f} electron shell
+that is highly reactive. These two properties create a tricky spectroscopic
+problem: europium has very low absorption cross sections in the visible -- due
+to it electronic structure -- and its reactivity means that it is difficult
+to acquire pure europium to detect.\marginpar{Europium is highly reactive
+in both air and water, bulk oxidizing within a few days} This practically
+means that to detect europium in a solution, it must be in a relatively
+high concentration in a medium that it does not react or form coordination
+structures with.
+
+However, using \ac{BBCEAS} it is possible to detect europium in a liquid sample
+at lower concentrations than what is published in the literature.
+\marginpar{Lower concentrations can be measured in the UV.} The broad,
+simultaneous spectral nature of \ac{BBCEAS} additionally allows several
+spectral features in the visible to be measured simultaneously.
+
+While europium is challenging to characterise, it has a immensely valuable
+property: europium's quantum fluorescence efficiency is nearly one, and the
+fluorescence emission is spectrally very narrow. This fluorescence property can
+be used to create sensitive labels, to create OLEDs with high spectral purity,
+and as luminescent solar concentrators.
+
+Europium also readily forms coordination complexes as both monodentate and
+polydentate ligands. Combining the coordination complex property with the
+fluorescence property allows for the decay or creation of complexes to be
+measured. This physical system can then be used to detect trace concentrations
+of proteins with high sensitivity and in a non-toxic manner.
+
+\section{Theory of Lanthanide electronic transitions}\label{sec:theorty_eu}
+
+Lanthanide ions contain an open \textsl{4f} electronic orbital which leads
+to many strange phenomenon that are difficult to describe with standard
+\textsl{ab inito} techniques. In the 1960s, researchers Judd and Ofelt introduced simple assumptions to make the calculation of the electronic wave functions simpler. Their simplifications were immensely successful in theoretically predicting the energy levels of different electron configurations.
+
+However, there are electronic transitions that are still difficult to
+understand because they are classically \emph{forbidden}. Some transitions
+are forbidden due to a transfer from a $ J=0 \leftrightarrow 0 $, while
+many others are forbidden due to a change in the spin $\Delta S \neq
+0$. As such, these transitions must occur due to higher order effects,
+such as electron configuration interaction for the $^7F_0 \leftrightarrow ^5D_0$
+transition.\marginpar{Jankowski. J Phys B: At Mol Phys 1981}, and at much weaker
+absorption cross sections than classically allowed transitions.
+
+
+\subsection{Predicting Energy Levels in Europium}
+
+It is possible, using extensions to Judd-Ofelt calculations (namely, through methods developed by Carnell and Crosswhite), to derive the energy levels of the \textsl{4f} energy shell and the transitions from the ground state of europium in different lattices.
+\begin{align*}
+H =\ & H_0 + \sum_{k=2,4,6} F^kf_k \\
+ & + \zeta(4f)A_{so} + \alpha L(L+1) + \beta G(G_2) + \gamma G(R_7)\\
+ & + \sum_{i=2,3,4,6,7,8}t_iT^i + \sum_{h=0,2,4}m_hM^h + \sum_{f=2,4,6}p_fP^f
+\end{align*}
+
+This equation represents the free ion Hamiltonian of a lanthanide ion (where
+$H_0$ is the non-interacting electrons contribution, known as the barycenter).
+One can then add perturbation terms to alter the Hamiltonian for use in
+different solutions. For example, if one has a solid crystal lattice, it is
+common to add
+
+\begin{align*}
+  H_{CF} = \sum_{k,q} B_q^k C_q^{(k)}
+\end{align*}
+
+which represents the radial $B$ and many-electron spherical tensor $C$ crystal
+field interaction with the electron wavefunctions. Excited states of europium
+can also be modeled through the Wybourne-Downer mechanism, which accounts for
+spin-orbit interaction among excited states and creates the explicit ability
+for $\Delta S = 1$ transitions to occur (B.G. Wybourne, J. Chem. Phys. 48,
+2596 (1968). M.C. Downer et al., J. Chem. Phys 89, 1787 (1988).). Finally,
+Judd-Ofelt theory can be used to estimate the transition intensities and
+branching ratios of absorption and emission spectra (and therefore the natural
+radiative lifetimes).
+
+\subsection{Measuring Radiative lifetimes of Europium Complexes using Fluorescence Emission}
+
+The radiative lifetime of an electronic transition of an absorber can be determined by its emission profile. This is done through the following formula.
+
+\begin{align}
+  \frac{1}{\tau_R} = \sum_JA_{J'J}\label{eq:nat_life_emiss}
+\end{align}
+
+In this formula, $A$ is the spontaneous emission probability of a particular
+$J' \leftrightarrow J$ transition\marginpar{$A$ is also known as the Einstein
+$A$ coefficient} (which is related to the area under the curve for that
+emission peak), and $\tau_R$ is the ``natural'' radiative lifetime, which is
+the lifetime of an electron in an excited state without interference from
+systematic effects such as thermal quenching. Additionally, one can define the
+\emph{branching ratio} $\beta$ as the probability for an excited electron to
+decay via a certain pathway $J_p$.
+
+\begin{align}
+  \beta_{J'J_P} = \dfrac{A_{J'J_p}}{\tau_R} = A_{J'J_p}\sum_J A_{J'J} \label{eq:branch_ratio}
+\end{align}
+
+For some absorbers, it can be difficult to measure all transitions
+simultaneously, as some may be forbidden and hence extremely weak in
+comparison to the allowed transitions. However, europium has a unique property
+that allows its radiative lifetime to be determined from a single peak:
+europium contains a single, allowed magnetic dipole moment transition $^5D_0
+\leftrightarrow ^7F_1$. Magnetic dipole transitions are not affected by the
+solvent or complex than an absorber is in, and hence this transition is
+constant. Using this peak, it is possible to measure the radiative lifetime
+using the following equation
+
+\begin{align}
+  \dfrac{1}{\tau_R} = A_{MD,0}n^3\left(\frac{I}{I_{MD}}\right) \label{eq:nat_life_eu}
+\end{align}
+
+where $n$ is the refractive index of the solution, and the fraction
+$\frac{I}{I_{MD}}$ is the ratio of the total area under the emission curve to
+the area under just the $^5D_0 \leftrightarrow ^7F_1$ transition.
+
+It is also possible, in cases where the absorption spectrum of a particular
+luminescence transition is known, to calculate the radiative lifetime of the
+transition,
+
+\begin{align}
+  \frac{1}{\tau_R} = 2303 \dfrac{8\pi c n ^2 \nu^2}{N_A}\dfrac{g_l}{g_u}\int\epsilon(\nu)\,d\nu \label{eq:nat_life_abs}
+\end{align}
+
+where $\nu$ is the frequency of the transition, $\tfrac{g_l}{g_u}$ is the
+fraction of electrons in the excited and ground state, and $\epsilon$ is the
+molar extinction coefficient (in M$^{-1}$cm$^{-1}$) of the transition.
+
+\section{Experimental Liquid Eu(III) Results in the Literature}\label{sec:previous_eu_results}
+
+Previous experimental results have been able to detect small quantities of
+liquid europium using absorption spectroscopy in the ultraviolet (near 390nm).
+However, the most interesting transitions for europium occur in the visible
+due to the high quantum efficiently produced fluorescence from europium. Under
+these conditions, it is difficult to acquire an accurate absorption spectrum
+for analysis of concentration or natural radiative lifetimes. To date, it
+appears that within the visible the lowest concentration ever measured is
+200\,mM of liquid europium. This has been measured using standard spectrophotometers and through \ac{PAS}.
+
+These experimental results reveal a few interesting factors about europium's
+electronic transitions. First, the forbidden transitions are not much weaker
+than the allowed $^7F_0 \leftrightarrow ^5D_2$ transition near 464nm, which
+occurs when nonlinear effects to the electronic wavefunctions play a dominant
+role (Brian Walsh). A second peculiarity was noted by Sawada 1979 in the
+forbidden $^7F_0 \leftrightarrow ^5D_0$ transition, which found this hard to
+detect peak was fiendishly small in comparison to other transitions in liquid.
+Sawada suggests that this is due to hypersensitivity of the transition to the
+environment that the europium is in, leading to a squeezing effect of the
+spectral line that overpowers the broadening effects.
+
+\section{Measurements using BBCEAS}\label{sec:eu_measurements}
+
+With experimental and theoretical results indicating what should be seen in an absorption spectrum, the \ac{BBCEAS} technique was applied to measure small concentrations of liquid europium in the visible, at concentrations lower than the 200\,mM seen in the literature. This was accomplished using the same technique used to measure perform the rhodamine 6G calibrations.
+
+As one can see from the figure, the major electronic transitions were
+easily observed. However, as one can see from the figure, it is difficult
+to determine why the measured spectrum has a higher baseline, and why the
+relative intensities between the transitions do not match those in the
+literature. Since the altering of the intensity of the different transitions
+can occur when a substance is optically saturated, the experiment was repeated
+at lower powers.
+
+From the figure, it is simple to see that problem of relative intensities
+disappeared while performing these experiments, even though the highest power
+in the set of the experiments is the same as the original. This peculiar
+result is likely due to laser fluctuations in the original liquid europium
+measurements (the laser fluctuation is a function of time \emph{and} wavelength: see section FIND REF).
+
+Measurements were also performed on a variety of concentrations. This resulted
+in a minimal detection limit of approximately 5\,mM in the visible, a 40 fold
+improvement in sensitivity. This sensitivity is based on the error in other
+europium measurements, and has been seen in the lab (data not shown due to
+highly variable solution relaxation times).
+
+These results indicate that \ac{BBCEAS} can be used to detect liquid Eu(III)
+at a lower concentration than what was possible before. With modifications to
+the \ac{BBCEAS} setup (discussed in section FIND REF) it will be possible to
+lower the detectable concentration to the micromolar range.
+
+\section{Further Investigations of Europium}
+
+In this chapter it has been shown that preliminary \ac{BBCEAS} testing of Eu(III) in aqueous solution can be detected in much smaller quantities than previously reported in the literature. However, to make a use case from this detection improvement, we have to look towards europium inside coordination complexes.
+
+\subsection{Europium Complexes}
+
+It is quite tricky to measure the absorption spectrum of europium and detect any fluorescence due to the extremely low absorption cross sections of the europium ion. Coordination complexes alleviate this problem by acting as ``catcher's mitts'', which dramatically increases the probability of a photon being absorbed. Combined with the high fluorescence quantum efficiency of the europium complexes, these coordination systems increase the usability of europium by allowing even moderate light sources to induce fluorescence of high spectral purity.
+
+However, to calculate the theoretical parameters for such a system (such as
+Judd-Ofelt $\Omega_{2,4,6}$ parameters), it is necessary to measure the time
+required for an excited europium complex to decay down to the ground state. As
+shown from equations \eqref{eq:nat_life_emiss}, \eqref{eq:nat_life_abs} and
+\eqref{eq:branch_ratio}, it is possible to use the absorption and emission
+spectrum of a given transition to determine the natural radiative lifetime of the complex, transition probabilities and branching ratios. This information is necessary to acquire a better theoretical understanding of the electron configuration and interaction in europium complexes. The derived theory can then be used to optimise coordination complexes to acquire the highest fluorescence yields, or more spectrally pure fluorescence by the reduction or enhancement of certain electron dipole transitions.
+
+\subsection{Europium Complexes adsorbed to Polystyrene Beads}
+
+Europium complexes have been used as fluorescent markers and for displays, among other applications. However, a recent paper provides an interesting use of europium complexes attached to nano polystyrene beads. These beads are able to hold tens of thousands of chelated europium complexes on one bead. While this is interesting on its own as a way to produce highly localised intense fluorescence, the beads also have an additional property that makes them useful for detections of larger biomolecules and cells: the beads are designed with a negative surface potential, even with the europium complexes attached.
+
+This is useful because many proteins and cells will adhere to the surface of
+the beads. If a europium ion attempts to disassociate from its coordination
+complex, it is sterically hindered from doing so. In highly acidic solutions
+-- around a pH of 2 -- europium tends to disassociate from its complex
+readily, which reduces the fluorescence signal. However, since attached
+biomolecules prevent this dissociation, it is possible to use the ratio of the
+observed fluorescence in a biomolecule solution to the background fluorescence
+upon all the complexes dissociating to calculate the amount of a biomolecule
+there is in a solution.
+
+This is currently done using fluorescence techniques. However, absorption
+techniques can lead to higher sensitivities and lower limits of detection
+because the absorption measurement does not need to account for a large
+scattering angle, unlike fluorescence where an emitted photon could travel in
+any direction.\marginpar{This is to say it is easier to detect the reduction
+of photons due to absorption than it is to pray that an emitted photon will
+travel in the correct direction.} As such, a \ac{BBCEAS} measurement of the
+absorption spectrum of a biomolecule solution laced with europium complexes
+should lead to even greater sensitivities and lower limits of detection than
+currently stated in the literature.
+
+In addition, it is likely that the absorption and emission spectrum of the
+electronic dipole transitions in europium complexes will alter due to the
+adsorption of a biomolecule onto the bead. Judd-Ofelt theory (and many
+corrections to it) allow for many of the forbidden transitions provided a
+higher order interaction with a localised electric field, which can come from
+a complex or the surrounding medium. As such, parameters such as the branching
+ratio and natural radiative lifetime would be affected by the biomolecule
+attached to the europium bead. This would prove to be a novel approach to
+not only detecting minuscule concentrations of proteins in a solution,
+but allow for the adsorbed protein on the beads to be identified. It is
+feasible to believe that this identification process could be done to multiple
+biomolecules simultaneously, creating a single molecular probe for determining
+the concentrations of different proteins in a molecular soup, such as a cell
+lysate sample.
+
+
+\section{Review}
+%Europium 9-dendrate complex
+%\{2,2',2'',2''' - \{[4' - (4''' - isothiocyanatophenyl) - 2,2':6,6'' - terpyridine - 6,6'' - diyl]bis(methylenenitrilo)\}tetrakis (acetato)\} europium
