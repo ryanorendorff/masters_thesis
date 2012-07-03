@@ -111,14 +111,117 @@ radiation. This radiation must have the same energy as one of the quantum state
 transitions of the atom for the radiation to be absorbed. During the absorption
 process, the electron that absorbed the energy enters an excited state. \marginpar{There are a few other nonlinear absorption/emission processes that can happen as well.} This electron then eventually releases the energy it absorbed by either emitting a photon or by thermally releasing energy in the form of a collision.
 
-In the process of absorbing a photon to reach an excited state, the atom has revealed bits of information about itself. Since the energy transitions are quantised, we can theoretically guess where absorption in the electromagnetic spectrum should occur. \marginpar{Hartree-Fock approximations and Density Functional Theory (DFT)} In fact, quantum chemistry is a field dedicated to determining the quantum states of molecular systems over time, using approximations to the Schr\"odinger equations.
+In the process of absorbing a photon to reach an excited state, the atom has
+revealed bits of information about itself. Since the energy transitions are
+quantised, we can theoretically guess where absorption in the electromagnetic
+spectrum should occur. \marginpar{Hartree-Fock approximations and Density
+Functional Theory (DFT)} In fact, quantum chemistry is a field dedicated
+to determining the quantum states of molecular systems over time, using
+approximations to the Schr\"odinger equations.
 
-\subsection{Complications of Absorption in Liquid Solutions}
+\subsection{Line Broadening}
 
-What do you mean we can have Doppler and Lorenzian shifts? Life is such pain.
+Under perfect theoretical conditions, with perfectly still particles,
+absorption lines would be fiendishly thin due to the fact that only certain
+quantised energy packets would create an excited condition. In reality,
+absorption lines are quite broad, on the order of a few nanometers in liquid.
+This broadening occurs due primarily to two factors: the Doppler effect and
+collision based broadening (also known as Lorentzian broadening).
+
+Doppler based broadening is just the Doppler effect applied to moving
+particles. If a particle at rest will see a incoming photon of light having a
+certain frequency. If this particle is instead moving away from the photon,
+the frequency of the light will appear to the particle as a lower frequency,
+as the distance between the crests and troughs of the wave is greater in the
+particles inertial frame. Conversely, if the particle is moving towards the
+photon, the photon will appear to have a higher frequency. The particle in
+question will still absorb at the same quantised energy, but now photons with
+greater and lesser energy than the transition will appear to have the correct
+energy, broadening the range of wavelengths that the particle absorbs at.
+
+Collision based broadening leads to a similar effect of a broadening of
+acceptable photon energies, but through a thermal pathway. As particles in
+the solution collide into each other, they acquire some energy that puts them
+in a state higher than their ground energetic state. As such, less energy is
+required by the photon to cause an absorption event, leading to the absorption
+of lower energy photons.
+
+Both of these effects act on electronic transitions in absorption measurements
+performed in aqueous environments, leading to very broad absorption peaks.
+This can lead to difficulty in analysis in two different ways.
+
+First, if two absorption peaks are too close together, they will appear as
+one combined absorption peak. This causes a loss of information, as it is
+impossible in most cases to calculate the absorption due to one transition
+versus its nearby neighbor. This type of event does not normally occur in
+a single molecule, as the accepted electronic transitions are spaced out
+energetically due to the higher energy required to jump to a higher molecular
+orbital. This collision of signals does become a problem when multiple
+absorbers are present in a solution, often leading to signals that cannot be
+decoupled from each other.
+
+The second difficulty broadening causes in analysis is the understanding of
+the hyperfine structure of certain transitions. When an electron is excited to
+a higher energy state, it can often be excited into a multiplet of rotational
+and vibrational energy states. On top of this, many degenerate energy states
+can exist for one transition, which will only be seen if an external electric
+or magnetic field causes the fields to split (via the Stark effect). These
+different states are separated from each other by minute differences in
+energy. These slightly different transitions are normally difficult to detect,
+and are, for all intents and purposes, unobservable in liquid solutions.
+
+\subsection{Scattering Losses}
+
+In addition to broadening schemes, liquid absorption measurements fall victim
+to the fact that Beer-Lambert type experiments cannot differentiate between
+light lost due to scattering versus due to absorption.  In gas phase
+measurements, scattering is often not a concern due to the density of the gas.
+However, with the higher probability of a photon being scattered in liquids,
+the assumption that scattering plays a minor role in light loss is no longer
+valid. This leads to higher error and required higher initial intensities into
+an optical cavity, as much of the light will be lost just by trying to
+traversing the cavity.
+
+The loss of light due to scattering also restricts the types of solutions that
+can be observed. If a solution is turbid to begin with, it may be difficult to
+find a powerful enough light source that can push enough photons through the
+sample to detect a meaningful difference due to an absorption event. Similarly,
+a solution that becomes turbid during a measurement through either chemical
+reactions or colloidally will be an impractical candidate for absorption
+measurements, as the loss of light due to scattering changes over the time of
+the measurements. This problem especially becomes a problem in experiments
+designed to determine reaction kinematics, as the absorption measurements over
+time will not be comparable due to the shifting noise caused by scattering.
+
+Light can also be lost due to changes in the index of refraction for the
+solution. Many gas solutions are dilute enough that the index of refraction of
+the medium does not change significantly between measurements and blanks. This
+scenario is different in liquids, where the index of refraction can change
+significantly depending on the solvent and even the concentration of the
+solute. This change in the index of refraction does not alter the absorption
+events themselves, but presents a difficulty when attempting to align an
+optical system. In the simple case of a single pass absorption, this effect can
+lead to a loss of signal due to divergent beams that is dependent on the
+wavelength, leading to a nonlinear error in the observed absorption spectrum.
+In multipass systems, the misalignment of an optical cavity due to the change
+in the index of refraction can preferentially support and discourage certain
+modes, leading to a similar nonlinear error in an absorption spectrum. These
+divergent beam problems can be mitigated by using a collimated source that
+enters perpendicular to the cavity walls, negating the effects of the changes
+in refraction. However, in practice it is quite difficult to create a perfect
+perpendicular alignment.
+
+Even though broadening, scattering and changes in the index of refraction
+can cause high and nonlinear errors to occur in absorption measurements,
+these effects can be mitigated by a careful choice of the layout of the
+optical system and the choice of the analyte. Experiment that measure clear
+solutions with minimal changes in index of refraction from a blank measurement
+are candidates good candidates for absorption spectroscopy, given that the
+experimenter does not require an understanding of the hyperfine structure of
+the absorber in question.
 
 \section{Broadband Absorption Spectroscopy}
-I have a open mind.
+
 
 \subsection{Tunable Diode Lasers}
 NCAR FTW!
