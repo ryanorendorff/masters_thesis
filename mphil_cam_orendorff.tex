@@ -91,13 +91,15 @@
 %\setcounter{page}{90}
 % use \cleardoublepage here to avoid problems with pdfbookmark
 \cleardoublepage
-\ctparttext{You can put some informational part preamble text here.}
+%\ctparttext{You can put some informational part preamble text here.}
+\include{chapters/introduction}
 \part{Theory and Design}
 \include{chapters/overview}
 \include{chapters/bbceas}
 \part{Experiment}
 \include{chapters/calibration}
 \include{chapters/europium}
+\include{chapters/discussion}
 \cleardoublepage
 %\include{Chapters/Chapter02}
 % ********************************************************************
@@ -107,9 +109,8 @@
 \cleardoublepage
 \part{Appendix}
 \include{appendix/derivation_error}
-\include{appendix/apollo}
 \include{appendix/camtiff}
-%\include{Chapters/Chapter0A}
+\include{appendix/software}
 %********************************************************************
 % Other Stuff in the Back
 %*******************************************************
