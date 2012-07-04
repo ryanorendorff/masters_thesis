@@ -222,27 +222,151 @@ the absorber in question.
 
 \section{Broadband Absorption Spectroscopy}
 
+The ideas gleaned from the Beer-Lambert law are dependent on wavelength. As
+such, Beer-Lambert law is convenient in allowing simple monochromatic \acp{LED}
+as light sources, and a single photodiode as a detector. The information
+gleaned from a particular wavelength chosen at an electronic transition of a
+molecule can be used to determine the concentration of the molecule. This
+procedure is used in pulse oximeters, which measure the concentrations of
+oxygenated and deoxygenated hemoglobin in blood using two different light
+sources. Pulse oximeters then use the ratio of oxygenated to deoxygenated blood
+in a finger to determine the blood oxygenation percentage, as well as heart
+rate through the changes in the absorption signals over time. Such a system
+provides a fantastic example of the uses of absorption spectroscopy.
+
+However, there are also many applications that are not only concerned with the
+absorption at a peak wavelength but in the shape of a transition. There are
+also applications that require several absorption signatures to be measured
+from a single sample. For these systems, absorption signals from a range of
+wavelengths is required. Luckily, there are several methods that allow
+experimenters to acquire absorption measurements at several wavelengths, both
+sequentially and simultaneously.
+
 
 \subsection{Tunable Diode Lasers}
-NCAR FTW!
 
-\subsection{Supercontinuum Lasers}
-They hurt your eyes!
+One common method for acquiring broadband signals is to use a light source
+known as a \acf{TDL}. \acp{TDL} sources are diode lasers that are tunable
+through either current or temperature. Since temperature difficult to control,
+current is varied to sweep the frequency of the laser light. This variation
+technique is used in \ac{TDLAS}, where the laser is tuned to a particular
+frequency, an absorption measurement is taken, and then this process repeats.
+
+An advantage of \ac{TDLAS} over some of the other broadband techniques is that
+the resolution of the instrument is dictated by the laser line width, which
+provides sub nanometer resolution. As a corollary, this technique can use a
+simple photodiode or \ac{PMT} to acquire the intensity of the laser light,
+instead of using a grating to disperse the light across a detector.
+
+Even though this method is simple to implement and cost effective, it suffers
+from two major drawbacks. The first is that the broadband acquisition is done
+sequentially, which creates an acquisition time versus resolution and spectral
+range trade off to consider. \ac{TDLAS} also suffers from the problem inherent
+to standard single pass absorption techniques, which is that the instrument
+must detect a potentially small intensity change on top of a large background
+signal. However, this second intensity problem can be mitigated through the use
+either \ac{WMS} or \ac{FMS}.
 
 \subsection{LEDs}
-They are very poorly collimated and diffuse!
+
+Another light source that has interesting potentials for broadband absorption
+spectroscopy is \acp{LED}. This is because \acp{LED} can provide light at a
+broad range of frequencies. \acp{LED} can even come in different white colours,
+which can be used directly in absorption spectroscopy. Best of all, these
+sources are extremely cheap to produce and acquire, making \acp{LED} attractive
+sources for use in compact, inexpensive and portable equipment.
+
+Unfortunately \acp{LED} are quite difficult to use for absorption spectroscopy.
+\acp{LED} are incoherent sources, and as such it can be difficult to couple the
+light from an \ac{LED} into a cavity. Even if light is successfully coupled
+into the cavity where the absorber molecules are, the amount of light lost
+attempting to create a collimated beam often leads to minuscule fractions of
+the light coming out of the \ac{LED} making its way to the detector.
+
+An additional complication is that once the broadband light makes it way to a
+photodetector, the light must be separated into its constituent wavelengths.
+Two problems occur from this. If one uses a spectrophotometer with a adjustable
+slit and moving diffraction grating, then the signal acquired on a
+photodetector must be done sequentially. This increases the acquisition time,
+and suffers from reduced spectral resolution when compared with a \ac{TDLAS}
+experiment due to the diffraction grating. One can mitigate this acquisition
+time by using a line detector instead of a single photodetector, but this
+carries with it a second problem: the acquisition, while happening
+simultaneously across several wavelengths, is often more difficult to align and
+can lead to a lower spectral resolution.
+
+\subsection{Supercontinuum Lasers}
+
+Supercontinuum laser light sources combine the advantage of a broadband source
+with a tightly collimated beam and high output powers. This makes alignment
+much simpler than in the case of an \ac{LED} with the added benefit of low
+power loss while coupling into the testing cavity.
+
+While supercontinuum sources build on the advantages of \acp{LED}, they
+introduce three problems of their own. The first is that the sources, as of the
+time of this writing, can cost upwards of \pounds40,000. Secondly,
+supercontinuum sources are prone to intensity fluctuations over time and
+wavelength, and as such introduce higher error in an absorption measurement.
+Finally, these sources are not robust like \acp{LED} or \acp{TDL}, and
+therefore cannot be taken outside of the laboratory.
 
 \section{Multipass Techniques}
-I like to visit the same place multiple times.
 
-\subsection{White and Herriot Cells}
-Sometimes when I pass by I do different things.
+Besides acquiring broadband signals, it is also desirable to increase the
+detectable concentration resolution and the lower limits of detection.
+According to the Beer-Lambert Law \eqref{eq:beer}, the simplest way to increase
+the detection resolution is to increase the path length of the cavity. However,
+as increasing the length of the sample cavity is often impractical due to
+constraints of space or limitations of the absorbing molecules, it is common to
+see optical designs that pass over the same sample several times. This is known
+as a multiple pass technique. Two major versions of this technique are outlined
+below.
 
-\subsection{Cavities}
-Sometimes I just want to do the same thing over and over.
+\subsection{Multipass Cells}
 
-\section{Ring down}
-What's that sonny?
+One simple way to traverse a sample multiple times is to build a cavity with
+two mirrors on either end that reflect the light back and forth through the
+sample. It is possible to find mirrors that allow light to enter through a hole
+in one mirror, bounce around a few times inside the cavity, and then exit
+through a hole in the second mirror. These cavities are known as
+Herriot cells, and these cavity designs provide a simple and convenient way to
+increase the path length. In the resulting measurement, the effective path
+length is the distance across the sample multiplied by the number of passes. If
+a Herriot cell is designed for many passes, it is possible to increase
+the resolution by a couple orders of magnitude.
+
+These cells, while providing increased resolution, can be difficult to align.
+In addition, both cell types can be misaligned once in place by accumulation of
+particulates, especially of a different phase, on the mirror surfaces.
+
+\subsection{Optical Cavities}
+
+A similar approach to  Herriot cells is to use an optical cavity akin
+to a laser cavity, except where both mirrors are only partially reflective. In
+such a cavity, light leaks in through the first mirror, bounces across the
+sample \emph{along the same path every pass}, and then exits through the second
+mirror. This method has an advantage over  Herriot cells in that the
+increase in the path length can be several orders of magnitude if high
+reflectivity mirrors are used. For example, for mirrors of reflectivity
+$R=0.999$, the increase in the path length will be $(1-R)^{-1} = 1000$, which
+is a higher gain than most  Herriot cells.
+
+Unfortunately, these cavities are also difficult to align, as the input beam
+must be perpendicular to the axis of the cavity. In addition, this method
+requires a higher initial input intensity, and a significant amount of light is
+lost as light leaks into the cavity. Optical cavities also introduce an error
+due to the change in reflectivity of the mirrors based on wavelength that must
+be measured and accounted for in the absorption spectrum.\marginpar{The mirror
+reflectivity curves depend on the alignment of the cavity as well as the mirror
+surfaces. As such, it is not possible to use mirror transmission curves
+provided by a manufacturer.} Finally, this method can be more expensive, as
+high quality, high reflectivity mirrors can be expensive.
+
+%\section{Cavity Ring Down Techniques}
+
+%\subsection{Cavity Ring Down Spectroscopy}
+
+%\subsection{Cavity Enhanced Absorption Spectroscopy}
 
 \section{Summary}
 Review chapter here.
