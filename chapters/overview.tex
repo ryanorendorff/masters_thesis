@@ -1,197 +1,191 @@
 \chapter{Overview of Absorption Spectroscopy}\label{ch:overview}
 
-Spectroscopy is a field in science that uses our understanding of the way
-that matter interacts with energy, including the emission and absorption
-of energy from matter. The fact that matter absorbs, emits, refracts, and
-deflects energy allows us to probe a substance with minimal interference,
-while still allowing a great variety of information to be derived, such as
-the chirality of a molecule, the energy levels of an atom's
-electronic structure, and the concentration of various chemicals in any type of solution.
+Spectroscopy is a field of science dedicated to using the knowledge of how
+electromagnetic radiation interacts with matter. The fact that matter absorbs,
+emits, refracts, and deflects energy allows us to investigate the properties of
+a substance non- invasively, allowing a wealth of information to be acquired
+without altering the matter being probed. The information that can be gleaned
+from such experiments include the chirality of a molecule, the energy levels of
+an atom's electronic structure, and the concentration of various chemicals in
+any type of solution, to name only a few.
+
+This chapter will discuss a variety of absorption spectroscopy techniques.
+First, a discussion of the theory behind absorption spectroscopy will be
+presented. Afterward an in depth look at different absorption spectroscopy
+techniques used to increase sensitivity and applicability is performed.
 
 
 
-In this chapter we will discuss a variety of absorption spectroscopy
-techniques, including single pass absorption spectroscopy, broadband
-absorption spectroscopy, multipass \ac{TDL} white cell setups, \ac{PAS},
-and \ac{CEAS}. These can be grouped approximately into basic
-absorption, broadband absorption and multipass absorption techniques, the last
-two of which can be combined to make ultra sensitive spectroscopy techniques.
-
-
-\section{Theory behind Absorption Spectroscopy}\label{sec:theory}
+\section{Theory behind Absorption Spectroscopy}\label{sec:abs_theory}
 
 Absorption spectroscopy is founded on a simple principle: if matter absorbs
 light, then we can detect this energy transfer via the law of the conservation
-of energy. One of the simplest ways to measure this absorption event is to
-count the number of photons that went into a piece of matter and how many
-came out. In this way we can determine how much energy was \emph{absorbed}
-by the matter. This absorption is correlated to the concentration of the
-absorbing material, and is unique to the material and the material's state.
+of energy. One of the simplest ways to measure an absorption event is to count
+the number of photons that went into a substance in question and how many
+photons came out the other side. In this way we can determine how much energy
+was absorbed by the matter in the substance, assuming no light is lost to
+scattering or other processes. The amount of light absorbed is correlated to
+the concentration of the absorbing material in the path of the light, and the
+absorption amount is unique to the absorber and its current state. The
+information about photon absorption can then be used to understand not only the
+concentration of the absorber but its electronic structure as well.
 
-In this report we will be primary interested in determining concentration
-of absorbers in a substance, and the electronic energy structure of the
-absorbers.
+
 
 \subsection{Beer-Lambert Law}\label{subsec:beer}
 
 Mathematically, the problem of determining the concentration of an absorber
 based on the light lost in a material is relatively simple. By measuring the
 amount of light of a particular wavelength $\lambda$ entering a material, with
-intensity $I$, and the amount of light exiting $I_0$, we can easily relate
-the intensities to each other to determine how much light was lost due to
-absorption.
-
-For most physical cases, absorption follows a logarithmic dependence
-with the concentration of the absorber. Therefore, using the simple
-equation\marginpar{$A =$  absorption (percent), \\$I_0 = $
-intensity before the cavity ($\text{W}/\text{m}^2$),\\$I =$
-intensity after the cavity ($\text{W}/\text{m}^2$).}
-
-\begin{align*}
-  A(\lambda)=-\log\left(\frac{I}{I_0}\right)_\lambda
-\end{align*}
-
-This can then be related to the absorption of a particular chemical substance
-by using some properties of that substance and the distance the light
-travelled through the substance.\marginpar{$\epsilon = $ molar
-absorptivity (M$^{-1}$cm$^{-1}$),\\ $\alpha =$ absorption coefficient
-(cm$^{-1}$), $c = $ concentration of the absorber (M),\\$l =$ path
-length (cm).}
+intensity $I_0$, and the amount of light exiting $I$, we can easily relate the
+intensities to each other to determine how much light was lost due to
+absorption \cite{Hollas:2004uh}.
 
 \begin{align}
-  A(\lambda) = \epsilon(\lambda) c l = \alpha(\lambda) l = -\log\left(\frac{I}{I_0}\right)_\lambda
+  \left(\frac{I}{I_0}\right)_\lambda = e^{-\alpha(\lambda)l}
 \end{align}
 
-This is known as Beer Lambert's Law, which relates the loss of light in a
-material to the concentration of absorbers inside that material.  This law is
-stated in a variety of different ways, including using the natural logarithm
-instead of a base ten logarithm. \marginpar{Index of refraction $\mathscr{N} =
-n + i\kappa$}Critically, the introduced variable $\alpha$ is defined physically
-as a function of the imaginary portion of the complex index of refraction.
+In the equation above, $\alpha$ is known as the \emph{absorption coefficient}
+(with units of cm\super{-1}), and is unique to the absorber and the wavelength
+used as the probe. $l$ is the path length that the light travels through the
+absorbing material. The intensity loss due to absorption is caused by an
+electron in the absorber being elevated to a higher energy state. Since
+electrons can be elevated to a multitude of quantised energy states, it is
+important to choose a wavelength that corresponds to one of these electronic
+transitions.
 
-Beer-Lambert's Law can also be defined for multiple absorbers by simply adding the absorption coefficients of all of the absorbers together.
+Taking the logarithm of both sides leads to a value known as the absorbance $A$
+
+\begin{align*}
+  A(\lambda)=-\ln\left(\frac{I}{I_0}\right)_\lambda = \alpha(\lambda)l\label{eq:beer}
+\end{align*}
+
+This is known as the Beer Lambert law. The law relates the loss of light in a
+material to the concentration of absorbers inside that material based on the
+amount of light passing through the absorber and the properties of the absorber
+itself.  While this version of the  law is formulated using a natural logarithm, it is also common to see the law in a base ten format \cite{Hollas:2004uh}.
+
+The Beer-Lambert law can also be used for multiple absorbers in a single material by simply adding the absorption coefficients of all of the absorbers together.
+
 \begin{align*}
   A(\lambda) = l\sum\alpha(\lambda)_i
 \end{align*}
 
-While Beer-Lambert's Law is convenient, it is frustratingly bound by a number of factors.
+While the Beer-Lambert law is simplistic in ideology, it fails prey to some simple sources of interference, including the following \cite{Skoog:1994wg}.
 \begin{itemize}
-  \item Little tolerance to other light losing effects such as scattering.
-  \item Optical saturation limits.
-  \item For most desirable analyses, a homogeneous mixture of the absorbers.
-  \item Collimated light sources to allow the path length to be constant.
+  \item Little tolerance to other light loss pathways such as scattering.
+  \item Optical saturation limits, where the absorbers cannot accept any more light due to already being in an excited state.
+  \item Requires a homogeneous mixture of the absorbers.
+  \item A collimated light sources to allow the path length to be constant.
 \end{itemize}
 
-Even with these limitations, the technique of measuring intensity loss to
-determine absorber concentration is used in many analytical devices. One of the
-most familiar is a pulse oximeter, which measures blood oxygenation levels
-using two laser diodes placed on the index finger of a patient, with
-photodiodes on the other side of the finger to measure the intensity
-loss.\marginpar{Pulse oximeters can be used together with other technologies to
-acquire physiological parameters across the entire body: see the Esoma
-project. \url{http://www.rdodesigns.com}}
+\marginpar{Pulse oximeters can be used together with other technologies to
+acquire physiological parameters across the entire body: see the Esoma project.
+\url{http://www.rdodesigns.com}}
+Despite these limitations, the Beer-Lambert law has found many uses in modern
+analytical devices. One of the most familiar devices is a pulse oximeter, which
+measures blood oxygenation levels in a patients blood. This is done by passing
+light across the patient's index finger to see how much light was lost to
+oxygenated and deoxygenated blood. The concentrations of these two types of
+blood can then be used to derive the total body blood oxygenation levels to a
+high degree of accuracy \cite{Wukitsch:1987tb}.
 
-\subsection{Electronic Transitions}
+
+\subsection{Electronic Transitions}\label{subsec:elec_trans}
+
+\marginpar{In this section we will be talking about atoms but the concepts apply to molecules as well}
+
 Knowing how to measure concentration using absorption measurements is useful,
-but with monochromatic light it is one of the few parameters that can be
-measured about an absorber. However, if we can derive a method to collect
-information about the absorption of many different wavelengths we can start to
-derive information about the energy states of the electrons inside the absorber.\marginpar{In this section we will be talking about atoms but the concepts apply to molecules as well}
+but with broadband light sources it is possible to measure absorption events
+due to several different electronic transitions within an absorber. This
+information can then be used for a better understanding of the absorber in
+question, and allow properties such as fluorescence lifetimes to be measured
+from absorption events \cite{Werts:2002fs}.
 
-%% OMG THIS PARAGRAPH SUCKS
-An introductory level quantum chemistry course introduces the concept that
-electrons in an atom, when bound to a set of nuclei, are forced into set
-quantum states, each of which has a certain energy level\marginpar{some quantum
-  states are degenerate, so each quantum state does not necessarily have a
-unique energy}. An atom is usually found in its unexcited, stable state known
-as the ground state. In this state, the atom has the potential to jump to a
-higher energy (and usually less stable) configuration when external energy is
-applied to the atom.  This input energy can come in the form of electromagnetic
-radiation. This radiation must have the same energy as one of the quantum state
-transitions of the atom for the radiation to be absorbed. During the absorption
-process, the electron that absorbed the energy enters an excited state. \marginpar{There are a few other nonlinear absorption/emission processes that can happen as well.} This electron then eventually releases the energy it absorbed by either emitting a photon or by thermally releasing energy in the form of a collision.
+In addition to experimentally probing an absorber to determine its electronic structure, it is possible to theoretically guess both the energy required for an electronic transition and where it will take place. This is often done through what is known as Hartree-Fock approximations to determine the energy required for an electronic transition \cite{Szabo:1996tu}, and Judd-Ofelt theory to guess the absorption strength at that transition \cite{Judd:1962uq}.
 
-In the process of absorbing a photon to reach an excited state, the atom has
-revealed bits of information about itself. Since the energy transitions are
-quantised, we can theoretically guess where absorption in the electromagnetic
-spectrum should occur. \marginpar{Hartree-Fock approximations and Density
-Functional Theory (DFT)} In fact, quantum chemistry is a field dedicated
-to determining the quantum states of molecular systems over time, using
-approximations to the Schr\"odinger equations.
+\section{Complications in Absorption Spectroscopy}\label{sec:comp_abs}
 
-\subsection{Line Broadening}
+\subsection{Line Broadening}\label{subsec:line_broad}
 
-Under perfect theoretical conditions, with perfectly still particles,
-absorption lines would be fiendishly thin due to the fact that only certain
-quantised energy packets would create an excited condition. In reality,
-absorption lines are quite broad, on the order of a few nanometers in liquid.
+Under theoretical conditions, with perfectly still particles, absorption lines
+would be fiendishly thin due to the fact that only certain quantised energy
+packets would create an excited condition. In reality, absorption lines are
+quite broad, on the order of a few nanometers in liquid \cite{Hollas:2004uh}.
 This broadening occurs due primarily to two factors: the Doppler effect and
-collision based broadening (also known as Lorentzian broadening).
+collision based broadening (also known as Lorentzian or pressure based
+broadening) \cite{Olivero:1977ul}.
 
-Doppler based broadening is just the Doppler effect applied to moving
-particles. If a particle at rest will see a incoming photon of light having a
-certain frequency. If this particle is instead moving away from the photon,
-the frequency of the light will appear to the particle as a lower frequency,
-as the distance between the crests and troughs of the wave is greater in the
-particles inertial frame. Conversely, if the particle is moving towards the
-photon, the photon will appear to have a higher frequency. The particle in
+Doppler based broadening is the Doppler effect applied to moving particles. A
+particle at rest will see a incoming photon of light having a certain
+frequency. If this particle is instead moving away from the photon, the
+frequency of the light will appear to the particle as a lower frequency than
+when the particle was standing still, as the distance between the crests and
+troughs of the wave is greater in the particles inertial frame. Conversely, if
+the particle is moving towards the photon, the photon will appear to have a
+higher frequency than when the particle was standing still. The particle in
 question will still absorb at the same quantised energy, but now photons with
 greater and lesser energy than the transition will appear to have the correct
-energy, broadening the range of wavelengths that the particle absorbs at.
+energy, broadening the range of wavelengths that the particle absorbs
+at \cite{Fox:2006uy}.
 
 Collision based broadening leads to a similar effect of a broadening of
-acceptable photon energies, but through a thermal pathway. As particles in
+acceptable photon energies, but through a pressure pathway. As particles in
 the solution collide into each other, they acquire some energy that puts them
 in a state higher than their ground energetic state. As such, less energy is
 required by the photon to cause an absorption event, leading to the absorption
-of lower energy photons.
+of lower energy photons \cite{Ngo:2012jk}.
 
-Both of these effects act on electronic transitions in absorption measurements
-performed in aqueous environments, leading to very broad absorption peaks.
-This can lead to difficulty in analysis in two different ways.
+Both of these effects act alter the absorption peaks in a spectra of an aqueous
+absorber, leading to very broad absorption peaks. These broadening effects lead
+to difficulty in the analysis of the acquired spectrum in two different ways.
 
-First, if two absorption peaks are too close together, they will appear as
-one combined absorption peak. This causes a loss of information, as it is
+First, if two absorption peaks are too close together, they will appear as one
+combined absorption peak. This causes a loss of information, as it is
 impossible in most cases to calculate the absorption due to one transition
-versus its nearby neighbor. This type of event does not normally occur in
-a single molecule, as the accepted electronic transitions are spaced out
-energetically due to the higher energy required to jump to a higher molecular
-orbital. This collision of signals does become a problem when multiple
-absorbers are present in a solution, often leading to signals that cannot be
-decoupled from each other.
+versus its nearby neighbor \cite{Fowles:1975wg}. This type of loss of
+information does not often for electronic transitions in a molecule, as the
+accepted electronic transitions are spaced out energetically due to the higher
+energy required to jump to a higher molecular orbital. The collision of
+absorption signals does become a problem when multiple absorbers are present in
+a solution, often leading to signals that cannot be decoupled from one another.
 
-The second difficulty broadening causes in analysis is the understanding of
-the hyperfine structure of certain transitions. When an electron is excited to
-a higher energy state, it can often be excited into a multiplet of rotational
-and vibrational energy states. On top of this, many degenerate energy states
-can exist for one transition, which will only be seen if an external electric
-or magnetic field causes the fields to split (via the Stark effect). These
-different states are separated from each other by minute differences in
-energy. These slightly different transitions are normally difficult to detect,
-and are, for all intents and purposes, unobservable in liquid solutions.
+The second difficulty broadening causes in analysis is the understanding of the
+hyperfine structure of certain transitions. When an electron is excited to a
+higher energy state, it can often be excited into a multiplet of rotational and
+vibrational energy states \cite{Levine:2008uh}. On top of this, many degenerate
+energy states can exist for one transition, which will only be seen if an
+external electric or magnetic field causes the fields to split (via the Stark
+effect) \cite{Condon:1951wd}. These different states are separated from each
+other by minute differences in energy, making the transitions unobservable in
+liquid solutions.
 
-\subsection{Scattering Losses}
+\subsection{Scattering Losses}\label{subsec:scattering}
 
 In addition to broadening schemes, liquid absorption measurements fall victim
 to the fact that Beer-Lambert type experiments cannot differentiate between
 light lost due to scattering versus due to absorption.  In gas phase
-measurements, scattering is often not a concern due to the density of the gas.
-However, with the higher probability of a photon being scattered in liquids,
-the assumption that scattering plays a minor role in light loss is no longer
-valid. This leads to higher error and required higher initial intensities into
-an optical cavity, as much of the light will be lost just by trying to
-traversing the cavity.
+measurements, scattering is often not a concern due to the density of objects
+on which scattering could occur. However, with the higher probability of a
+photon being scattered in liquids, the assumption that scattering plays a minor
+role in light loss is no longer valid. This leads to higher baseline error and
+requires higher light intensities to be pumped into the absorbing medium, since
+much of the  light will be lost just by trying to traversing the cavity.
 
 The loss of light due to scattering also restricts the types of solutions that
-can be observed. If a solution is turbid to begin with, it may be difficult to
-find a powerful enough light source that can push enough photons through the
-sample to detect a meaningful difference due to an absorption event. Similarly,
-a solution that becomes turbid during a measurement through either chemical
-reactions or colloidally will be an impractical candidate for absorption
-measurements, as the loss of light due to scattering changes over the time of
-the measurements. This problem especially becomes a problem in experiments
-designed to determine reaction kinematics, as the absorption measurements over
-time will not be comparable due to the shifting noise caused by scattering.
+can be observed. If a solution is turbid it may be difficult to find a powerful
+enough light source that can push enough photons through the sample to detect
+any light after the sample medium. Similarly, a solution that becomes turbid
+during a measurement through either chemical reactions or colloidally will be
+an impractical candidate for absorption measurements, as the loss of light due
+to scattering changes over the time of the measurements. This turbidity problem
+becomes especially pronounced in experiments designed to determine reaction
+kinematics, as the absorption measurements over time will not be comparable due
+to the shifting noise caused by scattering.
+
+\marginpar{While a change in the normal index of refraction does not alter
+absorption effects, a change in the complex index of refraction does cause
+changes in absorption events due to the imaginary term}
 
 Light can also be lost due to changes in the index of refraction for the
 solution. Many gas solutions are dilute enough that the index of refraction of
@@ -208,113 +202,108 @@ in the index of refraction can preferentially support and discourage certain
 modes, leading to a similar nonlinear error in an absorption spectrum. These
 divergent beam problems can be mitigated by using a collimated source that
 enters perpendicular to the cavity walls, negating the effects of the changes
-in refraction. However, in practice it is quite difficult to create a perfect
-perpendicular alignment.
+in refraction. Unfortunately, in practice it is quite difficult to create a
+perfect perpendicular alignment, and some error will always be present.
 
-Even though broadening, scattering and changes in the index of refraction
-can cause high and nonlinear errors to occur in absorption measurements,
-these effects can be mitigated by a careful choice of the layout of the
-optical system and the choice of the analyte. Experiment that measure clear
-solutions with minimal changes in index of refraction from a blank measurement
-are candidates good candidates for absorption spectroscopy, given that the
-experimenter does not require an understanding of the hyperfine structure of
-the absorber in question.
+Even though broadening, scattering and changes in the index of refraction can
+cause high and nonlinear errors to occur in absorption measurements, these
+effects can be mitigated by a careful choice of the layout of the optical
+system and the choice of the analyte. Experiment that measure clear solutions
+with minimal changes in index of refraction are candidates good candidates for
+absorption spectroscopy, given that the experimenter does not require an
+understanding of the hyperfine structure of the absorber in question.
 
-\section{Broadband Absorption Spectroscopy}
+\section{Broadband Absorption Spectroscopy}\label{sec:broad_abs}
 
-The ideas gleaned from the Beer-Lambert law are dependent on wavelength. As
-such, Beer-Lambert law is convenient in allowing simple monochromatic \acp{LED}
-as light sources, and a single photodiode as a detector. The information
-gleaned from a particular wavelength chosen at an electronic transition of a
-molecule can be used to determine the concentration of the molecule. This
-procedure is used in pulse oximeters, which measure the concentrations of
-oxygenated and deoxygenated hemoglobin in blood using two different light
-sources. Pulse oximeters then use the ratio of oxygenated to deoxygenated blood
-in a finger to determine the blood oxygenation percentage, as well as heart
-rate through the changes in the absorption signals over time. Such a system
-provides a fantastic example of the uses of absorption spectroscopy.
-
-However, there are also many applications that are not only concerned with the
-absorption at a peak wavelength but in the shape of a transition. There are
-also applications that require several absorption signatures to be measured
+The ideas gleaned from the Beer-Lambert law are dependent on wavelength of
+light used to probe a material. As such, Beer-Lambert law is often used with a
+single monochromatic light source and a simple photodiode as a detector.
+However, there are many spectroscopic analyses that are not only concerned with
+the absorption signal at a peak wavelength but in the shape of the transition
+itself. Some applications require several absorption signatures to be measured
 from a single sample. For these systems, absorption signals from a range of
 wavelengths is required. Luckily, there are several methods that allow
 experimenters to acquire absorption measurements at several wavelengths, both
 sequentially and simultaneously.
 
 
-\subsection{Tunable Diode Lasers}
+\subsection{Tunable Diode Lasers}\label{subsec:tdl}
 
 One common method for acquiring broadband signals is to use a light source
-known as a \acf{TDL}. \acp{TDL} sources are diode lasers that are tunable
-through either current or temperature. Since temperature difficult to control,
-current is varied to sweep the frequency of the laser light. This variation
-technique is used in \ac{TDLAS}, where the laser is tuned to a particular
-frequency, an absorption measurement is taken, and then this process repeats.
+known as a \acf{TDL}. \ac{TDL} sources are diode lasers that are tunable
+through either current or temperature \cite{May:1998ue}. Since temperature
+difficult to control, current is varied to sweep the frequency of the laser
+light. This variation technique is used in \ac{TDLAS}, where the laser is tuned
+to a particular frequency, an absorption measurement is taken, and then this
+process repeats.
 
 An advantage of \ac{TDLAS} over some of the other broadband techniques is that
 the resolution of the instrument is dictated by the laser line width, which
-provides sub nanometer resolution. As a corollary, this technique can use a
-simple photodiode or \ac{PMT} to acquire the intensity of the laser light,
-instead of using a grating to disperse the light across a detector.
+provides sub nanometer resolution \cite{Berden:2009wk}. As a corollary, this
+technique can use a simple photodiode or \ac{PMT} to acquire the intensity of
+the laser light, instead of using a grating to disperse the light across a
+detector.
 
 Even though this method is simple to implement and cost effective, it suffers
 from two major drawbacks. The first is that the broadband acquisition is done
 sequentially, which creates an acquisition time versus resolution and spectral
-range trade off to consider. \ac{TDLAS} also suffers from the problem inherent
+range trade off to consider. \ac{TDLAS} also suffers from a problem inherent
 to standard single pass absorption techniques, which is that the instrument
 must detect a potentially small intensity change on top of a large background
 signal. However, this second intensity problem can be mitigated through the use
-either \ac{WMS} or \ac{FMS}.
+either \ac{WMS} \cite{Reid:1981vq} or \ac{FMS}.
 
-\subsection{LEDs}
+\subsection{LEDs}\label{subsec:led}
 
 Another light source that has interesting potentials for broadband absorption
-spectroscopy is \acp{LED}. This is because \acp{LED} can provide light at a
-broad range of frequencies. \acp{LED} can even come in different white colours,
-which can be used directly in absorption spectroscopy. Best of all, these
-sources are extremely cheap to produce and acquire, making \acp{LED} attractive
-sources for use in compact, inexpensive and portable equipment.
+spectroscopy are \acp{LED}. \acp{LED} can provide light at a broad range of
+frequencies and at high output intensities. \acp{LED} can even come in white,
+infrared and ultraviolet variants, which can be used directly in absorption
+spectroscopy. Best of all, these sources are extremely cheap to produce, making
+\acp{LED} attractive sources for use in compact, inexpensive and portable
+equipment.
 
-Unfortunately \acp{LED} are quite difficult to use for absorption spectroscopy.
-\acp{LED} are incoherent sources, and as such it can be difficult to couple the
-light from an \ac{LED} into a cavity. Even if light is successfully coupled
-into the cavity where the absorber molecules are, the amount of light lost
-attempting to create a collimated beam often leads to minuscule fractions of
-the light coming out of the \ac{LED} making its way to the detector.
+Unfortunately \acp{LED} are quite difficult to use for absorption
+spectroscopy.  \acp{LED} are incoherent sources, and as such it can be
+difficult to couple the light from an \ac{LED} into a
+cavity \cite{Seetohul:2009du,Islam:2007ea}. Even if light is successfully
+coupled into the cavity where the absorber molecules are, the amount of light
+lost attempting to create a collimated beam often leads to minuscule fractions
+of the light coming out of the \ac{LED} making its way to the detector.
 
-An additional complication is that once the broadband light makes it way to a
-photodetector, the light must be separated into its constituent wavelengths.
-Two problems occur from this. If one uses a spectrophotometer with a adjustable
-slit and moving diffraction grating, then the signal acquired on a
-photodetector must be done sequentially. This increases the acquisition time,
-and suffers from reduced spectral resolution when compared with a \ac{TDLAS}
-experiment due to the diffraction grating. One can mitigate this acquisition
-time by using a line detector instead of a single photodetector, but this
-carries with it a second problem: the acquisition, while happening
-simultaneously across several wavelengths, is often more difficult to align and
-can lead to a lower spectral resolution.
+An additional complication from \acp{LED} is that once the broadband light
+arrives at a photodetector the light must be separated into its constituent
+wavelengths to acquire the broadband signal.  Two problems occur from this. If
+one uses a spectrophotometer with a adjustable slit and moving diffraction
+grating, then the signal acquired on a photodetector must be done
+sequentially.  This increases the acquisition time, and suffers from reduced
+spectral resolution when compared with a \ac{TDLAS} experiment due to the
+limiting factor of the resolution being the diffraction grating. One can
+mitigate the acquisition time conundrum by using a line detector instead of a
+single photodetector, but this carries with it a second problem: the
+acquisition, while happening simultaneously across several wavelengths, is
+often more difficult to align and can lead to a lower spectral resolution as the line detectors elements have finite size and spacing.
 
-\subsection{Supercontinuum Lasers}
+\subsection{Supercontinuum Lasers}\label{subsec:super}
 
 Supercontinuum laser light sources combine the advantage of a broadband source
 with a tightly collimated beam and high output powers. This makes alignment
 much simpler than in the case of an \ac{LED} with the added benefit of low
-power loss while coupling into the testing cavity.
+power loss while coupling into a absorbing medium.
 
 While supercontinuum sources build on the advantages of \acp{LED}, they
-introduce three problems of their own. The first is that the sources, as of the
-time of this writing, can cost upwards of \pounds40,000. Secondly,
-supercontinuum sources are prone to intensity fluctuations over time and
-wavelength, and as such introduce higher error in an absorption measurement.
-Finally, these sources are not robust like \acp{LED} or \acp{TDL}, and
-therefore cannot be taken outside of the laboratory.
+introduce problems of their own. The most practical problem is the cost of
+supercontimuum sources, which can cost upwards of \pounds40,000 at the time of
+writing. Secondly, supercontinuum sources are prone to intensity fluctuations
+over time and wavelength, and as such introduce higher error in an absorption
+measurement.  Finally, these sources are not robust like \acp{LED} or
+\acp{TDL}, and therefore cannot be taken outside of the laboratory.
 
-\section{Multipass Techniques}
+\section{Multipass Techniques}\label{sec:multipass}
 
 Besides acquiring broadband signals, it is also desirable to increase the
-detectable concentration resolution and the lower limits of detection.
-According to the Beer-Lambert Law \eqref{eq:beer}, the simplest way to increase
+resolution of detectable concentrations and the lower limits of detection.
+According to the Beer-Lambert law \eqref{eq:beer}, the simplest way to increase
 the detection resolution is to increase the path length of the cavity. However,
 as increasing the length of the sample cavity is often impractical due to
 constraints of space or limitations of the absorbing molecules, it is common to
@@ -322,45 +311,47 @@ see optical designs that pass over the same sample several times. This is known
 as a multiple pass technique. Two major versions of this technique are outlined
 below.
 
-\subsection{Multipass Cells}
+\subsection{Multipass Cells}\label{subsec:herriott}
 
 One simple way to traverse a sample multiple times is to build a cavity with
 two mirrors on either end that reflect the light back and forth through the
 sample. It is possible to find mirrors that allow light to enter through a hole
 in one mirror, bounce around a few times inside the cavity, and then exit
-through a hole in the second mirror. These cavities are known as
-Herriot cells, and these cavity designs provide a simple and convenient way to
-increase the path length. In the resulting measurement, the effective path
-length is the distance across the sample multiplied by the number of passes. If
-a Herriot cell is designed for many passes, it is possible to increase
-the resolution by a couple orders of magnitude.
+through a hole in the second mirror. These cavities are known as Herriott
+cells, and they provide a simple and convenient way to increase the path
+length \cite{Engel:2007va}. In the resulting measurement, the effective path
+length is the distance across the sample multiplied by the number of passes,
+making it possible to increase the resolution by a couple orders of magnitude.
 
 These cells, while providing increased resolution, can be difficult to align.
-In addition, both cell types can be misaligned once in place by accumulation of
-particulates, especially of a different phase, on the mirror surfaces.
+In addition, Herriott cells can be misaligned once in place by accumulation of
+particulates on the mirror surfaces.
 
-\subsection{Optical Cavities}
+\subsection{Optical Cavities}\label{subsec:cavity}
 
-A similar approach to  Herriot cells is to use an optical cavity akin
-to a laser cavity, except where both mirrors are only partially reflective. In
-such a cavity, light leaks in through the first mirror, bounces across the
-sample \emph{along the same path every pass}, and then exits through the second
-mirror. This method has an advantage over  Herriot cells in that the
-increase in the path length can be several orders of magnitude if high
-reflectivity mirrors are used. For example, for mirrors of reflectivity
-$R=0.999$, the increase in the path length will be $(1-R)^{-1} = 1000$, which
-is a higher gain than most  Herriot cells.
+A similar approach to  Herriott cells is to use an optical cavity akin to a
+laser cavity, except where both mirrors are only partially reflective. In such
+a cavity, light leaks in through the first mirror, traverses across the sample
+\emph{along the same path every pass} as the light bounces between the mirrors,
+and then exits through the second mirror \cite{Berden:2009wk}. This method has an advantage over
+Herriott cells in that the increase in the path length can be several orders of
+magnitude higher if high reflectivity mirrors are used. For example, for
+mirrors of reflectivity $R=0.999$, the increase in the path length will be
+$(1-R)^{-1} = 1000$, which is a higher gain than most Herriott cells can
+achieve.
 
-Unfortunately, these cavities are also difficult to align, as the input beam
+\marginpar{The mirror reflectivity curves depend on the alignment of the cavity
+as well as the mirror surfaces. As such, it is not possible to use mirror
+transmission curves provided by a manufacturer \cite{Berden:2009wk}.}
+
+Unfortunately these cavities are also difficult to align, as the input beam
 must be perpendicular to the axis of the cavity. In addition, this method
-requires a higher initial input intensity, and a significant amount of light is
-lost as light leaks into the cavity. Optical cavities also introduce an error
-due to the change in reflectivity of the mirrors based on wavelength that must
-be measured and accounted for in the absorption spectrum.\marginpar{The mirror
-reflectivity curves depend on the alignment of the cavity as well as the mirror
-surfaces. As such, it is not possible to use mirror transmission curves
-provided by a manufacturer.} Finally, this method can be more expensive, as
-high quality, high reflectivity mirrors can be expensive.
+requires a higher initial input intensity as a significant amount of light is
+reflected when attempting to enter the cavity. Optical cavities introduce an
+error due to the change in reflectivity of the mirrors based on wavelength that
+must be measured and accounted for in the absorption spectrum. Finally, this
+method can be more expensive than other multipass techniques, as high quality,
+high reflectivity mirrors are expensive.
 
 %\section{Cavity Ring Down Techniques}
 
@@ -368,5 +359,6 @@ high quality, high reflectivity mirrors can be expensive.
 
 %\subsection{Cavity Enhanced Absorption Spectroscopy}
 
-\section{Summary}
-Review chapter here.
+\section*{Chapter Review}
+
+It is clear that absorption spectroscopy, based on the Beer-Lambert law \eqref{eq:beer}, can be utilised to provide valuable information about a material non-invasively. While the standard single pass technique can and has been used successfully in commercial devices like pulse oximeters, there is still a desire to increase the resolution of such systems to acquire information on finicky electronic transitions or minute traces of absorbers. Augmentations that increase the path length and wavelength range of the measured spectra are commonly in use today, and prove a cornerstone to sensitive analytical techniques. In the coming chapters these improvements to single pass absorption spectroscopy will be put to use to detect trace concentrations of chemicals like Rhoadmine 6G and to analyse absorption signatures of aqueous europium ions.

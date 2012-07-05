@@ -6,6 +6,8 @@
 *.out
 *.pdf
 *.toc
+*.bbl
+*.blg
 short.tex
 tests.tex
 tmp_error.txt
