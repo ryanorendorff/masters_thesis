@@ -41,9 +41,9 @@ intensity $I_0$, and the amount of light exiting $I$, we can easily relate the
 intensities to each other to determine how much light was lost due to
 absorption \cite{Hollas:2004uh}.
 
-\begin{align}
+\begin{align*}
   \left(\frac{I}{I_0}\right)_\lambda = e^{-\alpha(\lambda)l}
-\end{align}
+\end{align*}
 
 In the equation above, $\alpha$ is known as the \emph{absorption coefficient}
 (with units of \icm), and is unique to the absorber and the wavelength
@@ -56,9 +56,9 @@ transitions.
 
 Taking the logarithm of both sides leads to a value known as the absorbance $A$
 
-\begin{align*}
+\begin{align}
   A(\lambda)=-\ln\left(\frac{I}{I_0}\right)_\lambda = \alpha(\lambda)l\label{eq:beer}
-\end{align*}
+\end{align}
 
 This is known as the Beer Lambert law. The law relates the loss of light in a
 material to the concentration of absorbers inside that material based on the
@@ -82,6 +82,7 @@ While the Beer-Lambert law is simplistic in ideology, it fails prey to some simp
 \marginpar{Pulse oximeters can be used together with other technologies to
 acquire physiological parameters across the entire body: see the Esoma project.
 \url{http://www.rdodesigns.com}}
+
 Despite these limitations, the Beer-Lambert law has found many uses in modern
 analytical devices. One of the most familiar devices is a pulse oximeter, which
 measures blood oxygenation levels in a patients blood. This is done by passing
@@ -114,7 +115,7 @@ theory to guess the absorption strength at that transition \cite{Judd:1962uq}.
 
 \section{Complications in Absorption Spectroscopy}\label{sec:comp_abs}
 
-
+%% TODO: Add small intro for line broadening and scattering effects here.
 
 \subsection{Line Broadening}\label{subsec:line_broad}
 
