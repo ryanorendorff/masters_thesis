@@ -1,4 +1,4 @@
-\chapter{CEAS Error Derivation}
+\chapter{CEAS Error Derivation}\label{ch:ceas_error_der}
 
     For a random variable $X$, the standard error is defined by the square root of the second moment (also known as the standard deviation) divided by the number of elements taken of $X$, represented by $x$.
 
@@ -86,3 +86,41 @@
     \end{align}
     {\color{Maroon}{Equations \eqref{eq:ceas_full} and \eqref{eq:err_full} are preferred to \eqref{eq:ceas} and \eqref{eq:err} because neither \eqref{eq:ceas_full} nor \eqref{eq:err_full} make assumptions on the limits of $R$ or $\alpha$, whereas \eqref{eq:ceas} and \eqref{eq:err} do make the assumptions $R \to 1$ and $\alpha \to 0$.}}
 
+
+
+\section{Notes on calculations}\label{sec:ceas_eq_notes}
+
+While the equations for \ac{BBCEAS} and the standard deviation of the signals
+is relatively straight forward, there are bounds on the calculation of
+$\alpha$ that are implied.
+
+An experimenter should ignore $\alpha = 0$, as this indicates that the
+intensity measurements were indiinguishable. At such a value, a more meaningful
+result would be to state that the absorption is insignificant with reference to
+the LOD$_{\alpha}$.
+
+Another problem is when the measured intensity $I$ is zero. In all of the
+equations stated thus far result in a division by zero when the intensity
+value is zero. The optimistic reader may state that this would never be
+the case, as there will always be background counts on the detector due to
+\ac{CCD} noise. However $I$ can be zero if one subtracts the background
+\ac{CCD} noise from the acquired images. This subtraction is required for an
+accurate measurement of $\alpha$.
+
+This phenomenon will occur at high absorptivity values, and due to the nature
+of pressure and collision broadening means that there is a high probability
+that several points in a row in the intensity spectrum will be zero or nearly
+zero. The resulting $\alpha$ spectrum would have a peak where the top was cut
+off. While this scenario is not ideal, there is a way acquire an approximate
+value for the $\alpha$ values that have been cut.
+
+The line shapes of an electronic transition (assuming that there are no other
+significant absorptions near a certain transition), after the convolution of
+collision broadening, pressure broadening, and the broadening associated with
+the spectrometer, take on a voigt profile. Since these broadening effects
+impact all transitions equally, we can use another peak within the absorption
+spectrum to calculate the parameters for this profile. It is then trivial to
+scale the voigt profile to the peak that has been cut off at the top and
+arrive at an approximate value of $\alpha$. The only potential problem with
+this method is that all of the existing methods shown for calculating the
+error in the absorption coefficient are inapplicable.

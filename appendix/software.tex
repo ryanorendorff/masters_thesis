@@ -1,1 +1,39 @@
 \chapter{Software Listings}
+
+\section{Computation of BBCEAS}\label{sec:comp_bbceas}
+
+
+With the \ac{BBCEAS} and error equations on hand, the complete computation of
+$\alpha$ can now be performed. It is summarised as follows, assuming that 50
+acquisitions of $I$ and $I_0$ were taken, along with 50 images of just the
+background \ac{CCD} noise.
+
+\begin{enumerate}
+  \item Average the \ac{CCD} noise images together to acquire one image $z$
+        of the noise on the \ac{CCD}.
+  \item For the first image in $I_0$, use a blob detection algorithm to find
+        a bounding box $b$ for the signal on the \ac{CCD}.
+  \item For each image in $I_0$,
+    \begin{enumerate}
+      \item Subtract the background noise $z$ from the image.
+      \item Average the columns of the pixels in $b$ that correspond to each
+        wavelength to create an intensity spectrum $I_{0_{i}}$
+    \end{enumerate}
+  \item With a set of intensity spectra $I_{0_i}$, calculate the mean value
+        $I_0$ and the standard deviation $\sigma_{I_0}$.
+  \item Perform steps 3-4 for the set of images corresponding to $I$.
+  \item Calculate $\alpha$ using equation \eqref{eq:ceas_geo} and
+    $\sigma_\alpha$ using equation \eqref{eq:ceas_err_geo}.
+\end{enumerate}
+
+There are two points to note over how most \ac{BBCEAS} calculations are done.
+The first is that the acquisition of several intensity spectra is required to
+calculate the final error in $\alpha$.
+
+The second interesting addition is the use of the blob detection algorithm.
+This modification over a simple cropping of the image allows multiple
+detectors (or for a detector to be modified) while still using the same
+algorithm to analyse the results. Additionally the blob detection
+automatically removes sections of low light intensity from the images, which
+are areas that are prone to divide by zero errors and high standard deviations
+in $\alpha$.
