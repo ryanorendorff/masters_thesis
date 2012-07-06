@@ -1,59 +1,59 @@
 \chapter{Calibrations}\label{chap:calibration}
 
 \acl{BBCEAS} has a simpler setup and lower cost in comparison to \ac{CRDS}, but
-does require a few calibration procedures in order to acquire accurate
-absorption spectra. The basic calibrations that should be done on a
-\ac{BBCEAS} instrument are a measure of the absorption limits where the signal
-is linear, an analysis of the error of the detected intensity signal, and the
-reflectivity of the mirrors inside the cavity.
+\ac{BBCEAS} does require a few calibration procedures in order to acquire
+accurate absorption spectra. The basic calibrations that should be done with a
+\ac{BBCEAS} instrument are: a measurement of the absorption limits where the
+signal is linear, an analysis of the error of the detected intensity signal,
+and the reflectivity of the mirrors used for the optical cavity.
 
-To find the absorption coefficient values under which an \ac{BBCEAS}
-experiment results in a linear correlation with concentration, it is common to
-test the instrument using a strong absorber. One such absorber is Rhodamine
-6G, a dye that can be used to create a dye laser or as a fluorescent marker.
+To find the absorption coefficient values under which an \ac{BBCEAS} experiment
+results in a linear correlation with concentration, it is common to test the
+instrument using a strong absorber. One such absorber is rhodamine 6G, a dye
+that can be used to create a laser \cite{Pappalardo:1970hi} or as a fluorescent
+marker \cite{Gear:1974tf}.
 
 The error in the detection of the intensity comes down to two important
 sources: the error in the \ac{CCD} and the intensity fluctuation over time of
-the light source. The intensity fluctuation is especially important, as it is
-possible (and in some cases, extremely likely) for the intensity of the light
-into the cavity to change between the measurement of the blank and the
-measurement of the sample. This fluctuation at best provides a false
+the light source. The intensity fluctuations are especially important, as it is
+possible -- and in some cases, extremely likely -- for the intensity of the
+light entering the cavity to change between the measurement of the blank and
+the measurement of the sample. This fluctuation at best provides a false
 understanding of the detection limit of the setup and, in the case of high
-variability in the input source, silently invalidates all data acquired with
-the technique.
+variability in the input source, silently modulates the absorption peaks in
+acquired spectra.
 
 Finally, the mirror reflectivity is required for any of the equations of the
 absorption coefficient or its standard deviation. Giving a guess on the mirror
 reflectivity at a particular wavelength based on the average mirror
 reflectivity can lead to inaccurate absorption coefficient calculations and
-alter the shape of the calculated spectrum. This case is more common than one
-may expect, as the multiple layers of thin films deposited on the mirror's
-surface introduces characteristic ripples in the mirror reflectivity as a
-function of wavelength.
+alter the shape of the calculated spectrum \cite{Berden:2009wk}. This case is
+more common than one may expect, as the multiple layers of thin films deposited
+on the mirror's surface introduces characteristic ripples in the mirror
+reflectivity as a function of wavelength \cite{Islam:2007ea}.
 
-This chapter will discuss these calibrations to characterise the \ac{BBCEAS}
-instrument used in this report.
+This chapter will discuss these calibrations for the stated problems to
+characterise the \ac{BBCEAS} instrument used in this report.
+
+
 
 \section{Limits of linearity using Rhodamine 6G}\label{sec:rhodamine}
 
 There are two important considerations for regions where the concentration of
 rhodamine correlates linearly with the concentration of an absorber. One
-consideration is the calculation of absorption using $A = \alpha  l$, where
-$l$ is the length of the cavity times the number of passes of the light
-between the mirrors. It is possible to measure an $\alpha$ value that leads to
-an absorption of greater than one, which of course is illogical. This
-phenomenon occurs when the approximation for the path length is no longer
-defined by $\tfrac{1-R}{d}$. In the particular setup used, where the mirror
-reflectivity $R=0.99$, the approximate upper bound of the linear region cannot
-exceed $\alpha = 1.84\cdot10^{-3}\,\text{cm}^{-1}$.
+consideration is the calculation of absorption using $A = \alpha  l$, where $l$
+is the path length when considering multiple passes through the cavity.  It is
+possible to measure an $\alpha$ value that leads to an absorption of greater
+than one, which has no physical meaning.
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=\textwidth]{figures/Rh6G_absorption_cross_section_and_linearity}
 \end{center}
-\caption{Rhodamine 6G Spectrum}
+\caption{Rhodamine 6G Spectrum from \ac{BBCEAS} measurement}
 \label{fig:rh6g}
 \end{figure}
+
 
 While the upper bound to the linearity of the \ac{BBCEAS} equation is useful
 for determining when experimental results may be strange, a tighter bounding
@@ -62,43 +62,51 @@ by the \ac{BBCEAS} technique. Unfortunately, the only way to measure where
 absorption coefficients correlate linearly with concentration is to acquire
 spectra from many different concentrations and plot the absorption at the peak
 wavelength as a function of concentration.\marginpar{Get linearity figure}
-This is shown below.
+This is shown in Figure~\ref{fig:rh6g_lin}.
 
-As can be seen in the figure, the lower the concentration, the better we can
-fit a linear regression to the data acquired. As such, a lower bound is better
-defined as the limit of detection, instead of the linearity at low
-concentrations.
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth]{figures/rhodamine_concentration_vs_conc_linear.png}
+\end{center}
+\caption{Linearity in Rh6G \ac{BBCEAS} measurement. After this region, the collected data took on a cubic trend.}
+\label{fig:rh6g_lin}
+\end{figure}
 
-One can see that there is only about an order of magnitude where the
-absorption coefficient can be effectively measured. This aspect is largely
-ignored in the literature except by some astute groups.
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth]{figures/rhodamine_concentration_vs_conc_non_linear.png}
+\end{center}
+\caption{Non linearity in Rh6G \ac{BBCEAS} measurement. The fitted line is a cubic trend.}
+\label{fig:rh6g_nonlin}
+\end{figure}
 
-One problem with this technique is that the concentration of an absorber that
-corresponds with a particular value of the absorption coefficient is defined
-by the absorber itself. Strong absorbers will have smaller concentrations
-where the calculated absorption coefficient is linear. Weak absorbers have an
-advantage is greater detection ranges under this regime, but suffer from a
-lower sensitivity to the concentration as small changes in intensity correlate
-to larger changes in concentration, in comparison to strong absorbers.
+As can be seen in figure~\ref{fig:rh6g_nonlin}, the lower the concentration, the
+better we can fit a linear regression to the data acquired. As such, a lower
+bound is better defined as the limit of detection, instead of attempting to
+extrapolate a linear function to below the noise levels of the instrument.
+
+One problem with absorption spectroscopy techniques is that the dynamic range
+is mainly dependent on the absorber. Strong absorbers will have smaller
+concentrations where the calculated absorption coefficient is linear. Weak
+absorbers have an advantage is greater detection ranges under this regime, but
+suffer from a lower sensitivity to the concentration as small changes in
+intensity correlate to larger changes in concentration, in comparison to strong
+absorbers.
 
 As a guide to the detectable concentration ranges, it is possible to calculate
-the molar emissivity $\epsilon$ range of a \ac{BBCEAS} setup by dividing
-the absorption coefficient value at the upper bound by the concentration
-it represents. \marginpar{One could potentially use, for simple molecules,
-quantum chemistry and Hartree-Fock approximations to estimate at what energies
-light would be absorbed and approximately how strong such a transition would
-be, but this technique is far from simple and likely takes longer than just
-trying to measure several concentrations of the absorber using \ac{BBCEAS}
-iteratively.} Then, if one knows the molar emissivity of an absorber it
-is possible to determine a rough upper bound of the concentration limit of
-detection. Unfortunately many substances of interest have unknown or poorly
-characterised absorption spectra in terms of molar emissivity in the liquid
-phase, and there is no convenient methods of determining valid concentration
-ranges.
+the molar emissivity $\epsilon$ range of a \ac{BBCEAS} setup by dividing the
+absorption coefficient value by the concentration it represents. Then, if one
+knows the molar emissivity of an absorber it is possible to determine a rough
+upper bound of the concentration limit of detection. Unfortunately many
+substances of interest have unknown or poorly characterised absorption spectra
+in terms of molar emissivity in the liquid phase, and there is no convenient
+methods of determining valid concentration ranges.
 
-\section{Intensity Fluctuations in BBCEAS measurements}\label{sec:laser_fluc}
+\section{Intensity Fluctuations in BBCEAS measurements}\label{sec:light_fluc}
 
-\subsection{Intensity fluctuations due to light source stability}
+%% TODO Add section intro here.
+
+\subsection{Intensity fluctuations due to light source stability}\label{subsec:laser_fluc}
 
 \begin{figure}[h!]
 \begin{center}
@@ -108,51 +116,51 @@ ranges.
 \label{fig:laser_fluc}
 \end{figure}
 
-\ac{BBCEAS} measurements, while based on \ac{CRDS}, do not share the
-benefit of being immune to intensity fluctuations in the source. This is
-because \ac{CRDS} takes the measurement of the intensity of an individual
+\ac{BBCEAS} measurements, while based on \ac{CRDS}, do not share the benefit of
+being immune to intensity fluctuations in the source \cite{Berden:2009wk}. This
+is because \ac{CRDS} takes the measurement of the intensity of an individual
 pulse of light, whereas \ac{BBCEAS} measures the average steady state ring down
 intensity, which represents an average of the light intensity ring down times
-across multiple pulses (for pulsed wave sources) or effectively infinite
-pulses (for continuous wave sources).
+across multiple pulses (for pulsed wave sources) or effectively infinite pulses
+(for continuous wave sources).
 
 Figure~\ref{fig:laser_fluc} illustrates the problem of light source
 fluctuation. In this figure, each ``bundle'' represents approximately the
 noise from the \ac{CCD}. If one considers this to bundle to represent the
 width of the noise distribution due to the \ac{CCD}, then two different
-phenomena are seen to occur.
+phenomena can be seen from this figure.
 
-Over time, the intensity error fluctuates in both a high frequency range
-(mostly the \ac{CCD} noise) and a lower frequency. This lower frequency is
-a result of the drift in the intensity of the output of the supercontinuum
-laser. As such, it is simple to see that even a measurement within five
-minutes of the blank sample is prone to intensity fluctuation error.
+The most obvious is that over time, the intensity error fluctuates in both a
+high frequency range (mostly the \ac{CCD} noise) and a lower frequency. This
+lower frequency is a result of the drift in the intensity of the output of the
+supercontinuum laser. As such, it is simple to see that even a measurement
+within five minutes of the blank sample is prone to intensity fluctuation
+error.
 
-The second phenomena is that while most of the high frequency noise is due to
-the \ac{CCD}, the stretching of the bundles suggests that there is a high
-frequency noise component of the supercontinuum source as well. This means
-that the fluctuation of the light source skews the distribution due to the
-\ac{CCD} noise, sometimes broadening the width (such as in the second, third
-and eighth bundles) and sometimes compressing the noise distribution (as seen
-in the second to last bundle).
+The second problem with the laser fluctuation is that while most of the high
+frequency noise is due to the \ac{CCD}, the stretching of the bundles suggests
+that there is a high frequency noise component of the supercontinuum source as
+well. This means that the fluctuation of the light source skews the
+distribution due to the \ac{CCD} noise, sometimes broadening the width (such as
+in the second, third and eighth bundles) and sometimes compressing the noise
+distribution (as seen in the second to last bundle).
 
-Combined, these two effects of the intensity fluctuation of the laser lead
-to errors in calculating $\alpha$ (due to drift between measurements) and
-$\sigma_{\alpha}$ (due to fluctuations in $\sigma_{I}$ and $\sigma_{I_0}$). An
+Combined, these two effects of the intensity fluctuation of the laser lead to
+errors in calculating $\alpha$ due to drift between measurements and
+$\sigma_{\alpha}$ due to fluctuations in $\sigma_{I}$ and $\sigma_{I_0}$. An
 additional frustration arises when one considers that these fluctuations in
 intensity are often wavelength dependent, so it is not simple to extrapolate
 the error calculations in intensity from one wavelength to another.
 
 If the blank and sample spectra are taken within a few minutes of each other,
-these error effects are minimised, but still lead to unaccountable error in
-the final absorption spectrum. Given that the calculation of the standard
-deviations will take part of the high frequency noise into account, and
-the fast acquisition will minimise the low frequency source of noise, for
-most measurements one can ignore these sources of error. However, for a
-better sensitivity, it is required that information about the light source
-fluctuation over time is known through a reference intensity spectrum. Without
-this information, it is impossible to give a true estimate of the sensitivity
-of a \ac{BBCEAS} instrument.
+these error effects are minimised, but still lead to unaccountable error in the
+final absorption spectrum. Given that the calculation of the standard
+deviations will take part of the high frequency noise into account, and the
+fast acquisition will minimise the low frequency source of noise, for most
+measurements one can scrape by with these sources of error. However, for a
+better sensitivity, information about the light source fluctuation over time is
+required to remove the laser noise. Without this information, it is impossible
+to give a true estimate of the sensitivity of a \ac{BBCEAS} instrument.
 
 \subsection{Intensity fluctuations as a result of turbulence}
 
@@ -166,29 +174,27 @@ of a \ac{BBCEAS} instrument.
 
 An additional source of error that causes intensity fluctuations is, perhaps
 surprisingly, the turbulence of the solution. This can be clearly seen in
-Figure~\ref{fig:relax}, where the intensity detected fluctuates wildly
-during the injection of liquid into the cuvette (in this case, water was
-injected into a cavity containing water). One will notice that right after the
-injection phase, the intensity value reaches a maximum, falls and then slowly
-builds back up to the beginning level.
+Figure~\ref{fig:relax}, where the intensity detected fluctuates wildly during
+the injection of liquid into the cuvette (for this figure, water was injected
+into a cavity containing water). One will notice that right after the injection
+phase, the intensity value reaches a maximum, falls and then slowly builds back
+up to the beginning level.
 
-The fluctuation and slow build up is most likely due to the alignment of the
-light within the cavity. Any optical cavity is very sensitive to deflections
-of any sort. The turbulence in the cuvette seems to deflect the path of the
-light slightly. This disrupts the measured intensity by changing the total
-build up intensity of light within the cavity and by changing the coupling
-efficiency of the resulting light with the fibre based grating spectrometer.
+The fluctuation and slow build up is due to the alignment of the light within
+the cavity. Any optical cavity is very sensitive to deflections of any sort.
+The turbulence in the cuvette seems to deflect the path of the light slightly.
+This disrupts the measured intensity by changing the total build up intensity
+of light within the cavity and by changing the coupling efficiency of the
+resulting light with the fibre based grating spectrometer.
 
-Luckily, once the injection of liquid has ended, the resulting intensity build
+Luckily, once the injection of liquid has ceased, the resulting intensity build
 up is modelled extremely well by an exponential rise back to the default
 value. Using this type of model, it is simple to calculate that for the
 \ac{BBCEAS} design used in this report, the time required to wait after an
-injection before the intensity returns to normal is approximately one minute.
+injection is approximately one minute.
 Knowing this time constant, and the slow fluctuation of the light source over
 time, we can predict an approximate window in which the highest quality,
 lowest noise spectra are likely to be taken.
-\marginpar{\vspace{-34em}\\ If you are wondering, the slight dip near the end of
-Figure~\ref{fig:relax}is me hitting the optical table.}
 
 \section{Mirror Reflectivity}\label{sec:mirror_considerations}
 
@@ -196,15 +202,16 @@ Figure~\ref{fig:relax}is me hitting the optical table.}
 \begin{center}
 \includegraphics[width=\textwidth]{figures/mirrors.jpg}
 \end{center}
-\caption{}
+\caption{The mirror reflectivity provided by the manufacturer.}
 \label{fig:mirror}
 \end{figure}
 
-No matter what equation an experimenter decides to use to calculate the
-absorption spectrum of a sample, the mirror reflectivity must be explicitly
-known, as it appears in the form of $\tfrac{1-R}{d}$ most commonly in the
-literature. This factor represents a correction to the path length to account
-for the number of passes that occur within a cavity.
+No matter what \ac{BBCEAS} equation an experimenter decides to use to calculate
+the absorption spectrum of a sample, the mirror reflectivity must be explicitly
+known, as it appears in the form of $\tfrac{1-R}{d}$ \eqref{eq:ceas_std} or in
+multiple places for other equations \eqref{eq:ceas_geo_mod}. The inclusion of
+$R$ in these equations represents a correction to the path length to account
+for the number of passes that light undergoes once it is inside the cavity.
 
 If one neglects to determine the mirror reflectivity of the cavity, as a
 function of wavelength, then two anomalous actions occur. The simplest to
@@ -213,36 +220,31 @@ that can easily exceed error due to other sources. While a calibration against
 a known concentration allows one to neglect this source of error when
 attempting to determine the unknown concentration of an absorber, the values
 calculated provide an inaccurate understanding of the actual absorption of a
-particular vibronic transition.
+particular electronic transition.
 
-The second, more peculiar result of not neglecting the mirror reflectivity
-when calculating an absorption spectrum changes the \emph{shape} of the
-spectrum, and can lead to artifacts in the spectrum as well as an alteration
-of the shape of a transition. Attempting to fit an accurate voigt profile to a
-transition in a spectrum would be an exercise in faith at best.
+The second, more peculiar result of neglecting the mirror reflectivity curve is
+that the calculated absorption spectrum changes in \emph{shape}, which  can
+lead to both artifacts in the spectrum as well as an alteration of the shape of
+a transition. Attempting to fit an accurate profile to a transition in a
+spectrum would be an exercise in frustration at best.
 
-There are three ways to determine the mirror reflectivity curves. The first is
+There are two ways to determine the mirror reflectivity curves. The first is
 to simply have the manufacturer provide the information, or to digitalise a
-graph provided through an \ac{FTS} type measurement. The second common method
-is to use the \ac{BBCEAS} setup for a known concentration \ac{CRDS}
-experiment, which, due to the self calibrating nature of \ac{CRDS}, allows one
-to extract the mirror reflectivity curves.
+graph provided through an \ac{FTS} type measurement, although this is known to
+not work very well in practice as the mirror reflectivity is a function of the
+alignment of the cavity \cite{Berden:2009wk}. The second common method is to
+use the \ac{BBCEAS} setup in a \ac{CRDS} experiment, which, due to the self
+calibrating nature of \ac{CRDS}, allows one to extract the mirror reflectivity
+curves.
 
-A new technique to determine the mirror reflectivity curve is to take a
-measurement of the light transmitted through no cavity versus the light
-through only one mirror. One can compare the two spectra by division to
-determine the shape of the mirror reflectivity curve.
 
-\marginpar{Show example of this using \ac{LED} spectrum}
-One can then take several methods to scale this shape to the correct sizes. If
-one knows the average mirror reflectivity and the error from the manufacturer,
-then it is possible to scale the mirror reflectivity shape to nearly the
-correct values (although only theoretically). Alternatively, since the
-intensity of light passing through the mirror necessitates a different
-exposure time for the \ac{CCD}, it is possible to create a plot of the
-intensity as a function of exposure time, and use a fit to this plot to guess
-what the intensity values of the spectrum without the mirror would be if the
-exposure was the same as for the non-mirrored spectrum.
 
 \section*{Chapter Review}
-Put chapter summary here.
+
+While \ac{BBCEAS} does require a few calibration steps to acquire a full
+understanding of the spectra it produces, these procedures are not unlike what
+an experimenter would go through for a normal absorption, single pass
+measurement. In addition, these considerations increase the information of
+absorption spectra by characterising the noise inherent in the instrument at
+each wavelength the instrument measures at, correcting for the nonlinear
+effects that can occur during a measurement.
