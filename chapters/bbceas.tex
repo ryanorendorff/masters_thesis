@@ -14,7 +14,7 @@ report.
 \acl{BBCEAS} setups are very similar to their \ac{CRDS} brethren. In both
 cases, light that enters the optical cavity passes through the sample a certain
 number of times before exiting the cavity, after which the light is measured
-using a wavelength dispersed detector. Unlike \ac{CRDS}, where the ringdown
+using a wavelength dispersed detector. Unlike \ac{CRDS}, where the ring down
 time is measured directly, \ac{CEAS} uses the fact that, with a continuous wave
 source, the time integrated light intensity output from the cavity is directly
 proportional to the ringdown time of the light within the cavity
@@ -199,7 +199,7 @@ for analysis since one does not have to worry about the cases where the
 mirror reflectivity is low (such as those that would be used in a low cost
 instrument) or for high absorption coefficients.
 
-In this report, the following equation is used. \marginpar{Equation \eqref{eq:ceas_geo_mod} and \eqref{eq:ceas_geo_error} have be derived by the author.}
+In this report, the following equation is used. \marginpar{Equation \eqref{eq:ceas_geo_mod}, \eqref{eq:ceas_err_std} and \eqref{eq:ceas_err_geo} have be derived by the author.}
 
 \begin{align}
     \alpha = \frac{1}{d}\ln\left(\frac{1}{2R^2}\left(\sqrt{4R^2+\left(\frac{I_0}{I}(1-R^2)\right)^2} - \frac{I_0}{I}(1-R^2)\right)\right) \label{eq:ceas_geo_mod}
@@ -293,7 +293,7 @@ equation \eqref{eq:ceas_std} and \eqref{eq:ceas_geo_mod}, respectively.
              \frac{I_0\sigma_I}{I^2}\right)
             \left(\dfrac{1-R^2}{d}\right)\left(4R^2+\left(
                                      \frac{I_0}{I}(1-R^2)\right)^2
-                                     \right)^{-1/2}\label{eq:ceas_err_geo}\\
+                                     \right)^{-1/2}\label{eq:ceas_err_geo}
     \end{align}
 
 It is possible to calculate the standard deviation in $\alpha$ exactly, as a
@@ -329,7 +329,7 @@ cuvette holder is then mounted in a rotatable jig to make it easier to properly
 align the cuvette with the cavity. This cuvette has inlet and outlet tubes,
 which allow for the liquid inside to be changed. This setup was chosen over
 mounting the cuvette directly to the mirrors \cite{Seetohul:2009ij} to prevent
-the mirros from accumulating particulates that would add significant noise to
+the mirrors from accumulating particulates that would add significant noise to
 the acquired spectrum.
 
 %% TODO: decide whether to include a spectrometer section.
@@ -440,6 +440,6 @@ using an \ac{LED} light source.
 acquire signals from fiendishly small absorption cross sections. While this
 method does contain some error, it can be readily quantified and accounted for
 when analysing absorption spectra. While the current implementation of a
-\ac{BBCEAS} provides usable results, some enchancements can be made to further
+\ac{BBCEAS} provides usable results, some enhancements can be made to further
 decrease the noise in the acquired signal and increase the intensity of the
 light hitting the detector.
