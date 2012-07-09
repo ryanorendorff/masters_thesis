@@ -39,8 +39,8 @@
 % ****************************************************************************************************
 % 2. Personal data and user ad-hoc commands
 % ****************************************************************************************************
-\newcommand{\myTitle}{Investigations of Europium Ion Properties and Applications using Broadband Cavity Enhanced Absorption Spectroscopy}
-\newcommand{\mySubtitle}{An Illustrative Guide to Awesomeness\xspace}
+\newcommand{\myTitle}{Investigations of Europium\xspace}
+\newcommand{\mySubtitle}{using Cavity Enhanced Absorption Spectroscopy\xspace}
 \newcommand{\myDegree}{Masters of Philosophy by Research\xspace}
 \newcommand{\myName}{Ryan Orendorff\xspace}
 \newcommand{\myProf}{Clemens Kaminski\xspace}
@@ -49,7 +49,7 @@
 \newcommand{\myUni}{University of Cambridge\xspace}
 \newcommand{\myLocation}{Cambridge\xspace}
 \newcommand{\myTime}{June 2012\xspace}
-\newcommand{\myVersion}{version 0.2.3\xspace}
+\newcommand{\myVersion}{version 0.3.0\xspace}
 
 % ********************************************************************
 % Setup, finetuning, and useful commands
@@ -78,7 +78,7 @@
 %\PassOptionsToPackage{spanish,es-lcroman}{babel}
  \usepackage{babel}
 
-\PassOptionsToPackage{square,numbers}{natbib}
+ \PassOptionsToPackage{numbers,sort&compress,super}{natbib}
  \usepackage{natbib}
 
 \PassOptionsToPackage{fleqn}{amsmath}		% math environments and more by the AMS
@@ -93,7 +93,7 @@
 \usepackage{xspace} % to get the spacing after macros right
 \usepackage{mparhack} % get marginpar right
 \usepackage{fixltx2e} % fixes some LaTeX stuff
-\PassOptionsToPackage{printonlyused,smaller}{acronym}
+\PassOptionsToPackage{printonlyused}{acronym}
 	\usepackage{acronym} % nice macros for handling all acronyms in the thesis
 %\renewcommand*{\acsfont}[1]{\textssc{#1}} % for MinionPro
 \renewcommand{\bflabel}[1]{{#1}\hfill} % fix the list of acronyms
@@ -110,6 +110,7 @@
 \usepackage{caption}
 \captionsetup{format=hang,font=small}
 \usepackage{subfig}
+\usepackage{changepage}
 % ****************************************************************************************************
 
 
@@ -180,9 +181,9 @@
 % ********************************************************************
 \hypersetup{%
     %draft,	% = no hyperlinking at all (useful in b/w printouts)
-    colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+    %colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
     % uncomment the following line if you want to have black links (e.g., for printing)
-    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV,%
+    colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV,%
     breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
     plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
     hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
@@ -190,8 +191,8 @@
     %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
     pdftitle={\myTitle},%
     pdfauthor={\textcopyright\ \myName, \myUni},%
-    pdfsubject={},%
-    pdfkeywords={},%
+    pdfsubject={Europium, CEAS},%
+    pdfkeywords={Europium, CEAS, Absorption Spectroscopy},%
     pdfcreator={pdfLaTeX},%
     pdfproducer={LaTeX with hyperref and classicthesis}%
 }
@@ -251,6 +252,13 @@
 % ********************************************************************
 \usepackage{classicthesis}
 % ****************************************************************************************************
+
+\newenvironment{wide}{%
+\strictpagecheck % just in case
+\begin{adjustwidth*}{0pt}{-\marginparsep-\marginparwidth}
+}{%
+  \end{adjustwidth*}
+}
 
 \input{commands}
 

@@ -72,7 +72,7 @@ higher error, lower limit of detection and potentially low spectral
 resolution.
 
 \marginpar{The causes of error in \ac{CEAS} systems is described in
-Section~\ref{sec:ceas_error}}
+Section~\ref{subsec:ceas_error}}
 
 An obvious limitation is the absorptivity resolution of the technique, which is
 limited by the noise of the detector. Many \ac{BBCEAS} setups use a \ac{CCD}
@@ -96,8 +96,8 @@ see Section~\ref{subsec:tdl}}
 
 While \ac{TDL} based broadband techniques have longer acquisition times, they
 easily outperform most \ac{BBCEAS} techniques in terms of spectral resolution.
-This is due to the narrow linewidths of a \ac{TDL}, which can be accurately
-known and imaged onto a photodiode.  \ac{BBCEAS} is limited in spectral
+This is due to the narrow linewidths of a \ac{TDL}, which is accurately
+known and imaged onto a photodiode. \ac{BBCEAS} is limited in spectral
 resolution by a diffraction grating and, more importantly, the focusing optics
 and irises used in the spectrometer. It is not uncommon to see a high
 resolution spectrum taken with a \ac{TDL} having a spectral resolution lower
@@ -127,7 +127,7 @@ time \cite{Velten:2011vq}.
 
 The advantages and limitations of a technique must be put into context
 to determine its value for a particular experimental setup. In
-chapter~\ref{chap:calibration} and \ref{chap:europium} the \ac{BBCEAS}
+chapter~\ref{ch:cal} and \ref{ch:europium} the \ac{BBCEAS}
 setup laid out in this chapter is used to detect absorbers in liquid
 solutions. As such, the low spectral resolution obtained with a modest grating
 spectrometer is good enough for the wide features present in liquid solutions
@@ -247,8 +247,8 @@ detection. Alternatively, one could define the minimum detectable change in
 intensity as a function of the noise in the detector only, instead of through
 the entire experiment (as one assumes all other sources to be constant).
 
-\marginpar{For an discussion of how light source fluctuation introduces errors
-in the observed spectrum, see \ref{sec:laser_fluc}}
+\marginpar{For a discussion of how light source fluctuation introduces errors
+in the observed spectrum, see \ref{subsec:laser_fluc}}
 
 While the photodetector is often the main source of noise, the blanket
 assumption of error due to the detector excludes the intensity fluctuations in
@@ -308,13 +308,16 @@ which would take a while even on modern computers.
 
 \section{Optical Layout and Design}\label{sec:optical_layout}
 
+\begin{wide}
 \begin{figure}
 \begin{center}
-\includegraphics[width=\textwidth]{figures/SC_CEAS_set_up_web-eps-converted-to}
+\includegraphics[width=500pt]{figures/bbceas_setup/bbceas_setup.pdf}
 \end{center}
 \caption{Optical setup for \ac{BBCEAS} experiments performed in this report}
 \label{fig:optical_layout}
 \end{figure}
+\end{wide}
+
 
 The optical layout for the system used in this report is nearly identical to
 all \ac{BBCEAS} layouts \cite{Berden:2009wk}. The light source is a Fianium
@@ -332,13 +335,6 @@ mounting the cuvette directly to the mirrors \cite{Seetohul:2009ij} to prevent
 the mirrors from accumulating particulates that would add significant noise to
 the acquired spectrum.
 
-%% TODO: decide whether to include a spectrometer section.
-%\subsection{Spectrometer}
-%\marginpar{Should I put this in an appendix?}
-
-%The spectrometer used is a simple transmission grating spectrometer
-%with a fibre input and a standard \ac{CCD} from a digital
-%consumer camera.\marginpar{include spectrometer diagram}
 
 
 \section{Potential Enhancements}\label{sec:bbceas_enhance}
