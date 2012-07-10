@@ -60,6 +60,15 @@ Taking the logarithm of both sides leads to a value known as the absorbance $A$
   A(\lambda)=-\ln\left(\frac{I}{I_0}\right)_\lambda = \alpha(\lambda)l\label{eq:beer}
 \end{align}
 
+
+\begin{wrapfigure}{o}{\marginspace}
+\begin{center}
+  \includegraphics[width=\marginspace]{figures/beer.png}
+\end{center}
+\emph{\footnotesize{Light passing through a sample cavity is attenuated by the absorbers within the solution. Courtesy Wikipedia.}}
+\label{fig:microtiter}
+\end{wrapfigure}
+
 This is known as the Beer Lambert law. The law relates the loss of light in a
 material to the concentration of absorbers inside that material based on the
 amount of light passing through the absorber and the properties of the absorber
@@ -182,6 +191,13 @@ unobservable in liquid solutions.
 
 \subsection{Scattering Losses}\label{subsec:scattering}
 
+\begin{wrapfigure}{o}{\marginspace}
+\begin{center}
+  \includegraphics[width=\marginspace]{figures/scatter.png}
+\end{center}
+\emph{\footnotesize{Scattering of photons from molecules in a sample. Courtesy Wikipedia}}
+\end{wrapfigure}
+
 In addition to broadening schemes, liquid absorption measurements fall victim
 to the fact that Beer-Lambert type experiments cannot differentiate between
 light lost due to scattering versus due to absorption.  In gas phase
@@ -252,6 +268,13 @@ sequentially and simultaneously.
 
 \subsection{Tunable Diode Lasers}\label{subsec:tdl}
 
+\begin{wrapfigure}{o}{\marginspace}
+\begin{center}
+\includegraphics[width=\marginspace]{figures/diode_laser.pdf}
+\end{center}
+\emph{\footnotesize{A simple laser diode, where the red ellipse represents the emission of light. Courtesy Wikipedia}}
+\end{wrapfigure}
+
 One common method for acquiring broadband signals is to use a light source
 known as a \acf{TDL}. \ac{TDL} sources are diode lasers that are tunable
 through either current or temperature \cite{May:1998ue}. Since temperature is
@@ -268,7 +291,7 @@ the laser light, instead of using a grating to disperse the light across a
 detector.
 
 \marginpar{A good discussion of wavelength modulation spectroscopy in the form
-of an air-bourne hygrometer can be found in \cite{May:1993tu}.}
+of an aircraft hygrometer can be found in \cite{May:1993tu}.}
 
 Even though this method is simple to implement and cost effective, it suffers
 from two major drawbacks. The first is that the broadband acquisition is done
@@ -299,6 +322,14 @@ coupled into the cavity containing absorber molecules, the amount of light
 lost attempting to create a collimated beam often leads to minuscule fractions
 of the light reach the detector.
 
+
+\begin{wrapfigure}{o}{\marginspace}
+\begin{center}
+\includegraphics[width=\marginspace]{figures/led.pdf}
+\end{center}
+\emph{\footnotesize{A diagram of an \ac{LED}, courtesy Wikipedia.}}
+\end{wrapfigure}
+
 An additional complication from \acp{LED} is that once the broadband light
 arrives at a photodetector the light must be separated into its constituent
 wavelengths to acquire the broadband signal.  Two problems occur from this. If
@@ -320,6 +351,14 @@ Supercontinuum laser light sources combine the advantage of a broadband source
 with a tightly collimated beam and high output powers. This makes alignment
 much simpler than in the case of an \ac{LED} with the added benefit of low
 power loss while coupling into a absorbing medium.
+
+
+\begin{wrapfigure}{o}{\marginspace}
+\begin{center}
+  \includegraphics[width=\marginspace]{figures/supercontinuum.png}
+\end{center}
+\emph{\footnotesize{a Nd:YAG laser pulse being transformed into a supercontinuum by injecting the pulse into a photonic crystal fibre. Courtesy Wikipedia.}}
+\end{wrapfigure}
 
 While supercontinuum sources build on the advantages of \acp{LED}, they
 introduce problems of their own. The most practical problem is the cost of
@@ -347,6 +386,14 @@ below.
 
 \subsection{Multipass Cells}\label{subsec:herriott}
 
+
+\begin{wrapfigure}{o}{\marginspace}
+\begin{center}
+  \includegraphics[width=\marginspace]{figures/herriott.png}
+\end{center}
+\emph{\footnotesize{A Herriott cell, shoring the path of light within the cell. Courtesy Wikipedia.}}
+\end{wrapfigure}
+
 One simple way to traverse a sample multiple times is to build a cavity with
 two mirrors on either end that reflect the light back and forth through the
 sample. It is possible to find mirrors that allow light to enter through a hole
@@ -365,6 +412,14 @@ particulates on the mirror surfaces.
 
 \subsection{Optical Cavities}\label{subsec:cavity}
 
+
+\begin{wrapfigure}{o}{\marginspace}
+\begin{center}
+  \includegraphics[height=100pt]{figures/cavity.png}
+\end{center}
+\emph{\footnotesize{An optical cavity and the light propagation inside using plano-convex mirrors. Courtesy Wikipedia.}}
+\end{wrapfigure}
+
 A similar approach to  Herriott cells is to use an optical cavity akin to a
 laser cavity, except where both mirrors are only partially reflective. In such
 a cavity, light leaks in through the first mirror, traverses across the sample
@@ -376,10 +431,6 @@ mirrors of reflectivity $R=0.999$, the increase in the path length will be
 $(1-R)^{-1} = 1000$, which is a higher gain than most Herriott cells can
 achieve.
 
-\marginpar{The mirror reflectivity curves depend on the alignment of the cavity
-as well as the mirror surfaces. As such, it is not possible to use mirror
-transmission curves provided by a manufacturer \cite{Berden:2009wk}.}
-
 Unfortunately these cavities are also difficult to align, as the input beam
 must be perpendicular to the axis of the cavity. In addition, this method
 requires a higher initial input intensity as a significant amount of light is
@@ -389,11 +440,11 @@ must be measured and accounted for in the absorption spectrum. Finally, this
 method can be more expensive than other multipass techniques, as high quality,
 high reflectivity mirrors are expensive.
 
-%\section{Cavity Ring Down Techniques}
+\marginpar{The mirror reflectivity curves depend on the alignment of the cavity
+as well as the mirror surfaces. As such, it is not possible to use mirror
+transmission curves provided by a manufacturer \cite{Berden:2009wk}.}
 
-%\subsection{Cavity Ring Down Spectroscopy}
 
-%\subsection{Cavity Enhanced Absorption Spectroscopy}
 
 \section*{Chapter Review}
 

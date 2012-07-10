@@ -50,7 +50,7 @@ than one, which has no physical meaning.
 \begin{center}
 \includegraphics[width=\textwidth]{figures/Rh6G_absorption_cross_section_with_error}
 \end{center}
-\caption{Rhodamine 6G Spectrum from \ac{BBCEAS} measurement}
+\caption{Absorption spectra of rhodamine 6G at several concentrations. The filled area around each line represents the standard deviation of the signal, calculated using equation \eqref{eq:ceas_err_geo}. The flaring of the error signal near 600\,nm is a result of significantly less light reaching the cavity due to the 585\,nm edgepass filter in the optical setup (Figure~\ref{fig:optical_layout}).}
 \label{fig:rh6g}
 \end{figure}
 
@@ -64,19 +64,19 @@ spectra from many different concentrations and plot the absorption at the peak
 wavelength as a function of concentration. This is shown in
 Figure~\ref{fig:rh6g_lin}.
 
-\begin{figure}
+\begin{figure}[th]
 \begin{center}
 \includegraphics[width=\textwidth]{figures/rhodamine_concentration_vs_conc_linear.png}
 \end{center}
-\caption{Linearity in Rh6G \ac{BBCEAS} measurement. After this region, the collected data took on a cubic trend.}
+\caption{The linear region of the absorption spectra obtained for different Rh6G concentrations. The error bars represent one standard deviation from the observed signal taken from the maximum peak of the Rh6G spectra.}
 \label{fig:rh6g_lin}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[th]
 \begin{center}
 \includegraphics[width=\textwidth]{figures/rhodamine_concentration_vs_conc_non_linear.png}
 \end{center}
-\caption{Non linearity in Rh6G \ac{BBCEAS} measurement. The fitted line is a cubic trend.}
+\caption{An extended version of Figure~\ref{fig:rh6g_lin}, which shows that the linear regime for the Beer-Lambert law has a limited dynamic range.}
 \label{fig:rh6g_nonlin}
 \end{figure}
 
@@ -112,7 +112,7 @@ methods of determining valid concentration ranges.
 \begin{center}
 \includegraphics[width=\textwidth]{figures/change_in_intensity_of_576_5nm_over_one_hour.png}
 \end{center}
-\caption{Laser Fluctuation over time}
+\caption{Fluctuations in the laser intensity over time at 575\,nm, passed through the \ac{BBCEAS} setup with a water blank in the cuvette. Low and high frequency fluctuations due to laser drift are present, as well as the high frequency fluctuations due to the \ac{CCD}.}
 \label{fig:laser_fluc}
 \end{figure}
 
@@ -168,7 +168,7 @@ to give a true estimate of the sensitivity of a \ac{BBCEAS} instrument.
 \begin{center}
 \includegraphics[width=\textwidth]{figures/water_relax.pdf}
 \end{center}
-\caption{Relaxation time inside the cuvette}
+\caption{Intensity signal through the \ac{BBCEAS} setup after injecting water into the cuvette that contained water originally. The return to the original signal strength fits an exponential trend well, with a time constant $\tau \approx 13\,\text{ms}$.}
 \label{fig:relax}
 \end{figure}
 
@@ -202,7 +202,7 @@ lowest noise spectra are likely to be taken.
 \begin{center}
 \includegraphics[width=\textwidth]{figures/mirrors.jpg}
 \end{center}
-\caption{The mirror reflectivity provided by the manufacturer.}
+\caption{The mirror reflectivity provided by the manufacturer. The cavity alignment has a direct effect on the mirror reflectivity seen in an experiment, and hence these curves cannot be used directly.}
 \label{fig:mirror}
 \end{figure}
 
