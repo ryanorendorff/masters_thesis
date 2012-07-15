@@ -14,6 +14,7 @@
 \newcommand{\mM}{\unit{mM}}
 \newcommand{\mW}{\unit{mW}}
 
+\usepackage[sc]{mathpazo}
 
 \begin{document}
 \begin{tikzpicture}
@@ -106,22 +107,22 @@
   ]
   \nextgroupplot[ymin = 0.0e-1, ymax = 1.5e-1, ytick = {0.0,0.05,0.10,0.15},scaled y ticks=base 10:1]
   \addplot[black] table {\sawada};
-  \addlegendentry{0.200 M Sawada}
+  \addlegendentry{0.200\,M Sawada}
 
   \nextgroupplot
   \addplot[fill=blue!20,draw=none] table {\fillHighest};
   \addplot[RoyalBlue] table {\highest};
-  \legend{,0.2372 M}
+  \legend{,0.2372\,M}
 
   \nextgroupplot
   \addplot[fill=Red!20,draw=none] table {\fillHigh};
   \addplot[Red] table {\high};
-  \legend{,0.019 M}
+  \legend{,0.019\,M}
 
   \nextgroupplot
   \addplot[fill=ForestGreen!20,draw=none] table {\fillMiddle};
   \addplot[ForestGreen] table {\middle};
-  \legend{,0.00949 M}
+  \legend{,0.00949\,M}
 
   %\nextgroupplot
   %\addplot[fill=RoyalPurple!10,draw=none] table {\fillLow};
