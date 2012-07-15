@@ -11,7 +11,7 @@ report.
 
 \section{Broadband Cavity Enhanced Absorption Techniques}\label{sec:bbceas}
 
-\acl{BBCEAS} setups are very similar to their \ac{CRDS} brethren. In both
+\acl{BBCEAS} setups are very similar to their \ac{CRDS} counterparts. In both
 cases, light that enters the optical cavity passes through the sample a certain
 number of times before exiting the cavity, after which the light is measured
 using a wavelength dispersed detector. Unlike \ac{CRDS}, where the ring down
@@ -101,7 +101,7 @@ accurately known and imaged onto a photodiode. \ac{BBCEAS} is limited in
 spectral resolution by a diffraction grating and, more importantly, the
 focusing optics and irises used in the spectrometer. It is common to see a
 high resolution spectrum taken with a \ac{TDL} having a spectral resolution
-lower than 0.1nm \cite{Wieman:2000vd}, whereas a grating spectrometer has a
+lower than 0.1\,nm \cite{Wieman:2000vd}, whereas a grating spectrometer has a
 spectral resolution on the order of nanometers \cite{Kiwanuka:2010bj}.
 
 Another limitation is that this technique requires a calibration, or ``blank'',
@@ -123,13 +123,26 @@ time \cite{Velten:2011vq}.
 
 
 
-\subsection{Considerations for BBCEAS in Liquid Medium}\label{subsec:bbceas_liq}
+\subsection{BBCEAS in a Liquid Medium}\label{subsec:bbceas_liq}
 
 The advantages and limitations of a technique must be put into context to
 determine its value for a particular experimental setup. Standard absorption
 techniques have a problem in liquid media because of the attenuation of the
 light through a sample due to scattering. In addition, liquid samples reduce
-the spectral resolution that can be obtained due to line broadening effects. Finally, certain absorption cross sections are very weak, and not visible under single pass techniques.
+the spectral resolution that can be obtained due to line broadening effects.
+Finally, certain absorption cross sections are very weak, and not visible
+under single pass techniques.
+
+Several research groups have started experimenting with liquid phase
+\ac{BBCEAS} measurements. Some of the more interesting modifications in an
+attempt to perform these measurements is the use of a supercontinuum source
+\cite{Kiwanuka:2010bj}, while another research group uses an \ac{LED} as a
+light source \cite{Islam:2007ea,Seetohul:2009ij,Seetohul:2009du}. Both of
+these \ac{BBCEAS} setups have shown that liquid measurements are more complex
+and have a lower sensitivity than gas phase measurements. However, all of the
+theory from gas phase \ac{BBCEAS} measurements is still applicable, indicating
+that \ac{BBCEAS} is both a viable and effective way to measure absorber
+concentrations in a liquid.
 
 \ac{BBCEAS} is apt for the experimental solutions in this report. \ac{BBCEAS}
 can overcome scattering losses and weak absorption peaks using a high powered
@@ -162,10 +175,22 @@ The basic procedure for a CEAS experiment is to do the following.
         $\sigma_{I}$.
 \end{enumerate}
 
-Once this information has been gathered, one uses a \ac{BBCEAS} equation to
-calculate the absorption coefficient $\alpha(\lambda)$, usually in \icm.
+Once this information has been gathered, the \ac{BBCEAS} equation is used
+to calculate the absorption coefficient $\alpha(\lambda)$, usually in \icm.
 However, there are several ways of performing this calculation, as described
 below.
+
+\marginpar{Tools and file specifications for CamTIFF, as well as the source
+for Apollo, can be found at url{https://github.com/LaserAnalytics/}}
+
+In an attempt to perform these functions, a few pieces of software were
+developed. A new file format called \emph{CamTIFF} was created to store
+image data and metadata about the image within the same file in a manner
+that is backwards compatible with current TIFF image viewers. In addition,
+a spectroscopic suite named \emph{Apollo} was created that simplifies the
+creation of real time acquisition routines for any camera attached to a
+computer was devised to allow the author to experiment with a range of
+spectrometer designs.
 
 
 
@@ -192,20 +217,21 @@ technique is best served for the analysis of gas phase solutions, although it
 has been shown to be applicable over nearly all experimental conditions that
 one would want to run \cite{Mazurenka:2005fh}.
 
-A second equation in use in the literature does not make the assumptions that
-$R \to 1$ and $\alpha \to 0$ due to the fact that it is derived from a
-geometric sum instead of an indefinite integral \cite{Fiedler:2003db}. This
-equation is slightly more complicated.
+A second equation in use in the literature does not make the assumptions
+that $R \to 1$ and $\alpha \to 0$ due to the fact that it is derived from
+a geometric sum of single pass Beer-Lambert calculations instead of an
+indefinite integral \cite{Fiedler:2003db}. This equation is slightly more
+complicated.
 
   \begin{align}
     \alpha = \frac{1}{d}\left|\ln\left(\frac{1}{2R^2}\left(\sqrt{4R^2+\left(\frac{I_0}{I}(R^2-1)\right)^2} + \frac{I_0}{I}(R^2-1)\right)\right)\right| \label{eq:ceas_geo}
   \end{align}
 
 While this equation appears to be unwieldy, it is not more computationally
-complex than the standard equation. However, the lack of assumptions for
-the geometrically derived \ac{BBCEAS} equation makes it a better candidate
-for analysis since one does not have to worry about the cases where the
-mirror reflectivity is low (such as those that would be used in a low cost
+complex than the standard equation. However, the lack of assumptions for the
+geometrically derived \ac{BBCEAS} equation makes it a better candidate for
+analysis since the experimenter does not have to worry about the cases where
+the mirror reflectivity is low (such as those that would be used in a low cost
 instrument) or for high absorption coefficients.
 
 In this report, the following equation is used.
@@ -222,9 +248,10 @@ the absolute value operator was removed. Since negative absorption coefficent
 values only occur when the intensity of the blank spectrum is higher than the
 sample spectrum, it is easier to be able to note these abnormalities through
 negative numbers. In addition, equation \eqref{eq:ceas_geo_mod} rearranges the
-$R^2-1$ terms to $-(1-R^2)$ make the deviation of the error function simpler.
-This modification can be done because $R$ is bounded to the real set
-$(0,1)$. Both of these modifications can be done without loss of generality.
+$R^2-1$ terms to $-(1-R^2)$ make the calculation of the standard deviation
+simpler, as shown in Appendix~\ref{ch:ceas_error_der}. This rearrangement can
+be done because $R$ is physically bounded to be between zero and one, meaning
+that $R^2$ must always be a positive number.
 
 
 
@@ -244,20 +271,22 @@ following equation, which applies for calculating the error from equation
 \end{align}
 
 In this equation, $\Delta I$ is the minimum detectable change in $I$.
-Similarly, the limit of detection (LOD) is normally defined as three times the
-standard deviation in $\alpha$ \cite{Islam:2007ea}.
+Similarly, the limit of detection (LOD) is normally defined as three times
+the standard deviation in $\alpha$ as it represents the interval at which an
+experimenter can say with a high confidence that the signal detected is above
+the baseline noise \cite{Islam:2007ea}.
 
 \begin{align}
   \text{LOD}_{\alpha} = 3\sigma_{\alpha}\label{eq:lod}
 \end{align}
 
-These equations present two different problems.  One is the way in which the
+These equations present two different problems. One is the way in which the
 minimum detectable change is defined. If the minimum detectable change is
-defined as how confidently the experimenter can assume a new intensity value is
-unique to an absorber, one would likely use something similar to the limit of
-detection. Alternatively, one could define the minimum detectable change in
-intensity as a function of the noise in the detector only, instead of through
-the entire experiment (as one assumes all other sources to be constant).
+defined as how confidently the experimenter can assume a new intensity value
+is unique to an absorber, the limit of detection seem to provide a good error
+estimate. Alternatively, it is possible to define the minimum detectable
+change in intensity as a function of the noise in the detector only, instead
+of through the entire experiment (assuming all other sources to be constant).
 
 \marginpar{For a discussion of how light source fluctuation introduces errors
 in the observed spectrum, see \ref{subsec:laser_fluc}}
@@ -268,30 +297,32 @@ the light source in calculating $\alpha$. As such, this error is too generous
 to the actual achievable sources of error in a \ac{BBCEAS} experiment.
 
 The second problem with the error calculations is that the error in the blank
-measurement is not taken into account. Equation \eqref{eq:ceas_min} assumes
-that one has a constant for the intensity of the blank $I_0$. However, we know
-that this blank has its own error due to the fact that the measurement
-procedure is identical to acquiring the sample spectrum. As such, the common
-error equation in the literature is generous in the minimum detectable
-absorption changes, and does not reflect the actual sensitivity of the
-instruments devised.
+measurement is not taken into account. Equation \eqref{eq:ceas_min} assumes a
+constant for the intensity of the blank $I_0$. However, this blank has its own
+error due to the fact that the measurement procedure is identical to acquiring
+the sample spectrum. As such, the common error equation in the literature is
+generous in the minimum detectable absorption changes, and does not reflect
+the actual sensitivity of the instruments devised.
 
-To alleviate the problems of the error associated with the intensity of the
-source and that of the initial blank intensity measurement, one may consider
-a more accurate method of attempting to calculate the absorption coefficient
-many times \cite{Islam:2007ea}. However, it is immensely time consuming to
-acquire a statistically accurate dataset for many concentrations, and requires
-many flushes of the liquid inside the cuvette (increasing the sample volume
-costs).
+To alleviate the problems of the error associated with the intensity
+of the source and that of the initial blank intensity measurement, an
+experimenter may consider a more accurate method of attempting to calculate
+the absorption coefficient many times for the same concentration of analyte
+\cite{Islam:2007ea}. Unfortunately it is immensely time consuming to acquire
+a statistically accurate dataset for many concentrations, and requires many
+flushes of the liquid inside the cuvette, increasing the sample volume costs.
+These complications are very limiting when only small quantities of the
+analyte is on hand.
 
-\ac{BBCEAS} experiments can calculate a more accurate error by altering the
-method of spectrum collection. When an experimenter collects data on the
-intensity distribution of the blank and solution samples, they often take many
-snapshots of this information and then average that data. However, if one
-calculates the standard deviation of the intensity signals, then it is possible
-to \emph{approximate} the standard deviation in $\alpha$ using the delta method
-\cite{Casella:2002tp}. This leads to the following equations of error for
-equation \eqref{eq:ceas_std} and \eqref{eq:ceas_geo_mod}, respectively.
+A more accurate error can be calculated by altering the method of spectrum
+collection in a \ac{BBCEAS} experiment. When an experimenter collects data
+on the intensity distribution of the blank and solution samples, they often
+take many snapshots of this information and then average that data. If one
+calculates the standard deviation of the intensity signals, then it is
+possible to \emph{approximate} the standard deviation in $\alpha$ using the
+delta method \cite{Casella:2002tp}. This leads to the following equations
+of error for equation \eqref{eq:ceas_std} and \eqref{eq:ceas_geo_mod},
+respectively.
 
     \begin{align}
       \sigma_\alpha = \left(\frac{\sigma_{I_0}}{I} +
@@ -308,13 +339,13 @@ equation \eqref{eq:ceas_std} and \eqref{eq:ceas_geo_mod}, respectively.
                                      \right)^{-1/2}\label{eq:ceas_err_geo}
     \end{align}
 
-It is possible to calculate the standard deviation in $\alpha$ exactly, as a
-measure of sanity, by comparing each of the intensity spectrum of the
-blank against each of the intensity spectrum of the sample. However, this
-quickly becomes computationally demanding. If one was to take 50
-intensity spectrum of the blank and the sample, over 1024 pixel bins inside a
-CCD camera, then one would calculate $\alpha$ more than 2.5 million times,
-which would take a while even on modern computers.
+It is possible to calculate the standard deviation in $\alpha$ exactly, as
+a sanity check, by comparing each of the intensity spectrum of the blank
+against each of the intensity spectrum of the sample. However, this quickly
+becomes computationally demanding. If 50 intensity spectra of the blank and
+the sample were taken over 1024 pixel bins then more then 2.5 million $\alpha$
+values could be calculated, which would take quite some time even on a modern
+computer.
 
 
 
@@ -332,10 +363,12 @@ which would take a while even on modern computers.
 The optical layout for the system used in this report is nearly identical to
 all \ac{BBCEAS} layouts \cite{Berden:2009wk}. The light source is a Fianium
 \textsc{sc-450} supercontinuum pulsed laser source, with a high enough
-repetition rate that it is treated like a continuous wave laser source in our
-equations. After the source, an optical cavity is formed with mirrors of
-reflectivity $R=0.99$. Finally, light exiting the cavity is coupled into a
-multimode fibre and imaged using a custom built grating spectrometer.
+repetition rate that it is treated like a continuous wave laser source in
+our equations. After the source, an optical cavity is formed with mirrors of
+reflectivity $R=0.99$, which were chosen for their costs and to increase the
+light intensity accepted into the cavity. Finally, light exiting the cavity
+is coupled into a multimode fibre and imaged using a custom built grating
+spectrometer.
 
 Inside the cavity sits a cuvette compressed between two optical windows. This
 cuvette holder is then mounted in a rotatable jig to make it easier to properly
@@ -383,12 +416,12 @@ then be collimated to create a low divergence beam to be put into the cavity
 \cite{Berden:2009wk}.  Other groups have shown that fibre-coupled \ac{LED}
 light sources can be used for liquid \ac{BBCEAS} experiments
 \cite{Islam:2007ea,Seetohul:2009du}, and that the setup for an \ac{LED} source
-is relatively trivial.
+is relatively straightforward.
 
 An additional benefit of an \ac{LED} based light source is that the intensity
-could be easily modulated by an external signal quickly. This could be used to
-create lock-in type detection schemes, or to initiate a photochemical reaction
-and watch the result through absorption spectroscopy.
+can be easily modulated by an external signal. This could be used to create
+lock-in type detection schemes, or to initiate a photochemical reaction and
+watch the result through absorption spectroscopy.
 
 
 
@@ -396,12 +429,12 @@ and watch the result through absorption spectroscopy.
 
 Coupling light into a multimode fibre can provide a convenient way to reroute
 light to certain optical setups. The problem with coupling light into a fibre,
-even a multimode fibre with a large diameter core, is that the loss of light at
-the interface of the fibre is relatively high. Practically, lasers based setups
-are unaffected by this coupling problem in \ac{BBCEAS} measurements as it is
-often possible to reach higher output power levels with the laser to offset the
-coupling losses.  There are even cases where one can saturate the absorber in a
-\ac{BBCEAS} measurement if the light intensity is too high
+even a multimode fibre with a large diameter core, is that the loss of light
+at the interface of the fibre is relatively high. Practically, lasers based
+setups are unaffected by this coupling problem in \ac{BBCEAS} measurements
+as it is often possible to reach higher output power levels with the laser
+to offset the coupling losses. There are even cases where the absorber is
+saturated in a \ac{BBCEAS} measurement if the light intensity is too high
 \cite{Giuliano:1967hw}.
 
 Incoherent light sources such as \acp{LED}, on the other hand, suffer from
@@ -435,15 +468,15 @@ the costs of the \ac{BBCEAS} system, the detector can be replaced with the
 
 Replacing the \ac{CCD} with a web camera would bring the total costs, if one
 uses low reflectivity dielectric mirrors, to potentially less than a hundred
-pounds. The \ac{CCD} in a web camera is also incredibly tiny, and would allow
-the entire \ac{BBCEAS} setup to be easily miniaturised into a portable device
-using an \ac{LED} light source.
+pounds. The \ac{CCD} found in a web camera allows the entire \ac{BBCEAS} setup
+to be easily miniaturised into a portable device using an \ac{LED} light
+source.
 
 
 \section*{Chapter Review}
 
 \ac{BBCEAS} is a promising new spectroscopic technique that can be utilised to
-acquire signals from exceptionally tiny absorption cross sections. While this
+acquire signals from exceptionally small absorption cross sections. While this
 method does contain some error, it can be readily quantified and accounted
 for when analysing absorption spectra. While the current implementation of a
 \ac{BBCEAS} provides usable results, some enhancements can be made to further

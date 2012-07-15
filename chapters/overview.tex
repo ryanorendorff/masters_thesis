@@ -35,46 +35,39 @@ well.
 
 \subsection{Beer-Lambert Law}\label{subsec:beer}
 
-Mathematically, the problem of determining the concentration of an absorber
-based on the light lost in a material is relatively simple. By measuring the
-amount of light of a particular wavelength $\lambda$ entering a material, with
-intensity $I_0$, and the amount of light exiting $I$, a relationship of the
-intensities to each other can be made to determine how much light was lost due
-to absorption \cite{Hollas:2004uh}.
 
-\begin{align*}
-  \left(\frac{I}{I_0}\right)_\lambda = e^{-\alpha(\lambda)l}
-\end{align*}
+The Beer-Lambert law relates the loss of light in a material to the
+concentration of absorbers inside that material based on the amount of light
+passing through the absorber and the properties of the absorber itself. While
+this version of the law is formulated using a natural logarithm, it is also
+common to see the law in a base ten format \cite{Hollas:2004uh}.
 
-In the equation above, $\alpha$ is known as the \emph{absorption coefficient}
-(with units of \icm), and is unique to the absorber and the wavelength used as
-the probe. $l$ is the path length that the light travels through the absorbing
-material. The intensity loss due to absorption is caused by an electron in
-the absorber being elevated to a higher energy state. Since electrons can be
-elevated to a multitude of quantised energy states, it is important to choose
-a wavelength that corresponds to one of these electronic transitions.
-
-Taking the logarithm of both sides leads to a value known as the absorbance $A$
+%\begin{wrapfigure}{o}{\marginspace}
+%\begin{center}
+  %\includegraphics[width=\marginspace]{figures/beer.png}
+%\end{center}
+%\emph{\footnotesize{Light passing through a sample cavity is attenuated by the absorbers within the solution. Courtesy Wikipedia.}}
+%\label{fig:microtiter}
+%\end{wrapfigure}
 
 \begin{align}
   A(\lambda)=-\ln\left(\frac{I}{I_0}\right)_\lambda = \alpha(\lambda)l\label{eq:beer}
 \end{align}
 
+where
 
-\begin{wrapfigure}{o}{\marginspace}
-\begin{center}
-  \includegraphics[width=\marginspace]{figures/beer.png}
-\end{center}
-\emph{\footnotesize{Light passing through a sample cavity is attenuated by the absorbers within the solution. Courtesy Wikipedia.}}
-\label{fig:microtiter}
-\end{wrapfigure}
+\begin{tabular}{ll}
+  $A(\lambda)$      & Percent of light absorbed \\
+  $I$               & Intensity after the light passes through the cuvette \\
+  $I_0$             & Intensity before the light passes through the cuvette \\
+  $\alpha(\lambda)$ & Absorption Coefficient (in \icm) \\
+  $l$               & Path length of the cuvette \\
+\end{tabular}
+\\
 
-This is known as the Beer Lambert law. The law relates the loss of light in a
-material to the concentration of absorbers inside that material based on the
-amount of light passing through the absorber and the properties of the absorber
-itself.  While this version of the  law is formulated using a natural logarithm, it is also common to see the law in a base ten format \cite{Hollas:2004uh}.
-
-The Beer-Lambert law can also be used for multiple absorbers in a single material by simply adding the absorption coefficients of all of the absorbers together.
+The Beer-Lambert law can also be used for multiple absorbers in a single
+material by simply adding the absorption coefficients of all of the absorbers
+together.
 
 \begin{align*}
   A(\lambda) = l\sum\alpha(\lambda)_i
@@ -133,13 +126,13 @@ losses -- are discussed below.
 
 \subsection{Line Broadening}\label{subsec:line_broad}
 
-Under theoretical conditions, with perfectly still particles, absorption lines
-would be exceptionally thin due to the fact that only certain quantised energy
-packets would create an excited condition. In reality, absorption lines are
-quite broad, on the order of a few nanometers in liquid \cite{Hollas:2004uh}.
-This broadening occurs due primarily to two factors: the Doppler effect
-and collision based broadening (also known as Lorentzian or pressure based
-broadening) \cite{Olivero:1977ul}.
+Under theoretical conditions, with perfectly still particles, absorption
+lines would be thin because spectral linewidth is limited by the spontaneous
+emission rate of the allowed, quantised electronic transitions. In reality,
+absorption lines are quite broad, on the order of a few nanometers in liquid
+\cite{Hollas:2004uh}. This broadening occurs due primarily to two factors: the
+Doppler effect and collision based broadening (also known as Lorentzian or
+pressure based broadening) \cite{Olivero:1977ul}.
 
 Doppler based broadening is the Doppler effect applied to moving particles.
 A particle at rest will see a incoming photon of light having a certain
@@ -283,12 +276,12 @@ light. This variation technique is used in \ac{TDLAS}, where the laser is
 tuned to a particular frequency, an absorption measurement is taken, and then
 this process repeats.
 
-An advantage of \ac{TDLAS} over some of the other broadband techniques is that
-the resolution of the instrument is dictated by the laser line width, which
-provides sub nanometer resolution \cite{Berden:2009wk}. As a corollary, this
-technique can use a simple photodiode or \ac{PMT} to acquire the intensity of
-the laser light, instead of using a grating to disperse the light across a
-detector.
+An advantage of \ac{TDLAS} over some of the other broadband techniques is
+that the resolution of the instrument is dictated by the laser line width,
+which provides picometer or greater resolution \cite{Berden:2009wk}. As a
+corollary, this technique can use a simple photodiode or \ac{PMT} to acquire
+the intensity of the laser light, instead of using a grating to disperse the
+light across a detector.
 
 \marginpar{A good discussion of wavelength modulation spectroscopy in the form
 of an aircraft hygrometer can be found in \cite{May:1993tu}.}
@@ -332,16 +325,17 @@ of the light reach the detector.
 
 An additional complication from \acp{LED} is that once the broadband light
 arrives at a photodetector the light must be separated into its constituent
-wavelengths to acquire the broadband signal.  Two problems occur from this. If
-one uses a spectrophotometer with a adjustable slit and moving diffraction
-grating, then the signal acquired on a photodetector must be done
-sequentially.  This increases the acquisition time, and suffers from reduced
-spectral resolution when compared with a \ac{TDLAS} experiment due to the
-limiting factor of the resolution being the diffraction grating. One can
-mitigate the acquisition time conundrum by using a line detector instead of a
-single photodetector, but this carries with it a second problem: the
+wavelengths to acquire the broadband signal. Two problems occur from
+this. If one uses a spectrophotometer with a adjustable slit and moving
+diffraction grating, then the signal acquired on a photodetector must be
+done sequentially. This increases the acquisition time, and suffers from
+reduced spectral resolution when compared with a \ac{TDLAS} experiment due
+to the limiting factor of the resolution being the diffraction grating. The
+acquisition time conundrum can be mitigated by using a line detector instead
+of a single photodetector, but this carries with it a second problem: the
 acquisition, while happening simultaneously across several wavelengths, is
-often more difficult to align and can lead to a lower spectral resolution as the line detectors elements have finite size and spacing.
+often more difficult to align and can lead to a lower spectral resolution as
+the line detectors elements have finite size and spacing.
 
 
 
