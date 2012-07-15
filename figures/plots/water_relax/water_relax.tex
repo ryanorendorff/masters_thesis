@@ -1,0 +1,49 @@
+\documentclass[crop,border=0.1cm]{standalone} % Create smallest PDF canvas
+
+\pagestyle{empty}                         % No header or footer
+
+\usepackage{amsmath}                      % Can use align environment
+\usepackage[usenames,dvipsnames]{xcolor}  % Extra colours
+
+\usepackage{pgfplots}                     % PGF/TiKZ plotting package
+\pgfplotsset{compat=newest}               % Should use this
+
+\begin{document}
+\begin{tikzpicture}
+
+\pgfplotstableread[col sep=comma]{relax.csv}\wrelax
+
+  \begin{axis}[
+    footnotesize,               % Footnote sized text
+    width  = 4.65015in,
+    height = 200pt,
+    legend style = {
+      at={(0.99,0.5)},
+      anchor=east,
+      %legend pos=south east
+      draw = none              % Do not draw a box around the legend
+    },
+    xmin = 0,                 % Use certain x values. Required even with xtick
+    xmax = 95,                 % Use certain x values. Required even with xtick
+    xtick = {0,5,...,95},  % Define how often the ticks should happen
+    minor x tick num = 4,       % How many minor ticks between major ticks
+    xtick pos = left,
+    ymin = 0.50,
+    ymax = 1.02,
+    ytick = {0.50,0.60,0.7,0.8,0.9,1.0},
+    minor y tick num = 4,
+    xlabel = Time (seconds),
+    ylabel = Normalised Intensity
+  ]
+
+  \addplot[RoyalBlue] table{\wrelax};
+  \addlegendentry{Intensity Data}
+  \addplot[Maroon,domain=35:95,dashed] {(1-exp(-(x-35)/13))*(.36578)+0.63422};
+  \addlegendentry{Fit using $1-e^{-t/\tau}$}
+  \draw[Orange] (axis cs:0,0.51) -- (axis cs:36,0.51) node[midway,anchor=south]{\emph{\footnotesize{Injection Phase}}};
+  \draw[RoyalPurple] (axis cs:36,0.51) -- (axis cs:95,0.51) node[midway,anchor=south]{\emph{\footnotesize{Relaxation Phase}}};
+
+  \end{axis}
+\end{tikzpicture}
+\end{document}
+

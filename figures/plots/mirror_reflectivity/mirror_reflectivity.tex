@@ -1,0 +1,43 @@
+\documentclass[crop,border=0.1cm]{standalone} % Create smallest PDF canvas
+
+\pagestyle{empty}                         % No header or footer
+
+\usepackage{amsmath}                      % Can use align environment
+\usepackage[usenames,dvipsnames]{xcolor}  % Extra colours
+
+\usepackage{pgfplots}                     % PGF/TiKZ plotting package
+\pgfplotsset{compat=newest}               % Should use this
+
+\newcommand{\unit}[1]{\,#1 }              % Shorthand for units
+\newcommand{\mM}{\unit{mM}}
+\newcommand{\mW}{\unit{mW}}
+
+
+\begin{document}
+\begin{tikzpicture}
+
+  \begin{axis}[
+    footnotesize,               % Footnote sized text
+    width  = 4.65015in,
+    height = 200pt,
+    legend style = {
+      draw = none,              % Do not draw a box around the legend
+    },
+    xmin = 290,                 % Use certain x values. Required even with xtick
+    xmax = 620,                 % Use certain x values. Required even with xtick
+    xtick = {290,330,...,610},  % Define how often the ticks should happen
+    minor x tick num = 3,       % How many minor ticks between major ticks
+    ymin = 97,
+    ymax = 100,
+    ytick = {97,98,...,100},
+    minor y tick num = 4,
+    xlabel = Wavelength (nm),
+    ylabel = Mirror Reflectivity (\%)
+  ]
+
+  \addplot[RoyalBlue] file {mirror_reflectivity.dat};
+
+  \end{axis}
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,77 @@
+\documentclass[crop,border=0.1cm]{standalone} % Create smallest PDF canvas
+
+\pagestyle{empty}                         % No header or footer
+
+\usepackage{amsmath}                      % Can use align environment
+\usepackage[usenames,dvipsnames]{xcolor}  % Extra colours
+
+\usepackage{pgfplots}                     % PGF/TiKZ plotting package
+\pgfplotsset{compat=newest}               % Should use this
+
+\newcommand{\unit}[1]{\,#1 }              % Shorthand for units
+\newcommand{\mM}{\unit{mM}}
+\newcommand{\mW}{\unit{mW}}
+
+
+\begin{document}
+\begin{tikzpicture}
+
+  % The axis environment must be inside a tikzpicture environment
+  \begin{axis}[
+    footnotesize,               % Footnote sized text
+    width  = 4.65015in,
+    height = 200pt,
+    legend style = {
+      legend pos = outer north east,
+      draw = none              % Do not draw a box around the legend
+    },
+    xmin = 450,                 % Use certain x values. Required even with xtick
+    xmax = 600,                 % Use certain x values. Required even with xtick
+    xtick = {450,500,...,600},  % Define how often the ticks should happen
+    minor x tick num = 4,       % How many minor ticks between major ticks
+    ymin = 2e-4,
+    ymax = 13e-4,
+    ytick = {0.0002,0.0004,0.0006,0.0008,0.0010,0.0012,0.0014},
+    minor y tick num = 3,
+    extra x ticks = {           % Extra ticks I want marked
+      465.3,
+      473.5,
+      525.9,
+      535.8,
+      579.0,                    % Expected to be very sharp Sawada 1979
+      591.0                     % Could potentially show hyperfine structure
+    },
+    extra x tick style = {
+      grid = major,             % Draw lines for extra ticks
+      major grid style = {
+        loosely dashed          % Extra tick lines are dashed
+      },
+      tick label style = {
+          rotate = 90,
+          anchor = east,       % Make extra tick labels on the outside of plot
+          color = gray          % Make all extra ticks gray
+      }
+    },
+    xlabel = Wavelength (nm),
+    ylabel = Absorption Coefficient $\left(\text{cm}^{-1}\right)$,
+  ]
+
+      \addplot[RoyalBlue] file {1.dat};
+      \addlegendentry{91.4\mW}
+
+      \addplot[Red] file {2.dat};
+      \addlegendentry{19.7\mW}
+
+      \addplot[ForestGreen] file {3.dat};
+      \addlegendentry{9.90\mW}
+
+      \addplot[RoyalPurple] file {4.dat};
+      \addlegendentry{1.97\mW}
+
+      \addplot[BurntOrange] file {5.dat};
+      \addlegendentry{0.99\mW}
+
+  \end{axis}
+\end{tikzpicture}
+\end{document}
+

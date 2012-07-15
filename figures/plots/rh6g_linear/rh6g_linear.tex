@@ -1,0 +1,83 @@
+\documentclass[crop,border=0.1cm]{standalone} % Create smallest PDF canvas
+
+\pagestyle{empty}                         % No header or footer
+
+\usepackage{amsmath}                      % Can use align environment
+\usepackage[usenames,dvipsnames]{xcolor}  % Extra colours
+
+\usepackage{pgfplots}                     % PGF/TiKZ plotting package
+\pgfplotsset{compat=newest}               % Should use this
+
+\usepgfplotslibrary{groupplots}
+
+\usetikzlibrary{backgrounds}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+% Load the data
+%\pgfplotstableread[col sep=comma,columns={0,1}]{eu_90mW_19.3mM.csv}\data
+
+
+% Input the coordinates for the fill boundary, sort them from highest to lowest x value
+\pgfplotstableread[col sep=comma]{linear.csv}\lin
+\pgfplotstableread[col sep=comma]{non_linear.csv}\nlin
+
+
+  \begin{groupplot}[
+    group style={group name=rh6g, group size=2 by 1, ylabels at=edge left},
+    footnotesize,               % Footnote sized text
+    width  = 2.325075in,
+    height = 200pt,
+    legend style = {
+      draw = none,              % Do not draw a box around the legend
+    },
+    %xmin = 0e-7,                 % Use certain x values. Required even with xtick
+    %xmax = 1.3e-7,
+    %xtick = {0e-7,0.2e-7,0.4e-7,0.6e-7,0.8e-7,1.0e-7,1.2e-7},  % Define how often the ticks should happen
+    %minor x tick num = 1,       % How many minor ticks between major ticks
+    %ymin = 0e-3,
+    %ymax = 6e-3,
+    %ytick = {0e-3,1e-3,2e-3,3e-3,4e-3,5e-3,6e-3},
+    %minor y tick num = 4,
+    xlabel = Molarity,
+    ylabel = Absorption Coefficient $\left(\text{cm}^{\text{-1}}\right)$
+  ]
+
+  \nextgroupplot[
+    xmin = 0e-7,                 % Use certain x values. Required even with xtick
+    xmax = 1.3e-7,
+    xtick = {0e-7,0.2e-7,0.4e-7,0.6e-7,0.8e-7,1.0e-7,1.2e-7},  % Define how often the ticks should happen
+    minor x tick num = 1,       % How many minor ticks between major ticks
+    ymin = 0e-3,
+    ymax = 6e-3,
+    ytick = {0e-3,1e-3,2e-3,3e-3,4e-3,5e-3,6e-3},
+  minor y tick num = 4]
+  \addplot+[RoyalBlue, only marks, error bars/.cd,y dir=both, y explicit] table[x=0,y=1,y error=2] {\lin};
+
+  \addplot+[Maroon,domain=0e-7:1.4e-7, no marks] {40176.0*x - 0.00030694};
+
+  \nextgroupplot[
+    xmin = 0e-6,                 % Use certain x values. Required even with xtick
+    xmax = 1.3e-6,
+    xtick = {0e-6,0.2e-6,0.4e-6,0.6e-6,0.8e-6,1.0e-6,1.2e-6},  % Define how often the ticks should happen
+    minor x tick num = 1,       % How many minor ticks between major ticks
+    ymin = 0.0,
+    ymax = 0.6,
+    ytick = {0.0,0.1,...,0.6},
+  minor y tick num = 4]
+  \addplot+[RoyalBlue, only marks, error bars/.cd,y dir=both, y explicit] table[x=0,y=1,y error=2] {\nlin};
+
+  \addplot+[Maroon,domain=0e-6:1.4e-6,no marks] {3.8883e16*x^3+1.578e11*x^2+10895*x+0.00074443};
+
+  \draw[Gray] (axis cs:0e-7,0e-7) rectangle (axis cs:1.6e-7,20e-3);
+
+\end{groupplot}
+\begin{scope}[on background layer]
+\draw[Gray] (rh6g c1r1.north east) -- ($(rh6g c2r1.south west)!0.04!(rh6g c2r1.north west)$);
+\draw[Gray] (rh6g c1r1.south east) -- (rh6g c2r1.south west);
+\end{scope}
+\end{tikzpicture}
+
+\end{document}

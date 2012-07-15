@@ -1,0 +1,43 @@
+\documentclass[crop,border=0.1cm]{standalone} % Create smallest PDF canvas
+
+\pagestyle{empty}                         % No header or footer
+
+\usepackage{amsmath}                      % Can use align environment
+\usepackage[usenames,dvipsnames]{xcolor}  % Extra colours
+
+\usepackage{pgfplots}                     % PGF/TiKZ plotting package
+\pgfplotsset{compat=newest}               % Should use this
+
+\newcommand{\unit}[1]{\,#1 }              % Shorthand for units
+\newcommand{\mM}{\unit{mM}}
+\newcommand{\mW}{\unit{mW}}
+
+
+\begin{document}
+\begin{tikzpicture}
+
+  \begin{axis}[
+    footnotesize,               % Footnote sized text
+    width  = 4.65015in,
+    height = 200pt,
+    legend style = {
+      draw = none,              % Do not draw a box around the legend
+    },
+    xmin = -2,                 % Use certain x values. Required even with xtick
+    xmax = 60,                 % Use certain x values. Required even with xtick
+    xtick = {0,5,...,60},  % Define how often the ticks should happen
+    minor x tick num = 4,       % How many minor ticks between major ticks
+    ymin = 96,
+    ymax = 100,
+    ytick = {96,97,...,100},
+    minor y tick num = 4,
+    xlabel = Time (Minutes),
+    ylabel = Normalised Intensity (\% of max)
+  ]
+
+    \foreach \x in {1,2,...,12}{\addplot[RoyalBlue] file{\x.csv};}
+
+  \end{axis}
+\end{tikzpicture}
+\end{document}
+

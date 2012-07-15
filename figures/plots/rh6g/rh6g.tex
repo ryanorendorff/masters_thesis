@@ -1,0 +1,138 @@
+\documentclass[crop,border=0.1cm]{standalone}                % Create smallest PDF canvas possible
+
+\pagestyle{empty}                         % No header or footer
+
+\usepackage{amsmath}                      % Can use align environment
+\usepackage[usenames,dvipsnames]{xcolor}  % Extra colours
+
+\usepackage{pgfplots}                     % PGF/TiKZ plotting package
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}               % Should use this
+\usepgfplotslibrary{groupplots}           % Required for sets of plots
+
+\newcommand{\unit}[1]{\,#1 }              % Shorthand for units
+\newcommand{\mM}{\unit{mM}}
+\newcommand{\mW}{\unit{mW}}
+
+
+\begin{document}
+\begin{tikzpicture}
+
+
+\pgfplotstableread[col sep=comma, columns={0,1}]{5e-08_M_Rh6G.csv}\lowest
+\pgfplotstableread[col sep=comma]{5e-08_M_Rh6G_lower.csv}\lowestErrorLow
+\pgfplotstableread[col sep=comma]{5e-08_M_Rh6G_upper.csv}\lowestErrorHigh
+
+\pgfplotstableread[col sep=comma, columns={0,1}]{6e-08_M_Rh6G.csv}\low
+\pgfplotstableread[col sep=comma]{6e-08_M_Rh6G_lower.csv}\lowErrorLow
+\pgfplotstableread[col sep=comma]{6e-08_M_Rh6G_upper.csv}\lowErrorHigh
+
+\pgfplotstableread[col sep=comma, columns={0,1}]{7e-08_M_Rh6G.csv}\middle
+\pgfplotstableread[col sep=comma]{7e-08_M_Rh6G_lower.csv}\middleErrorLow
+\pgfplotstableread[col sep=comma]{7e-08_M_Rh6G_upper.csv}\middleErrorHigh
+
+\pgfplotstableread[col sep=comma, columns={0,1}]{8e-08_M_Rh6G.csv}\high
+\pgfplotstableread[col sep=comma]{8e-08_M_Rh6G_lower.csv}\highErrorLow
+\pgfplotstableread[col sep=comma]{8e-08_M_Rh6G_upper.csv}\highErrorHigh
+
+\pgfplotstableread[col sep=comma,columns={0,1}]{9e-08_M_Rh6G.csv}\highest
+\pgfplotstableread[col sep=comma]{9e-08_M_Rh6G_lower.csv}\highestErrorLow
+\pgfplotstableread[col sep=comma]{9e-08_M_Rh6G_upper.csv}\highestErrorHigh
+
+\pgfplotstableread[col sep=comma,columns={0,1}]{1e-07_M_Rh6G.csv}\uhighest
+\pgfplotstableread[col sep=comma]{1e-07_M_Rh6G_lower.csv}\uhighestErrorLow
+\pgfplotstableread[col sep=comma]{1e-07_M_Rh6G_upper.csv}\uhighestErrorHigh
+
+\pgfplotstablesort[sort cmp=float >]{\lowestErrorLow}{\lowestErrorLow}
+\pgfplotstablesort[sort cmp=float >]{\lowErrorLow}{\lowErrorLow}
+\pgfplotstablesort[sort cmp=float >]{\middleErrorLow}{\middleErrorLow}
+\pgfplotstablesort[sort cmp=float >]{\highErrorLow}{\highErrorLow}
+\pgfplotstablesort[sort cmp=float >]{\highestErrorHigh}{\highestErrorHigh}
+\pgfplotstablesort[sort cmp=float >]{\uhighestErrorHigh}{\uhighestErrorHigh}
+
+\pgfplotstablevertcat{\fillLowest}{\lowestErrorLow}
+\pgfplotstablevertcat{\fillLowest}{\lowestErrorHigh}
+
+\pgfplotstablevertcat{\fillLow}{\lowErrorLow}
+\pgfplotstablevertcat{\fillLow}{\lowErrorHigh}
+
+\pgfplotstablevertcat{\fillMiddle}{\middleErrorLow}
+\pgfplotstablevertcat{\fillMiddle}{\middleErrorHigh}
+
+\pgfplotstablevertcat{\fillHigh}{\highErrorLow}
+\pgfplotstablevertcat{\fillHigh}{\highErrorHigh}
+
+\pgfplotstablevertcat{\fillHighest}{\highestErrorLow}
+\pgfplotstablevertcat{\fillHighest}{\highestErrorHigh}
+
+\pgfplotstablevertcat{\fillUHighest}{\uhighestErrorLow}
+\pgfplotstablevertcat{\fillUHighest}{\uhighestErrorHigh}
+
+  \begin{axis}[
+    group style = {            %% Properties for the set of plots
+      group size = 2 by 2,      % Make 3 columns, 2 rows of plots
+      xlabels at = edge bottom, % Only put the x label on the bottom plots
+      ylabels at = edge left,   % Only put the y label on the far left plots
+      vertical sep = 40pt        % Separate the plot rows by 2cm
+    },
+    footnotesize,               % Footnote sized text
+    width  = 4.65015in,
+    height = 200pt,
+    legend style = {
+      legend pos = outer north east,
+      draw   = none            % Do not draw a box around the legend
+      %fill   = none,            % Legend box has a transparent background
+      %at     = {(1,0.93)},       % Position of legend ((1,1) is top right)
+      %anchor = south east       % Align above point and edge of text is on left
+    },
+    ymin = 0e-3,
+    ymax = 4e-3,
+    xmin  = 450,                % Required even with xtick
+    xmax  = 600,                % Required even with xtick
+    xtick = {450,500,...,600},  % Define how often the ticks should happen
+    minor x tick num = 4,       % How many minor ticks between major ticks
+    %extra x ticks = {           % Extra ticks I want marked
+      %465.3,
+      %473.5,
+      %525.9,
+      %535.8,
+      %579.0,                    % Expected to be very sharp Sawada 1979
+      %591.0                     % Could potentially show hyperfine structure
+    %},
+    %extra x tick style = {
+      %grid = major,             % Draw lines for extra ticks
+      %major grid style = {
+        %loosely dashed          % Extra tick lines are dashed
+      %},
+      %tick label style = {
+          %rotate = 90,          % Make extra tick mark labels sideways
+          %anchor = east,        % Make extra tick labels on the outside of plot
+          %color  = gray         % Make all extra ticks gray
+      %}
+    %},
+    xlabel = Wavelength (nm),
+    ylabel =  Absorption Coefficient $\left(\text{cm}^{-1}\right)$,
+  ]
+
+  \addplot[fill=Magenta!20,draw=none] table {\fillUHighest};
+  \addplot[fill=blue!20,draw=none] table {\fillHighest};
+  \addplot[fill=Red!20,draw=none] table {\fillHigh};
+  \addplot[fill=ForestGreen!20,draw=none] table {\fillMiddle};
+  \addplot[fill=RoyalPurple!20,draw=none] table {\fillLow};
+  \addplot[fill=BurntOrange!20,draw=none] table {\fillLowest};
+
+  \addplot[Magenta] table {\uhighest};
+  \addplot[RoyalBlue] table {\highest};
+  \addplot[Red] table {\high};
+  \addplot[ForestGreen] table {\middle};
+  \addplot[RoyalPurple] table {\low};
+  \addplot[BurntOrange] table {\lowest};
+
+  \legend{,,,,,,100\,nM,90\,nM,80\,nM,70\,nM,60\,nM,50\,nM}
+
+  %% Red, Forest Green, RoyalPurple, BurntOrange
+
+  \end{axis}
+\end{tikzpicture}
+\end{document}
+

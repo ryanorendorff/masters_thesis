@@ -48,9 +48,9 @@ than one, which has no physical meaning.
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=\textwidth]{figures/Rh6G_absorption_cross_section_with_error}
+  \includegraphics[]{figures/plots/rh6g/rh6g.pdf}
 \end{center}
-\caption{Absorption spectra of rhodamine 6G at several concentrations. The filled area around each line represents the standard deviation of the signal, calculated using equation \eqref{eq:ceas_err_geo}. The flaring of the error signal near 600\,nm is a result of significantly less light reaching the cavity due to the 585\,nm edgepass filter in the optical setup (Figure~\ref{fig:optical_layout}).}
+\caption[Rhodamine 6G Absorption Spectra as a Calibration]{Absorption spectra of rhodamine 6G at several concentrations. The filled area around each line represents the standard deviation of the signal, calculated using equation \eqref{eq:ceas_err_geo}. The flaring of the error signal near 600\,nm is a result of significantly less light reaching the cavity due to the 585\,nm edgepass filter in the optical setup (Figure~\ref{fig:optical_layout}).}
 \label{fig:rh6g}
 \end{figure}
 
@@ -66,21 +66,13 @@ Figure~\ref{fig:rh6g_lin}.
 
 \begin{figure}[th]
 \begin{center}
-\includegraphics[width=\textwidth]{figures/rhodamine_concentration_vs_conc_linear.png}
+  \includegraphics[]{figures/plots/rh6g_linear/rh6g_linear.pdf}
 \end{center}
-\caption{The linear region of the absorption spectra obtained for different Rh6G concentrations. The error bars represent one standard deviation from the observed signal taken from the maximum peak of the Rh6G spectra.}
+\caption[Dynamic Range of Rhodamine 6G Measurements with \ac{BBCEAS}]{The linear region (left) and nonlinear region (right) of the absorption spectra obtained for different Rh6G concentrations, with red coloured linear and cubic fits, respectively. The error bars represent one standard deviation from the observed signal taken from the maximum peak of the Rh6G spectra.}
 \label{fig:rh6g_lin}
 \end{figure}
 
-\begin{figure}[th]
-\begin{center}
-\includegraphics[width=\textwidth]{figures/rhodamine_concentration_vs_conc_non_linear.png}
-\end{center}
-\caption{An extended version of Figure~\ref{fig:rh6g_lin}, which shows that the linear regime for the Beer-Lambert law has a limited dynamic range.}
-\label{fig:rh6g_nonlin}
-\end{figure}
-
-As can be seen in figure~\ref{fig:rh6g_nonlin}, the lower the concentration, the
+As can be seen in figure~\ref{fig:rh6g_lin}, the lower the concentration, the
 better we can fit a linear regression to the data acquired. As such, a lower
 bound is better defined as the limit of detection, instead of attempting to
 extrapolate a linear function to below the noise levels of the instrument.
@@ -108,13 +100,14 @@ methods of determining valid concentration ranges.
 
 \subsection{Intensity fluctuations due to light source stability}\label{subsec:laser_fluc}
 
-\begin{figure}[h!]
+\begin{figure}[t]
 \begin{center}
-\includegraphics[width=\textwidth]{figures/change_in_intensity_of_576_5nm_over_one_hour.png}
+  \includegraphics[]{figures/plots/intensity_fluc/intensity_fluc.pdf}
 \end{center}
-\caption{Fluctuations in the laser intensity over time at 575\,nm, passed through the \ac{BBCEAS} setup with a water blank in the cuvette. Low and high frequency fluctuations due to laser drift are present, as well as the high frequency fluctuations due to the \ac{CCD}.}
+\caption[Intensity fluctuations through blank in \ac{BBCEAS} setup]{Fluctuations in the laser intensity over time at 575\,nm, passed through the \ac{BBCEAS} setup with a water blank in the cuvette. Low and high frequency fluctuations due to laser drift are present, as well as the high frequency fluctuations due to the \ac{CCD}.}
 \label{fig:laser_fluc}
 \end{figure}
+
 
 \ac{BBCEAS} measurements, while based on \ac{CRDS}, do not share the benefit of
 being immune to intensity fluctuations in the source \cite{Berden:2009wk}. This
@@ -166,9 +159,9 @@ to give a true estimate of the sensitivity of a \ac{BBCEAS} instrument.
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=\textwidth]{figures/water_relax.pdf}
+\includegraphics[]{figures/plots/water_relax/water_relax.pdf}
 \end{center}
-\caption{Intensity signal through the \ac{BBCEAS} setup after injecting water into the cuvette that contained water originally. The return to the original signal strength fits an exponential trend well, with a time constant $\tau \approx 13\,\text{ms}$.}
+\caption[Intensity during Turbulence Fluid Injection]{Intensity signal through the \ac{BBCEAS} setup after injecting water into the cuvette that contained water originally. The return to the original signal strength fits an exponential trend well, with a time constant $\tau \approx 13\,\text{s}$.}
 \label{fig:relax}
 \end{figure}
 
@@ -200,9 +193,9 @@ lowest noise spectra are likely to be taken.
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=\textwidth]{figures/mirrors.jpg}
+  \includegraphics[]{figures/plots/mirror_reflectivity/mirror_reflectivity.pdf}
 \end{center}
-\caption{The mirror reflectivity provided by the manufacturer. The cavity alignment has a direct effect on the mirror reflectivity seen in an experiment, and hence these curves cannot be used directly.}
+\caption[Cavity Mirror Reflectivity]{The mirror reflectivity provided by the manufacturer. The cavity alignment has a direct effect on the mirror reflectivity seen in an experiment, and hence these curves cannot be used directly.}
 \label{fig:mirror}
 \end{figure}
 
