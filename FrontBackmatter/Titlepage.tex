@@ -4,24 +4,42 @@
 \begin{titlepage}
 	% if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
 	\begin{addmargin}[-1cm]{-3cm}
-    \begin{center}
-        \large
+    \begin{flushleft}
 
         \hfill
 
         \vfill
 
+
         \begingroup
-            \color{RoyalPurple}\spacedallcaps{\myTitle} \\ \bigskip
+          \Large
+          \color{RoyalPurple}\spacedallcaps{\myTitle} \\ \medskip
         \endgroup
 
-        \spacedlowsmallcaps{\myName}
+        \begin{large}
+          \mySubtitle \\ \bigskip
+        \end{large}
+
+        \bigskip
+        \bigskip
+
+        \emph{\myVersion} \\ \bigskip
+
+        \bigskip
+        \bigskip
+
+        \begin{Large}
+          \spacedlowsmallcaps{\myName}
+        \end{Large}
+
 
         \vfill
 
-        \includegraphics[width=6cm]{figures/Churchill_College_Crest_-_flat.png} \\ \medskip
+        \includegraphics[]{figures/eu_snowflake/eu_snowflake_fall.pdf}
 
-        \mySubtitle \\ \bigskip
+        \vfill
+        %\bigskip
+        %\bigskip
 
         \emph{For the Completion of}\\
         \myDegree \\ \bigskip
@@ -31,6 +49,6 @@
 
         \vfill
 
-    \end{center}
+    \end{flushleft}
   \end{addmargin}
 \end{titlepage}

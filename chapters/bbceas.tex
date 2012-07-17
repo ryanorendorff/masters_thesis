@@ -181,7 +181,7 @@ However, there are several ways of performing this calculation, as described
 below.
 
 \marginpar{Tools and file specifications for CamTIFF, as well as the source
-for Apollo, can be found at url{https://github.com/LaserAnalytics/}}
+for Apollo, can be found at \url{https://github.com/LaserAnalytics/}}
 
 In an attempt to perform these functions, a few pieces of software were
 developed. A new file format called \emph{CamTIFF} was created to store
@@ -212,16 +212,50 @@ the following derivations}
 
 This equation is a result of the cavity ring down equation at steady state,
 under the assumptions that the mirror reflectivity $R$ tends to 1 and that the
-absorption coefficient tends to nearly zero. Due to these assumptions, this
-technique is best served for the analysis of gas phase solutions, although it
-has been shown to be applicable over nearly all experimental conditions that
-one would want to run \cite{Mazurenka:2005fh}.
+absorption coefficient tends to zero. Due to these assumptions, this technique
+is best served for the analysis of gas phase solutions, although it has been
+shown to be applicable over nearly all experimental conditions that one would
+want to run \cite{Mazurenka:2005fh}.
 
 A second equation in use in the literature does not make the assumptions
 that $R \to 1$ and $\alpha \to 0$ due to the fact that it is derived from
 a geometric sum of single pass Beer-Lambert calculations instead of an
-indefinite integral \cite{Fiedler:2003db}. This equation is slightly more
-complicated.
+indefinite integral. Below is a brief derivation of this
+second equation \cite{Fiedler:2003db}.
+
+For a cavity with an input intensity $I_{in}$, mirror reflectivity $R$,
+and fraction losses due to absorption $1-L$, it is possible to find the
+output intensity $I$ after a certain number of passes $n$ using the following
+equation.
+
+\begin{align*}
+  I = I_{in}(1-R)^2(1-L)\sum_{n=0}^{\infty}(R^{2}(1-L)^{2})^{n}
+\end{align*}
+
+In this equation, $I_{in}(1-R)^2(1-L)$ represents the light escaping the
+cavity after the zeroth pass, and $\sum_{n=0}^{\infty}(R^{2}(1-L)^{2})^{n}$ is
+the light escaping after $n$ passes. Since $R \leq 1$ and $L \leq 1$, the
+summation converges in the following form.
+
+\begin{align*}
+  I = I_{in}\frac{(1-R)^2(1-L)}{1-R^2(1-L)^2}
+\end{align*}
+
+In the case of no losses from the cavity ($L=0$), the equation simplifies to
+
+\begin{align*}
+  I_0 = I_{in}(1-R)(1+R)^{-1}
+\end{align*}
+
+Taking the ratio $I_0/I$ leads to the following formula after using the quadratic formula.
+
+\begin{align*}
+  (1-L) = \pm\sqrt{\frac{1}{4}\left(\frac{I_0}{I}\frac{(1-R^2)}{R^2}\right)^2+\frac{1}{R^2}} - \frac{1}{2}\frac{I_0}{I}\frac{(1-R^2)}{R^2}
+\end{align*}
+
+Assuming all of the intracavity losses are due to absorption only ($1-L =
+e^{-\alpha l}$, where $l$ is the path length), the absorption coefficient is
+found to be
 
   \begin{align}
     \alpha = \frac{1}{d}\left|\ln\left(\frac{1}{2R^2}\left(\sqrt{4R^2+\left(\frac{I_0}{I}(R^2-1)\right)^2} + \frac{I_0}{I}(R^2-1)\right)\right)\right| \label{eq:ceas_geo}
@@ -240,18 +274,19 @@ In this report, the following equation is used.
 \eqref{eq:ceas_err_geo} are unique to this report.}
 
 \begin{align}
-    \alpha = \frac{1}{d}\ln\left(\frac{1}{2R^2}\left(\sqrt{4R^2+\left(\frac{I_0}{I}(1-R^2)\right)^2} - \frac{I_0}{I}(1-R^2)\right)\right) \label{eq:ceas_geo_mod}
+    \alpha = -\frac{1}{d}\ln\left(\frac{1}{2R^2}\left(\sqrt{4R^2+\left(\frac{I_0}{I}(1-R^2)\right)^2} - \frac{I_0}{I}(1-R^2)\right)\right) \label{eq:ceas_geo_mod}
 \end{align}
 
-This equation is a modification of the geometrically derived equation. First,
-the absolute value operator was removed. Since negative absorption coefficent
-values only occur when the intensity of the blank spectrum is higher than the
-sample spectrum, it is easier to be able to note these abnormalities through
-negative numbers. In addition, equation \eqref{eq:ceas_geo_mod} rearranges the
-$R^2-1$ terms to $-(1-R^2)$ make the calculation of the standard deviation
-simpler, as shown in Appendix~\ref{ch:ceas_error_der}. This rearrangement can
-be done because $R$ is physically bounded to be between zero and one, meaning
-that $R^2$ must always be a positive number.
+This equation is a modification of the geometrically derived equation
+\eqref{eq:ceas_geo}. First, the absolute value operator was removed. Since
+negative absorption coefficient values only occur when the intensity of
+the blank spectrum is higher than the sample spectrum, it is easier to be
+able to note these abnormalities through negative numbers. In addition,
+equation \eqref{eq:ceas_geo_mod} rearranges the $R^2-1$ terms to $-(1-R^2)$
+make the calculation of the standard deviation simpler, as shown in
+Appendix~\ref{ch:ceas_error_der}. This rearrangement can be done because $R$
+is physically bounded to be between zero and one, meaning that $R^2$ must
+always be bounded to the same interval.
 
 
 

@@ -23,8 +23,14 @@
     width  = 4.65015in,
     height = 200pt,
     legend style = {
-      legend pos = outer north east,
-      draw = none              % Do not draw a box around the legend
+      %legend pos = outer north east,
+      legend columns=6,
+      draw   = none,            % Do not draw a box around the legend
+      fill   = none,            % Legend box has a transparent background
+      at     = {(0.555,1.00)},       % Position of legend ((1,1) is top right)
+      anchor = south % Align above point and edge of text is on left
+      %legend pos = outer north east,
+      %draw = none              % Do not draw a box around the legend
     },
     xmin = 450,                 % Use certain x values. Required even with xtick
     xmax = 600,                 % Use certain x values. Required even with xtick

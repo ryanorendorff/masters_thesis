@@ -14,7 +14,7 @@
 % 1. Configure classicthesis for your needs here, e.g., remove "drafting" below
 % in order to deactivate the time-stamp on the pages
 % ****************************************************************************************************
-\PassOptionsToPackage{eulerchapternumbers,listings,drafting,%
+\PassOptionsToPackage{eulerchapternumbers,listings,%drafting,%
 				 pdfspacing,%floatperchapter,%linedheaders,%
 				 subfig,beramono,eulermath,parts}{classicthesis}
 % ********************************************************************
@@ -49,7 +49,7 @@
 \newcommand{\myUni}{University of Cambridge\xspace}
 \newcommand{\myLocation}{Cambridge\xspace}
 \newcommand{\myTime}{July 2012\xspace}
-\newcommand{\myVersion}{version 0.4.1\xspace}
+\newcommand{\myVersion}{version 1.0.0\xspace}
 
 % ********************************************************************
 % Setup, finetuning, and useful commands
@@ -191,10 +191,10 @@
     %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
     pdftitle={\myTitle},%
     pdfauthor={\textcopyright\ \myName, \myUni},%
-    pdfsubject={Europium, CEAS},%
+    pdfsubject={Combining BBCEAS with Aqueous Europium to make powerful assays},%
     pdfkeywords={Europium, CEAS, Absorption Spectroscopy},%
     pdfcreator={pdfLaTeX},%
-    pdfproducer={LaTeX with hyperref and classicthesis}%
+    pdfproducer={LaTeX with classicthesis}%
 }
 
 % ********************************************************************
@@ -262,6 +262,7 @@
 }
 
 \input{commands}
+
 
 % ****************************************************************************************************
 % 8. Further adjustments (experimental)

@@ -4,13 +4,13 @@ Spectroscopy is a field of science dedicated to using the knowledge of how
 electromagnetic radiation interacts with matter. The fact that matter absorbs,
 emits, refracts, and deflects energy allows us to investigate the properties
 of a substance non-invasively, allowing a wealth of information to be acquired
-without altering the matter being probed. The information that can be gleaned
-from such experiments include the chirality of a molecule, the energy levels
-of an atom's electronic structure, and the concentration of various chemicals
-in any type of solution, to name only a few.
+without altering the matter. The information that can be gleaned from such
+experiments include the chirality of a molecule, the energy levels of an
+atom's electronic structure, and the concentration of various chemicals in any
+type of solution, to name only a few.
 
 This chapter will discuss a variety of absorption spectroscopy techniques.
-First, a discussion of the theory behind absorption spectroscopy will be
+First, a discussion of the theory of absorption spectroscopy will be
 presented. Afterward an in depth look at different absorption spectroscopy
 techniques used to increase sensitivity and applicability is performed.
 
@@ -184,12 +184,12 @@ unobservable in liquid solutions.
 
 \subsection{Scattering Losses}\label{subsec:scattering}
 
-\begin{wrapfigure}{o}{\marginspace}
-\begin{center}
-  \includegraphics[width=\marginspace]{figures/scatter.png}
-\end{center}
-\emph{\footnotesize{Scattering of photons from molecules in a sample. Courtesy Wikipedia}}
-\end{wrapfigure}
+%\begin{wrapfigure}{o}{\marginspace}
+%\begin{center}
+  %\includegraphics[width=\marginspace]{figures/scatter.png}
+%\end{center}
+%\emph{\footnotesize{Scattering of photons from molecules in a sample. Courtesy Wikipedia}}
+%\end{wrapfigure}
 
 In addition to broadening schemes, liquid absorption measurements fall victim
 to the fact that Beer-Lambert type experiments cannot differentiate between
@@ -201,6 +201,10 @@ role in light loss is no longer valid. This leads to higher baseline error and
 requires higher light intensities to be pumped into the absorbing medium, since
 much of the  light will be lost just by trying to traversing the cavity.
 
+\marginpar{While a change in the normal index of refraction does not alter
+absorption effects, a change in the complex index of refraction does cause
+changes in absorption events due to the imaginary term}
+
 The loss of light due to scattering also restricts the types of solutions that
 can be observed. If a solution is turbid it may be difficult to find a powerful
 enough light source that can push enough photons through the sample to detect
@@ -211,10 +215,6 @@ to scattering changes over the time of the measurements. This turbidity problem
 becomes especially pronounced in experiments designed to determine reaction
 kinematics, as the absorption measurements over time will not be comparable due
 to the shifting noise caused by scattering.
-
-\marginpar{While a change in the normal index of refraction does not alter
-absorption effects, a change in the complex index of refraction does cause
-changes in absorption events due to the imaginary term}
 
 Light can also be lost due to changes in the index of refraction for the
 solution. Many gas solutions are dilute enough that the index of refraction of
@@ -261,12 +261,12 @@ sequentially and simultaneously.
 
 \subsection{Tunable Diode Lasers}\label{subsec:tdl}
 
-\begin{wrapfigure}{o}{\marginspace}
-\begin{center}
-\includegraphics[width=\marginspace]{figures/diode_laser.pdf}
-\end{center}
-\emph{\footnotesize{A simple laser diode, where the red ellipse represents the emission of light. Courtesy Wikipedia}}
-\end{wrapfigure}
+%\begin{wrapfigure}{o}{\marginspace}
+%\begin{center}
+%\includegraphics[width=\marginspace]{figures/diode_laser.pdf}
+%\end{center}
+%\emph{\footnotesize{A simple laser diode, where the red ellipse represents the emission of light. Courtesy Wikipedia}}
+%\end{wrapfigure}
 
 One common method for acquiring broadband signals is to use a light source
 known as a \acf{TDL}. \ac{TDL} sources are diode lasers that are tunable
@@ -279,7 +279,7 @@ this process repeats.
 An advantage of \ac{TDLAS} over some of the other broadband techniques is
 that the resolution of the instrument is dictated by the laser line width,
 which provides picometer or greater resolution \cite{Berden:2009wk}. As a
-corollary, this technique can use a simple photodiode or \ac{PMT} to acquire
+corollary, this technique can use a photodiode or \ac{PMT} to acquire
 the intensity of the laser light, instead of using a grating to disperse the
 light across a detector.
 
@@ -316,12 +316,12 @@ lost attempting to create a collimated beam often leads to minuscule fractions
 of the light reach the detector.
 
 
-\begin{wrapfigure}{o}{\marginspace}
-\begin{center}
-\includegraphics[width=\marginspace]{figures/led.pdf}
-\end{center}
-\emph{\footnotesize{A diagram of an \ac{LED}, courtesy Wikipedia.}}
-\end{wrapfigure}
+%\begin{wrapfigure}{o}{\marginspace}
+%\begin{center}
+%\includegraphics[width=\marginspace]{figures/led.pdf}
+%\end{center}
+%\emph{\footnotesize{A diagram of an \ac{LED}, courtesy Wikipedia.}}
+%\end{wrapfigure}
 
 An additional complication from \acp{LED} is that once the broadband light
 arrives at a photodetector the light must be separated into its constituent
@@ -347,12 +347,12 @@ much simpler than in the case of an \ac{LED} with the added benefit of low
 power loss while coupling into a absorbing medium.
 
 
-\begin{wrapfigure}{o}{\marginspace}
-\begin{center}
-  \includegraphics[width=\marginspace]{figures/supercontinuum.png}
-\end{center}
-\emph{\footnotesize{a Nd:YAG laser pulse being transformed into a supercontinuum by injecting the pulse into a photonic crystal fibre. Courtesy Wikipedia.}}
-\end{wrapfigure}
+%\begin{wrapfigure}{o}{\marginspace}
+%\begin{center}
+  %\includegraphics[width=\marginspace]{figures/supercontinuum.png}
+%\end{center}
+%\emph{\footnotesize{a Nd:YAG laser pulse being transformed into a supercontinuum by injecting the pulse into a photonic crystal fibre. Courtesy Wikipedia.}}
+%\end{wrapfigure}
 
 While supercontinuum sources build on the advantages of \acp{LED}, they
 introduce problems of their own. The most practical problem is the cost of
@@ -381,12 +381,12 @@ below.
 \subsection{Multipass Cells}\label{subsec:herriott}
 
 
-\begin{wrapfigure}{o}{\marginspace}
-\begin{center}
-  \includegraphics[width=\marginspace]{figures/herriott.png}
-\end{center}
-\emph{\footnotesize{A Herriott cell, shoring the path of light within the cell. Courtesy Wikipedia.}}
-\end{wrapfigure}
+%\begin{wrapfigure}{o}{\marginspace}
+%\begin{center}
+  %\includegraphics[width=\marginspace]{figures/herriott.png}
+%\end{center}
+%\emph{\footnotesize{A Herriott cell, shoring the path of light within the cell. Courtesy Wikipedia.}}
+%\end{wrapfigure}
 
 One simple way to traverse a sample multiple times is to build a cavity with
 two mirrors on either end that reflect the light back and forth through the
@@ -407,12 +407,12 @@ particulates on the mirror surfaces.
 \subsection{Optical Cavities}\label{subsec:cavity}
 
 
-\begin{wrapfigure}{o}{\marginspace}
-\begin{center}
-  \includegraphics[height=100pt]{figures/cavity.png}
-\end{center}
-\emph{\footnotesize{An optical cavity and the light propagation inside using plano-convex mirrors. Courtesy Wikipedia.}}
-\end{wrapfigure}
+%\begin{wrapfigure}{o}{\marginspace}
+%\begin{center}
+  %\includegraphics[height=100pt]{figures/cavity.png}
+%\end{center}
+%\emph{\footnotesize{An optical cavity and the light propagation inside using plano-convex mirrors. Courtesy Wikipedia.}}
+%\end{wrapfigure}
 
 A similar approach to  Herriott cells is to use an optical cavity akin to a
 laser cavity, except where both mirrors are only partially reflective. In such
@@ -425,6 +425,10 @@ mirrors of reflectivity $R=0.999$, the increase in the path length will be
 $(1-R)^{-1} = 1000$, which is a higher gain than most Herriott cells can
 achieve.
 
+\marginpar{The mirror reflectivity curves depend on the alignment of the cavity
+as well as the mirror surfaces. As such, it is not possible to use mirror
+transmission curves provided by a manufacturer \cite{Berden:2009wk}.}
+
 Unfortunately these cavities are also difficult to align, as the input beam
 must be perpendicular to the axis of the cavity. In addition, this method
 requires a higher initial input intensity as a significant amount of light is
@@ -433,10 +437,6 @@ error due to the change in reflectivity of the mirrors based on wavelength that
 must be measured and accounted for in the absorption spectrum. Finally, this
 method can be more expensive than other multipass techniques, as high quality,
 high reflectivity mirrors are expensive.
-
-\marginpar{The mirror reflectivity curves depend on the alignment of the cavity
-as well as the mirror surfaces. As such, it is not possible to use mirror
-transmission curves provided by a manufacturer \cite{Berden:2009wk}.}
 
 
 
