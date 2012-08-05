@@ -23,32 +23,23 @@ light, then it is possible to detect this energy transfer via the law of the
 conservation of energy. One of the simplest ways to measure an absorption
 event is to count the number of photons that went into a substance in question
 and how many photons came out the other side. In this way it can be determined
-how much energy was absorbed by the matter in the substance, assuming no light
-is lost to scattering or other processes. The amount of light absorbed is
-correlated to the concentration of the absorbing material in the path of the
-light, and the absorption amount is unique to the absorber and its current
-state. The information about photon absorption can then be used to understand
-not only the concentration of the absorber but its electronic structure as
-well.
+how much energy was absorbed by the matter in the substance, assuming no
+light is lost to scattering or other processes. The amount of light absorbed
+is correlated to the concentration of the absorbing material in the path of
+the light, and the absorption amount per wavelength is often unique to the
+absorber and its current state. The information about photon absorption can
+then be used to understand not only the concentration of the absorber but its
+electronic structure as well.
 
 
 
 \subsection{Beer-Lambert Law}\label{subsec:beer}
-
 
 The Beer-Lambert law relates the loss of light in a material to the
 concentration of absorbers inside that material based on the amount of light
 passing through the absorber and the properties of the absorber itself. While
 this version of the law is formulated using a natural logarithm, it is also
 common to see the law in a base ten format \cite{Hollas:2004uh}.
-
-%\begin{wrapfigure}{o}{\marginspace}
-%\begin{center}
-  %\includegraphics[width=\marginspace]{figures/beer.png}
-%\end{center}
-%\emph{\footnotesize{Light passing through a sample cavity is attenuated by the absorbers within the solution. Courtesy Wikipedia.}}
-%\label{fig:microtiter}
-%\end{wrapfigure}
 
 \begin{align}
   A(\lambda)=-\ln\left(\frac{I}{I_0}\right)_\lambda = \alpha(\lambda)l\label{eq:beer}
@@ -57,11 +48,11 @@ common to see the law in a base ten format \cite{Hollas:2004uh}.
 where
 
 \begin{tabular}{ll}
-  $A(\lambda)$      & Percent of light absorbed \\
-  $I$               & Intensity after the light passes through the cuvette \\
-  $I_0$             & Intensity before the light passes through the cuvette \\
-  $\alpha(\lambda)$ & Absorption Coefficient (in \icm) \\
-  $l$               & Path length of the cuvette \\
+  $A(\lambda)$      & Fraction of light absorbed by absorber \\
+  $I$               & Intensity after the light passes through the sample \\
+  $I_0$             & Intensity before the light passes through the sample \\
+  $\alpha(\lambda)$ & Absorption Coefficient of absorber (in \icm) \\
+  $l$               & Path length of the sample \\
 \end{tabular}
 \\
 
@@ -103,15 +94,15 @@ Knowing how to measure concentration using absorption measurements is useful,
 but with broadband light sources it is possible to measure absorption events
 due to several different electronic transitions within an absorber. This
 information can then be used for a better understanding of the absorber in
-question, and allow properties such as fluorescence lifetimes to be measured
+question, and allow properties such as radiative lifetimes to be measured
 from absorption events \cite{Werts:2002fs}.
 
 In addition to experimentally probing an absorber to determine its electronic
-structure, it is possible to theoretically guess both the energy required for
-an electronic transition and where it will take place. This is often done
+structure, it is possible to theoretically estimate both the energy required
+for an electronic transition and where it will take place. This is often done
 through Hartree-Fock approximations to determine the energy required for an
-electronic transition \cite{Szabo:1996tu}, and Judd-Ofelt theory to guess the
-absorption strength at that transition \cite{Judd:1962uq}.
+electronic transition \cite{Szabo:1996tu}, and Judd-Ofelt theory to estimate
+the absorption strength at that transition \cite{Judd:1962uq}.
 
 
 
@@ -184,13 +175,6 @@ unobservable in liquid solutions.
 
 \subsection{Scattering Losses}\label{subsec:scattering}
 
-%\begin{wrapfigure}{o}{\marginspace}
-%\begin{center}
-  %\includegraphics[width=\marginspace]{figures/scatter.png}
-%\end{center}
-%\emph{\footnotesize{Scattering of photons from molecules in a sample. Courtesy Wikipedia}}
-%\end{wrapfigure}
-
 In addition to broadening schemes, liquid absorption measurements fall victim
 to the fact that Beer-Lambert type experiments cannot differentiate between
 light lost due to scattering versus due to absorption.  In gas phase
@@ -261,20 +245,13 @@ sequentially and simultaneously.
 
 \subsection{Tunable Diode Lasers}\label{subsec:tdl}
 
-%\begin{wrapfigure}{o}{\marginspace}
-%\begin{center}
-%\includegraphics[width=\marginspace]{figures/diode_laser.pdf}
-%\end{center}
-%\emph{\footnotesize{A simple laser diode, where the red ellipse represents the emission of light. Courtesy Wikipedia}}
-%\end{wrapfigure}
-
 One common method for acquiring broadband signals is to use a light source
 known as a \acf{TDL}. \ac{TDL} sources are diode lasers that are tunable
-through either current or temperature \cite{May:1998ue}. Since temperature is
-difficult to control, current is varied to sweep the frequency of the laser
-light. This variation technique is used in \ac{TDLAS}, where the laser is
-tuned to a particular frequency, an absorption measurement is taken, and then
-this process repeats.
+through either current or temperature, and offer tuning ranges of about 10\,nm
+\cite{May:1998ue}. Since temperature is difficult to control, current is
+varied to sweep the frequency of the laser light. This variation technique is
+used in \ac{TDLAS}, where the laser is tuned to a particular frequency, an
+absorption measurement is taken, and then this process repeats.
 
 An advantage of \ac{TDLAS} over some of the other broadband techniques is
 that the resolution of the instrument is dictated by the laser line width,
@@ -287,13 +264,14 @@ light across a detector.
 of an aircraft hygrometer can be found in \cite{May:1993tu}.}
 
 Even though this method is simple to implement and cost effective, it suffers
-from two major drawbacks. The first is that the broadband acquisition is done
-sequentially, which creates an acquisition time versus resolution and spectral
-range trade off to consider. \ac{TDLAS} also suffers from a problem inherent
-to standard single pass absorption techniques, which is that the instrument
-must detect a potentially small intensity change on top of a large background
-signal. However, this second intensity problem can be mitigated through the use
-either \ac{WMS} \cite{Reid:1981vq} or \ac{FMS}.
+from three major drawbacks. The first is that the broadband acquisition is
+done sequentially, which creates an acquisition time versus resolution and
+spectral range trade off to consider. In addition, the tunable range of a
+\ac{TDL} is small, and not amenable to taking broad spectra. \ac{TDLAS} also
+suffers from a problem inherent to standard single pass absorption techniques,
+which is that the instrument must detect a potentially small intensity change
+on top of a large background signal. However, this intensity problem can be
+mitigated through the use either \ac{WMS} \cite{Reid:1981vq} or \ac{FMS}.
 
 
 
@@ -308,20 +286,12 @@ spectroscopy. Best of all, these sources are extremely cheap to produce, making
 equipment.
 
 Unfortunately \acp{LED} are quite difficult to use for absorption
-spectroscopy.  \acp{LED} are incoherent sources, and as such it can be
-difficult to couple the light from an \ac{LED} into a
-cavity \cite{Seetohul:2009du,Islam:2007ea}. Even if light is successfully
-coupled into the cavity containing absorber molecules, the amount of light
-lost attempting to create a collimated beam often leads to minuscule fractions
-of the light reach the detector.
-
-
-%\begin{wrapfigure}{o}{\marginspace}
-%\begin{center}
-%\includegraphics[width=\marginspace]{figures/led.pdf}
-%\end{center}
-%\emph{\footnotesize{A diagram of an \ac{LED}, courtesy Wikipedia.}}
-%\end{wrapfigure}
+spectroscopy. \acp{LED} are often lambertian sources, and as such it
+can be difficult to couple the light from an \ac{LED} into a cavity
+\cite{Seetohul:2009du,Islam:2007ea}. Even if light is successfully coupled
+into the cavity containing absorber molecules, the amount of light lost
+attempting to create a collimated beam often leads to minuscule fractions of
+the light reach the detector.
 
 An additional complication from \acp{LED} is that once the broadband light
 arrives at a photodetector the light must be separated into its constituent
@@ -335,7 +305,7 @@ acquisition time conundrum can be mitigated by using a line detector instead
 of a single photodetector, but this carries with it a second problem: the
 acquisition, while happening simultaneously across several wavelengths, is
 often more difficult to align and can lead to a lower spectral resolution as
-the line detectors elements have finite size and spacing.
+the line detectors are limited in resolution by a diffraction grating.
 
 
 
@@ -345,14 +315,6 @@ Supercontinuum laser light sources combine the advantage of a broadband source
 with a tightly collimated beam and high output powers. This makes alignment
 much simpler than in the case of an \ac{LED} with the added benefit of low
 power loss while coupling into a absorbing medium.
-
-
-%\begin{wrapfigure}{o}{\marginspace}
-%\begin{center}
-  %\includegraphics[width=\marginspace]{figures/supercontinuum.png}
-%\end{center}
-%\emph{\footnotesize{a Nd:YAG laser pulse being transformed into a supercontinuum by injecting the pulse into a photonic crystal fibre. Courtesy Wikipedia.}}
-%\end{wrapfigure}
 
 While supercontinuum sources build on the advantages of \acp{LED}, they
 introduce problems of their own. The most practical problem is the cost of
@@ -380,39 +342,24 @@ below.
 
 \subsection{Multipass Cells}\label{subsec:herriott}
 
-
-%\begin{wrapfigure}{o}{\marginspace}
-%\begin{center}
-  %\includegraphics[width=\marginspace]{figures/herriott.png}
-%\end{center}
-%\emph{\footnotesize{A Herriott cell, shoring the path of light within the cell. Courtesy Wikipedia.}}
-%\end{wrapfigure}
-
 One simple way to traverse a sample multiple times is to build a cavity with
 two mirrors on either end that reflect the light back and forth through the
-sample. It is possible to find mirrors that allow light to enter through a hole
-in one mirror, bounce around a few times inside the cavity, and then exit
-through a hole in the second mirror. These cavities are known as Herriott
-cells, and they provide a simple and convenient way to increase the path
-length \cite{Engel:2007va}. In the resulting measurement, the effective path
-length is the distance across the sample multiplied by the number of passes,
-making it possible to increase the resolution by a couple orders of magnitude.
+sample. It is possible to find mirrors that allow light to enter through a
+hole in one mirror, bounce around a few times inside the cavity, and then exit
+through a hole in the second mirror. These cavities are known as Herriott or
+White cells, and they provide a simple and convenient way to increase the
+path length \cite{Engel:2007va}. In the resulting measurement, the effective
+path length is the distance across the sample multiplied by the number of
+passes, making it possible to increase the sensitivity by a couple orders of
+magnitude.
 
-These cells, while providing increased resolution, can be difficult to align.
-In addition, Herriott cells can be misaligned once in place by accumulation of
-particulates on the mirror surfaces.
+These cells, while providing increased sensitivity, can be difficult to align.
+In addition, Herriott and White cells can be misaligned once in place by
+accumulation of particulates on the mirror surfaces.
 
 
 
 \subsection{Optical Cavities}\label{subsec:cavity}
-
-
-%\begin{wrapfigure}{o}{\marginspace}
-%\begin{center}
-  %\includegraphics[height=100pt]{figures/cavity.png}
-%\end{center}
-%\emph{\footnotesize{An optical cavity and the light propagation inside using plano-convex mirrors. Courtesy Wikipedia.}}
-%\end{wrapfigure}
 
 A similar approach to  Herriott cells is to use an optical cavity akin to a
 laser cavity, except where both mirrors are only partially reflective. In such
@@ -425,9 +372,10 @@ mirrors of reflectivity $R=0.999$, the increase in the path length will be
 $(1-R)^{-1} = 1000$, which is a higher gain than most Herriott cells can
 achieve.
 
-\marginpar{The mirror reflectivity curves depend on the alignment of the cavity
-as well as the mirror surfaces. As such, it is not possible to use mirror
-transmission curves provided by a manufacturer \cite{Berden:2009wk}.}
+\marginpar{The mirror reflectivity curves depend on the alignment of the
+cavity as well as the mirror surfaces due to interference effects. As such, it
+is not possible to use mirror transmission curves provided by a manufacturer
+\cite{Berden:2009wk}.}
 
 Unfortunately these cavities are also difficult to align, as the input beam
 must be perpendicular to the axis of the cavity. In addition, this method
@@ -452,5 +400,5 @@ Augmentations that increase the path length and wavelength range of the
 measured spectra are commonly in use today, and prove a cornerstone to
 sensitive analytical techniques. In the coming chapters these improvements to
 single pass absorption spectroscopy will be put to use to detect trace
-concentrations of chemicals such as rhoadmine 6G and to analyse absorption
+concentrations of chemicals such as rhodamine 6G and to analyse absorption
 signatures of aqueous europium ions.

@@ -104,22 +104,24 @@ high resolution spectrum taken with a \ac{TDL} having a spectral resolution
 lower than 0.1\,nm \cite{Wieman:2000vd}, whereas a grating spectrometer has a
 spectral resolution on the order of nanometers \cite{Kiwanuka:2010bj}.
 
-Another limitation is that this technique requires a calibration, or ``blank'',
-sample to be measured before the spectrum of an analyte can be taken. This
-causes higher error in the absorption measurements as the error in acquiring
-the blank spectrum is added to the error of acquiring the sample spectrum. The
-use of a blank is also an annoyance factor, where an extra step must be taken
-to acquire the spectrum of the blank and then flush it out of the cavity with
-the sample in question.
+Another limitation is that this technique requires a calibration, or
+``blank'', sample to be measured before the spectrum of an analyte can be
+taken. This causes higher error in the absorption measurements as the error
+in acquiring the blank spectrum is added to the error of acquiring the
+sample spectrum. There are also times when a suitable blank may not be well
+defined, such as on airborne platforms. Finally, the use of a blank is also an
+annoyance as an extra step must be taken to acquire the spectrum of the blank
+and then flush it out of the cavity with the sample in question.
 
-Finally, without the use of a device such as a \ac{CCD} streak camera, the
-temporal resolution is limited by the exposure time of the \ac{CCD}. It is
-terribly difficult to measure the change in a chemical reaction that occurred
-on the order of milliseconds using a \ac{CCD}, whereas this type of measurement
-would be trivial to watch with the nanosecond temporal resolution of the
-\acp{PMT} used in \ac{CRDS}. Even a streak camera can obtain nearly this
-temporal resolution, although not without significant cost and construction
-time \cite{Velten:2011vq}.
+Finally, without the use of a device such as a \ac{CCD} streak camera,
+the temporal resolution is limited by the read rate of the \ac{CCD}.
+It is terribly difficult to measure the change in a chemical reaction
+that occurred on the order of milliseconds using a \ac{CCD} if it takes
+a second to acquire the data off of the \ac{CCD}, whereas this type of
+measurement would be trivial to watch with the temporal resolution of the
+\acp{PMT} used in \ac{CRDS}. A streak camera can obtain nearly this temporal
+resolution, although not without significant cost and construction time
+\cite{Velten:2011vq}.
 
 
 
@@ -253,6 +255,9 @@ Taking the ratio $I_0/I$ leads to the following formula after using the quadrati
   (1-L) = \pm\sqrt{\frac{1}{4}\left(\frac{I_0}{I}\frac{(1-R^2)}{R^2}\right)^2+\frac{1}{R^2}} - \frac{1}{2}\frac{I_0}{I}\frac{(1-R^2)}{R^2}
 \end{align*}
 
+\marginpar{The assumption that intracavity losses are caused by absorption
+only fails for turbid solutions.}
+
 Assuming all of the intracavity losses are due to absorption only ($1-L =
 e^{-\alpha l}$, where $l$ is the path length), the absorption coefficient is
 found to be
@@ -332,12 +337,13 @@ the light source in calculating $\alpha$. As such, this error is too generous
 to the actual achievable sources of error in a \ac{BBCEAS} experiment.
 
 The second problem with the error calculations is that the error in the blank
-measurement is not taken into account. Equation \eqref{eq:ceas_min} assumes a
-constant for the intensity of the blank $I_0$. However, this blank has its own
-error due to the fact that the measurement procedure is identical to acquiring
-the sample spectrum. As such, the common error equation in the literature is
-generous in the minimum detectable absorption changes, and does not reflect
-the actual sensitivity of the instruments devised.
+measurement is not taken into account. Equation \eqref{eq:ceas_min} assumes
+a constant for the intensity of the blank $I_0$. However, this blank has its
+own, independent error due to the fact that the measurement procedure contains
+errors that can fluctuate over time, such as light source fluctuations. As
+such, the common error equation in the literature is generous in the minimum
+detectable absorption changes, and does not reflect the actual sensitivity of
+the instruments devised.
 
 To alleviate the problems of the error associated with the intensity
 of the source and that of the initial blank intensity measurement, an
@@ -395,15 +401,22 @@ computer.
 \end{figure}
 
 
+\marginpar{The mirrors both have a curvature of $r=1000\text{\,mm}$.}
+
 The optical layout for the system used in this report is nearly identical to
 all \ac{BBCEAS} layouts \cite{Berden:2009wk}. The light source is a Fianium
 \textsc{sc-450} supercontinuum pulsed laser source, with a high enough
 repetition rate that it is treated like a continuous wave laser source in
 our equations. After the source, an optical cavity is formed with mirrors of
 reflectivity $R=0.99$, which were chosen for their costs and to increase the
-light intensity accepted into the cavity. Finally, light exiting the cavity
-is coupled into a multimode fibre and imaged using a custom built grating
-spectrometer.
+light intensity accepted into the cavity. Finally, light exiting the cavity is
+coupled into a multimode fibre and imaged using a custom built transmission
+grating spectrometer with an exposure time of 10\,ms.
+
+\marginpar{\mbox{}\\\vspace{-5.5em}The spectrometer is made with an off the
+shelf \ac{CCD} and two 2'', 75\,mm focal length achromatic lenses with a
+transmission grating. The first order is imaged onto the CCD. The spectral
+resolution obtained is around 4\,nm \textsc{fwhm}.}
 
 Inside the cavity sits a cuvette compressed between two optical windows. This
 cuvette holder is then mounted in a rotatable jig to make it easier to properly
@@ -472,12 +485,12 @@ to offset the coupling losses. There are even cases where the absorber is
 saturated in a \ac{BBCEAS} measurement if the light intensity is too high
 \cite{Giuliano:1967hw}.
 
-Incoherent light sources such as \acp{LED}, on the other hand, suffer from
+Lambertian light sources such as \acp{LED}, on the other hand, suffer from
 problems of having wide, divergent emission profiles, which practically means
-that these sources have limits on their intensity that cannot offset the fibre
-losses. On top of this limit, losses for the incoherent source are higher than
-the laser due to the larger spot sizes and diffuse nature of the light when
-coupling into a fibre.
+that these sources have limits on their intensity that is further quashed by
+the losses from coupling the light into a fibre. On top of this limit, losses
+for the incoherent source are higher than the laser due to the larger spot
+sizes and diffuse nature of the light when coupling into a fibre.
 
 The current optical setup is convenient because different detectors can be
 easily swapped to provide more accurate or faster acquisitions. But tests with

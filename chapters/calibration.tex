@@ -30,7 +30,7 @@ inaccurate absorption coefficients and alter the shape of the calculated
 spectrum \cite{Berden:2009wk}. This case is more common than one may expect,
 as the multiple layers of thin films deposited on the mirror's surface
 introduces characteristic ripples in the mirror reflectivity as a function of
-wavelength \cite{Islam:2007ea}.
+wavelength due to thin film interference \cite{Islam:2007ea}.
 
 This chapter will discuss these calibrations for the stated problems to
 characterise the \ac{BBCEAS} instrument used in this report.
@@ -50,7 +50,7 @@ than one, which has no physical meaning.
 \begin{center}
   \includegraphics[]{figures/plots/rh6g/rh6g.pdf}
 \end{center}
-\caption[Rhodamine 6G Absorption Spectra as a Calibration]{Absorption spectra of rhodamine 6G at several concentrations. The filled area around each line represents the standard deviation of the signal, calculated using equation \eqref{eq:ceas_err_geo}. The flaring of the error signal near 600\,nm is a result of significantly less light reaching the cavity due to the 585\,nm edgepass filter in the optical setup (Figure~\ref{fig:optical_layout}).}
+\caption[Rhodamine 6G Absorption Spectra as a Calibration]{Absorption spectra of rhodamine 6G at several concentrations. The filled area around each line represents the standard deviation of the signal, calculated using equation \eqref{eq:ceas_err_geo}. The flaring of the error signal near 600\,nm is a result of significantly less light reaching the cavity due to the 585\,nm edgepass filter in the optical setup (Figure~\ref{fig:optical_layout}). The spectral resolution is 4\,nm.}
 \label{fig:rh6g}
 \end{figure}
 
@@ -68,7 +68,7 @@ Figure~\ref{fig:rh6g_lin}.
 \begin{center}
   \includegraphics[]{figures/plots/rh6g_linear/rh6g_linear.pdf}
 \end{center}
-\caption[Dynamic Range of Rhodamine 6G Measurements with \ac{BBCEAS}]{The linear region (left) and nonlinear region (right) of the absorption spectra obtained for different Rh6G concentrations, with red coloured linear and cubic fits, respectively. The error bars represent one standard deviation from the observed signal taken from the maximum peak of the Rh6G spectra.}
+\caption[Dynamic Range of Rhodamine 6G Measurements with \ac{BBCEAS}]{The linear region (left) and nonlinear region (right) of the absorption spectra obtained for different Rh6G concentrations, with red coloured linear and cubic fits, respectively. The error bars represent one standard deviation from the observed signal taken from the maximum peak of the Rh6G spectra. Large fluctuations are due to the laser intensity and potentially dimerisation of the rhodamine 6G molecules.}
 \label{fig:rh6g_lin}
 \end{figure}
 
@@ -78,12 +78,12 @@ bound is better defined as the limit of detection, instead of attempting to
 extrapolate a linear function to below the noise levels of the instrument.
 
 One problem with absorption spectroscopy techniques is that the dynamic range
-is mainly dependent on the absorber. Strong absorbers will have smaller
-concentrations where the calculated absorption coefficient is linear. Weak
-absorbers have the advantage of greater detection ranges under this regime,
-but suffer from a lower sensitivity to the concentration as small changes
-in intensity correlate to larger changes in concentration, in comparison to
-strong absorbers.
+is mainly dependent on the absorber. Strong absorbers will have a smaller
+dynamic range due to the larger change in intensity at each concentration
+step. Weak absorbers have the advantage of greater detection ranges under
+this regime, but suffer from a lower sensitivity to the concentration as
+small changes in intensity correlate to larger changes in concentration, in
+comparison to strong absorbers.
 
 It is possible to define the limits where the signal to concentration
 are linear by calculating an approximate dynamic range based on a known
@@ -96,7 +96,6 @@ ranges.
 
 \section{Intensity Fluctuations in BBCEAS measurements}\label{sec:light_fluc}
 
-%% TODO Add section intro here.
 
 
 \subsection{Intensity fluctuations due to light source stability}\label{subsec:laser_fluc}
@@ -105,7 +104,7 @@ ranges.
 \begin{center}
   \includegraphics[]{figures/plots/intensity_fluc/intensity_fluc.pdf}
 \end{center}
-\caption[Intensity fluctuations through blank in \ac{BBCEAS} setup]{Fluctuations in the laser intensity over time at 575\,nm, passed through the \ac{BBCEAS} setup with a water blank in the cuvette. Low and high frequency fluctuations due to laser drift are present, as well as the high frequency fluctuations due to the \ac{CCD}.}
+\caption[Intensity fluctuations through blank in \ac{BBCEAS} setup]{Fluctuations in the laser intensity over time at 575\,nm, passed through the \ac{BBCEAS} setup with a water blank in the cuvette. Low and high frequency fluctuations due to laser drift are present, as well as the high frequency fluctuations due to the \ac{CCD}. The \ac{CCD} accounts for an intensity fluctuation of approximately 0.5\%.}
 \label{fig:laser_fluc}
 \end{figure}
 
