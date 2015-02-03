@@ -1,2 +1,0 @@
-To compile correctly, the figures need to first be generated. To do so, compile
-every LaTeX file in the `figures/plots/` subdirectories.
