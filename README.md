@@ -4,7 +4,7 @@ Investigations of Aqueous Europium
 Within the past few decades, lanthanide elements have become an intensely
 active area of research. These elements have desirable properties that can be
 exploited for applications such as laser gain mediums, fluorescent indicators,
-television phosphors, as well as many other applications \cite{Bunzli:2005ic}.
+television phosphors, as well as many other applications (Bunzli 2005).
 As such, a theoretical understanding of lanthanide elements is vital to
 engineering practical uses for these elements.
 
@@ -35,8 +35,8 @@ Objectives
 ----------
 
 The objective of this report is to perform two functions. The first is to
-validate previous \ac{BBCEAS} results, and perform an analysis of the errors
-that occur when using a \ac{BBCEAS} instrument. The second purpose of this
+validate previous BBCEAS results, and perform an analysis of the errors
+that occur when using a BBCEAS instrument. The second purpose of this
 report is to analyse the electronic configuration of europium from both a
 theoretical and experimental standpoint in an attempt to determine uses for
 aqueous europium ions and complexes.
