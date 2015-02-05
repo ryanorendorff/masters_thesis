@@ -3,9 +3,7 @@ SHELL=/bin/bash
 
 TEX=pdflatex
 
-DOCUMENT:=$(shell find . -name "*\.tex" | cut -c 3- \
-									| cut -d '.' -f 1)
-
+DOCUMENT:=$(shell find . -name "*\.tex" | cut -c 3- | cut -d '.' -f 1)
 
 #######################################################################
 #                               Targets                               #
